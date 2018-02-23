@@ -28,92 +28,7 @@
 
 
 
-<div class="header-default">
-    <div class="header-topbar">
-        <div class="container">
-            <div class="header-topbar__contact-info">
-                <div class="header-topbar__contact-info-item">
-                    <span class="title">Phone:</span>
-                    <span class="value">800-987-65-43</span>
-                </div>
-                <div class="header-topbar__contact-info-item">
-                    <span class="title">Email: </span>
-                    <span class="value">info@companyname.com</span>
-                </div>
-            </div>
-
-        </div>
-    </div>
-    <div id="header-menu" class="header-default__menu">
-        <div class="container">
-            <nav class="navbar navbar-toggleable-lg">
-                <button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse" data-target="#header-default-menu">
-                    <span class="icon-bar"></span>
-                    <span class="icon-bar"></span>
-                    <span class="icon-bar"></span>
-                </button>
-                <a class="navbar-brand" href="index.html">Si<span class="colored">Renbil</span></a>
-                <div id="header-default-menu" class="collapse navbar-collapse">
-                    <div class="header-default__menu-collapse">
-                        <ul class="nav navbar-nav">
-
-                            <li class="nav-item dropdown">
-                                <a class="nav-link " data-toggle="dropdown" href="home.php" role="button" aria-haspopup="true" aria-expanded="false">Home</a>
-                                <div class="dropdown-menu" data-dropdown-in="zoomIn" data-dropdown-out="zoomOut">
-
-                                </div>
-
-                                <li class="nav-item dropdown">
-                                    <a class="nav-link " data-toggle="dropdown" href="rental.php" role="button" aria-haspopup="true" aria-expanded="false">Rental Mobil</a>
-                                    <div class="dropdown-menu" data-dropdown-in="zoomIn" data-dropdown-out="zoomOut">
-
-                                    </div>
-                                </li>
-
-                                <li class="nav-item dropdown">
-                                    <a class="nav-link " data-toggle="dropdown" href="cari_mobil.php" role="button" aria-haspopup="true" aria-expanded="false">Cari Mobil</a>
-                                    <div class="dropdown-menu" data-dropdown-in="zoomIn" data-dropdown-out="zoomOut">
-
-                                </div>
-
-                                <li class="nav-item dropdown">
-                                    <a class="nav-link " data-toggle="dropdown" href="banding_mobil.php" role="button" aria-haspopup="true" aria-expanded="false">Bandingkan Mobil</a>
-                                    <div class="dropdown-menu" data-dropdown-in="zoomIn" data-dropdown-out="zoomOut">
-
-                                    </div>
-
-                                <li class="nav-item dropdown">
-                                    <a class="nav-link " data-toggle="dropdown" href="banding_mobil.php" role="button" aria-haspopup="true" aria-expanded="false">Kontak</a>
-                                    <div class="dropdown-menu" data-dropdown-in="zoomIn" data-dropdown-out="zoomOut">
-
-                                    </div>
-
-
-                            <li class="nav-item dropdown">
-                                <a class="nav-link dropdown-toggle" data-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false">Setting</a>
-                                <div class="dropdown-menu" data-dropdown-in="zoomIn" data-dropdown-out="zoomOut">
-                                    <a class="dropdown-item" href="blog.html">Profile</a>
-                                    <a class="dropdown-item" href="blog.html">Data Mobil</a>
-                                    <a class="dropdown-item" href="blog.html">Tambah Mobil</a>
-                                    <a class="dropdown-item" href="blog.html">Data Rental Mobil</a>
-                                    <a class="dropdown-item" href="blog-post.html">User</a>
-                                    <a class="dropdown-item" href="blog-post.html">User</a>
-                                </div>
-                            </li>
-                        </ul>
-
-
-                        <div class="header-default__menu-links">
-                            <a href="login.php" class="btn btn-outline-primary">
-                                <span class="text">Login</span>
-                            </a>
-                        </div>
-                    </div>
-                </div>
-            </nav>
-        </div>
-    </div>
-</div>
+<?php include"share/menu.php"?>
 <div class="page-auth">
     <div class="container">
         <div class="row justify-content-center">
@@ -253,51 +168,7 @@
         </div>
     </div>
 </div>
-<div class="footer-default">
-    <div class="container">
-        <div class="row">
-            <div class="col-lg-6">
-                <h6 class="footer-default__heading">About</h6>
-                <p>
-                    Morbi convallis bibendum urna ut viverra. Maecenas quis consequat
-                    libero, a feugiat eros. Nunc ut lacinia tortor morbi ultricies laoreet
-                    ullamcorper phasellus semper.
-                </p>
-
-                
-            </div>
-
-        </div>
-        <hr>
-        <div class="row">
-            <div class="col-lg-6">
-                <span class="footer-default__copyright">© Copy Right 2018</span>
-            </div>
-            <div class="col-lg-6">
-                <div class="footer-default__follow-us">
-                    <span class="footer-default__follow-us-text">Follow Us</span>
-
-                    <div class="footer-default__follow-us-items">
-                        <a href="" class="footer-default__follow-us-item">
-                            <img src="images/social/google-plus.png" alt="">
-                        </a>
-                        <a href="" class="footer-default__follow-us-item">
-                            <img src="images/social/twitter.png" alt="">
-                        </a>
-                        <a href="" class="footer-default__follow-us-item">
-                            <img src="images/social/facebook.png" alt="">
-                        </a>
-                        <a href="" class="footer-default__follow-us-item">
-                            <img src="images/social/linkedin.png" alt="">
-                        </a>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-</div>
-
-
+<?php include"share/footer.php";?>
 
 <script src="vendors/jquery/jquery.min.js"></script>
 <script src="vendors/tether/js/tether.min.js"></script>

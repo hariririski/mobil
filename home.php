@@ -17,7 +17,7 @@
     <link rel="stylesheet" type="text/css" href="fonts/iconfont/styles.css">
     <!-- END GLOBAL MANDATORY STYLES -->
 
-    
+
 
 <link rel="stylesheet" type="text/css" href="vendors/select2/css/select2.min.css">
 <link rel="stylesheet" type="text/css" href="css/vendors/select2/select2.min.css">
@@ -34,79 +34,7 @@
 <body class="">
 
 
-
-<div class="header-default header-default--properties">
-    <div class="header-topbar">
-        <div class="container">
-            <div class="header-topbar__contact-info">
-                <div class="header-topbar__contact-info-item">
-                    <span class="icon iconfont-phone-outline"></span>
-                    <span class="value">800-987-65-43</span>
-                </div>
-                <div class="header-topbar__contact-info-item">
-                    <span class="icon iconfont-envelope-outline"></span>
-                    <span class="value">info@companyname.com</span>
-                </div>
-            </div>
-            <ul class="nav header-topbar__nav">
-                <li class="nav-item">
-                    <a class="nav-link" href="#">Online Booking</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="contact.html">Contact</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="signup.html">Sing In</a>
-                </li>
-                <li class="nav-item dropdown">
-                    <a class="nav-link dropdown-toggle" data-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false">English</a>
-                    <div class="dropdown-menu">
-                        <a class="dropdown-item" href="#">Russian</a>
-                        <a class="dropdown-item active" href="#">English</a>
-                        <a class="dropdown-item" href="#">German</a>
-                    </div>
-                </li>
-            </ul>
-        </div>
-    </div>
-    <div id="header-menu" class="header-default__menu">
-        <div class="container">
-            <nav class="navbar navbar-toggleable-lg">
-                <button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse" data-target="#header-default-menu">
-                    <span class="icon-bar"></span>
-                    <span class="icon-bar"></span>
-                    <span class="icon-bar"></span>
-                </button>
-                <a class="navbar-brand" href="index.html">Direct<span class="colored">o</span>ry</a>
-
-                <div id="header-default-menu" class="collapse navbar-collapse">
-                    <div class="header-default__menu-collapse">
-                        <ul class="nav navbar-nav justify-content-center">
-                            <li class="nav-item active">
-                                <a class="nav-link" href="index.html">Home</a>
-                            </li>
-                            <li class="nav-item">
-                                <a class="nav-link" href="#">About Us</a>
-                            </li>
-                            <li class="nav-item">
-                                <a class="nav-link" href="#">Properties</a>
-                            </li>
-                            <li class="nav-item">
-                                <a class="nav-link" href="#">Agents</a>
-                            </li>
-                            <li class="nav-item">
-                                <a class="nav-link" href="#">Blog</a>
-                            </li>
-                            <li class="nav-item">
-                                <a class="nav-link" href="#">Contact</a>
-                            </li>
-                        </ul>
-                    </div>
-                </div>
-            </nav>
-        </div>
-    </div>
-</div>
+<?php include"share/menu.php";?>
 <div class="hero-carousel">
     <div class="owl-carousel owl-theme hero-carousel__items">
         <div class="item hero-carousel__item">
@@ -686,122 +614,7 @@
         </div>
     </div>
 </div>
-<div class="footer-default footer-default--properties">
-    <div class="container">
-        <div class="row">
-            <div class="col-lg-3 col-md-4">
-                <h6 class="footer-default__heading">Contact Us</h6>
-
-                <div class="mb-4">
-                    Address: PO BOX 737<br>
-                    Essex ST. New York, USA
-                </div>
-
-                <div class="mb-4">Phone: +385 21 123 4567</div>
-
-                <div>info@yourmail.com</div>
-            </div>
-            <div class="col-lg-3 col-md-4">
-                <h6 class="footer-default__heading">Open Hours</h6>
-
-                <div class="mb-2">
-                    Weekday: 08:00-17;00
-                </div>
-                <div class="mb-2">
-                    Saturday: 08:00-14:00
-                </div>
-                <div>
-                    Sunday: <span class="color-white">Closed</span>
-                </div>
-            </div>
-            <div class="col-lg-3 col-md-4">
-                <h6 class="footer-default__heading">Quick Links</h6>
-
-                <ul class="list-unstyled">
-                    <li>
-                        <a href="">Home</a>
-                    </li>
-                    <li>
-                        <a href="">About Us</a>
-                    </li>
-                    <li>
-                        <a href="">Agents</a>
-                    </li>
-                    <li>
-                        <a href="">Blog</a>
-                    </li>
-                    <li>
-                        <a href="">Contact</a>
-                    </li>
-                    <li>
-                        <a href="">House</a>
-                    </li>
-                    <li>
-                        <a href="">Offices</a>
-                    </li>
-                    <li>
-                        <a href="">Apartment</a>
-                    </li>
-                    <li>
-                        <a href="">Residental</a>
-                    </li>
-                </ul>
-            </div>
-            <div class="col-lg-3 col-md-4">
-                <h6 class="footer-default__heading">Property Country</h6>
-
-                <ul class="list-unstyled">
-                    <li>
-                        <a href="">Croatia</a>
-                    </li>
-                    <li>
-                        <a href="">Greece</a>
-                    </li>
-                    <li>
-                        <a href="">Italy</a>
-                    </li>
-                    <li>
-                        <a href="">Switzerland</a>
-                    </li>
-                    <li>
-                        <a href="">France</a>
-                    </li>
-                    <li>
-                        <a href="">Germany</a>
-                    </li>
-                </ul>
-            </div>
-        </div>
-        <hr>
-        <div class="row">
-            <div class="col-lg-6">
-                <span class="footer-default__copyright">© Themes Anytime. All Rights Reserved.</span>
-            </div>
-            <div class="col-lg-6">
-                <div class="footer-default__follow-us">
-                    <span class="footer-default__follow-us-text">Follow Us</span>
-
-                    <div class="footer-default__follow-us-items">
-                        <a href="" class="footer-default__follow-us-item">
-                            <img src="images/social/google-plus.png" alt="">
-                        </a>
-                        <a href="" class="footer-default__follow-us-item">
-                            <img src="images/social/twitter.png" alt="">
-                        </a>
-                        <a href="" class="footer-default__follow-us-item">
-                            <img src="images/social/facebook.png" alt="">
-                        </a>
-                        <a href="" class="footer-default__follow-us-item">
-                            <img src="images/social/linkedin.png" alt="">
-                        </a>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-</div>
-
-
+<?php include"share/footer.php";?>
 
 <script src="vendors/jquery/jquery.min.js"></script>
 <script src="vendors/tether/js/tether.min.js"></script>
