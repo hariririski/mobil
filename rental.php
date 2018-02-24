@@ -3,7 +3,7 @@
 <!-- BEGIN HEAD -->
 <head>
     <meta charset="UTF-8">
-    <title>Cari Mobil</title>
+    <title>Rental</title>
 
     <meta http-equiv="X-UA-Compatible" content="IE=edge"/>
     <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -35,7 +35,7 @@
 <?php include"share/menu.php";?>
 <div class="hero-travel-trips">
     <div class="container">
-        <h2 class="hero-travel-trips__heading">Cari Mobil</h2>
+        <h2 class="hero-travel-trips__heading">Cari Rental</h2>
         <form action="#" class="hero-travel-trips__form">
             <div class="form-control-inline-icon inline-icon-left hero-travel-trips__search-input">
                 <span class="icon iconfont-left iconfont-search-v2"></span>
@@ -66,8 +66,8 @@
           $halaman = 8; //batasan halaman
           $page = isset($_GET['halaman'])? (int)$_GET["halaman"]:1;
           $mulai = ($page>1) ? ($page * $halaman) - $halaman : 0;
-          $query = mysqli_query($con,"select * from mobil left join rental on rental.id_rental=mobil.id_rental LIMIT $mulai, $halaman");
-          $sql = mysqli_query($con,"select * from mobil left join rental on rental.id_rental=mobil.id_rental");
+          $query = mysqli_query($con,"select * from rental LIMIT $mulai, $halaman");
+          $sql = mysqli_query($con,"select * from rental");
           $total = mysqli_num_rows($sql);
           $pages = ceil($total/$halaman);
           while($data = mysqli_fetch_array($query)){
@@ -78,9 +78,9 @@
             <div class="col-xl-3 col-lg-4 col-md-6">
                 <div class="listing-travel-trips__item">
                     <div class="listing-travel-trips__item-image" >
-                        <center><img height="160px"  width="270px" src="mobil/<?php echo $data['foto_samping'];?>" alt="" ></center>
+                        <center><img height="160px" width="270px" src="rental/<?php echo $data['foto_rental'];?>" alt="" ></center>
                         <div class="listing-travel-trips__item-title">
-                            <span><?php echo $data['merek'];?></span>
+                            <span><?php echo $data['nama_rental'];?></span>
                         </div>
                     </div>
                     <div class="listing-travel-trips__item-info">
@@ -88,7 +88,7 @@
                           <table width="100%" border="0">
                             <tr>
                               <td width="40%">
-                                Nama Rental
+                                Nama
                               </td>
                               <td width="5%">
                                 :
@@ -99,57 +99,24 @@
                             </tr>
                             <tr>
                               <td>
-                                Merek
+                                Alamat
                               </td>
                               <td>
                                 :
                               </td>
                               <td>
-                                <?php echo $data['merek'];?>
+                                <?php echo $data['alamat'];?>
                               </td>
                             </tr>
                             <tr>
                               <td>
-                                Jenis
+                                No HP
                               </td>
                               <td>
                                 :
                               </td>
                               <td>
-                                <?php echo $data['jenis'];?>
-                              </td>
-                            </tr>
-                            <tr>
-                              <td>
-                                Tipe
-                              </td>
-                              <td>
-                                :
-                              </td>
-                              <td>
-                                <?php echo $data['tipe'];?>
-                              </td>
-                            </tr>
-                            <tr>
-                              <td>
-                                Bahan Bakar
-                              </td>
-                              <td>
-                                :
-                              </td>
-                              <td>
-                                <?php echo $data['bahan_bakar'];?>
-                              </td>
-                            </tr>
-                            <tr>
-                              <td>
-                                Jenis
-                              </td>
-                              <td>
-                                :
-                              </td>
-                              <td>
-                                <?php echo $data['jenis'];?>
+                                <?php echo $data['no_hp_rental'];?>
                               </td>
                             </tr>
 
@@ -160,21 +127,24 @@
                         </div>
                         <div class="listing-travel-trips__item-details">
                             <div class="listing-travel-trips__item-details-price">
-                                <span class="heading">Harga Sewa</span>
-                                <span class="value">Rp.<?php echo $data2['harga_sewa'];?> </span>
+                                <span class="heading">Unit Mobil</span>
+                                <?php
+                                $query2 = mysqli_query($con,"SELECT COUNT(no_pol)as jumlah from mobil WHERE id_rental='1'");
+                                while($data2 = mysqli_fetch_array($query2)){
+                                ?>
+                                <span class="value"><?php echo $data2['jumlah'];?> Unit</span>
                             </div>
-                            <div class="listing-travel-trips__item-details-price">
-                                <span class="heading">Waktu</span>
-                                <span class="value">1 Hari</span>
-                            </div>
-
-                            <a href="detail_mobil.php?id=<?php echo $data['no_pol'];?>" class="btn btn-outline-default listing-travel-trips__item-details-view-link">Details</a>
+                            <?php } ?>
+                            <a href="detail_rental.php?id=<?php echo $data['id_rental'];?>" class="btn btn-outline-default listing-travel-trips__item-details-view-link">Details</a>
                         </div>
                     </div>
                 </div>
             </div>
-         <?php } ?>
 
+            <?php
+          }
+
+            ?>
         </div>
 
         <nav class="listings-pagination listings-travel-trips-pagination d-flex justify-content-center">

@@ -3,7 +3,7 @@
 <!-- BEGIN HEAD -->
 <head>
     <meta charset="UTF-8">
-    <title>Daftar Rental Mobil</title>
+    <title>Profil Rental</title>
 
     <meta http-equiv="X-UA-Compatible" content="IE=edge"/>
     <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -30,16 +30,23 @@
 <!-- BEGIN HEAD -->
 <body class="">
 
-
-
 <?php include"share/menu.php";?>
-<form action="proses/daftar.php" method="post" enctype="multipart/form-data" class="post-job">
+  <?php
+  include 'share/db.php';
+  $id=$_GET['id'];
+  $query = mysqli_query($con,"select * from rental where username='$id'");
+  while($data = mysqli_fetch_array($query)){
+
+
+  ?>
+
+<form action="proses/edit_profil.php?id=<?php echo $data['id_rental']?>" method="post" enctype="multipart/form-data" class="post-job">
     <div class="container">
-        <h3 class="post-job__heading">Gabung Bersama Kami</h3>
+
 
         <div class="row">
             <div class="col-lg-9">
-                <p class="post-job__description">Posting Mobil Rental Kamu, Gratis!</p>
+                <p class="post-job__description">Data Profil</p>
 
                 <div class="row">
                     <div class="col-xl-12">
@@ -47,7 +54,7 @@
                             <div class="col-lg-12">
                                 <div class="form-group">
                                     <label for="post-job__email">Nama Rental Mobil</label>
-                                    <input type="text" name="nama_rental"  class="form-control" placeholder="Nama Rental Anda">
+                                    <input type="text" name="nama_rental" value="<?php echo $data['nama_rental']?>" class="form-control" placeholder="Nama Rental Anda">
                                 </div>
                             </div>
                         </div>
@@ -55,7 +62,7 @@
                             <div class="col-lg-12">
                                 <div class="form-group">
                                     <label for="post-job__description" class="d-flex justify-content-between">Alamat Rental Anda<span class="icon iconfont-help-outline"></span></label>
-                                    <textarea id="post-job__description" class="form-control" placeholder="Alamat Rental Anda" rows="5"></textarea>
+                                    <textarea id="post-job__description" class="form-control"  placeholder="Alamat Rental Anda" rows="5"><?php echo $data['alamat']?></textarea>
                                 </div>
                             </div>
                         </div>
@@ -63,7 +70,7 @@
                             <div class="col-lg-12">
                                 <div class="form-group">
                                     <label for="post-job__email">Nomor Hp Rental Mobil</label>
-                                    <input type="number" name="nama_rental"  class="form-control" placeholder="Nama Rental Anda">
+                                    <input type="number" name="nama_rental" value="<?php echo $data['no_hp_rental']?>" class="form-control" placeholder="Nama Rental Anda">
                                 </div>
                             </div>
                         </div>
@@ -71,7 +78,7 @@
                             <div class="col-lg-12">
                                 <div class="form-group">
                                     <label for="post-job__email">No KTP Pemilik Rental</label>
-                                    <input type="number" name="nik"  class="form-control" placeholder="NIK">
+                                    <input type="number" name="nik" value="<?php echo $data['nik']?>"  class="form-control" placeholder="NIK">
                                 </div>
                             </div>
                         </div>
@@ -79,7 +86,7 @@
                             <div class="col-lg-12">
                                 <div class="form-group">
                                     <label for="post-job__email">Nama Pemilik Rental</label>
-                                    <input type="text" name="nama_pemilik_rental"  class="form-control" placeholder="Nama Pemilik Rental Anda">
+                                    <input type="text" name="nama_pemilik_rental" value="<?php echo $data['nama_pemilik']?>"  class="form-control" placeholder="Nama Pemilik Rental Anda">
                                 </div>
                             </div>
                         </div>
@@ -87,33 +94,19 @@
                             <div class="col-lg-12">
                                 <div class="form-group">
                                     <label for="post-job__email">No Hp Pemilik Rental</label>
-                                    <input type="number" name="no_hp_pemilik"  class="form-control" placeholder="Nomor Hp Pemilik Rental">
-                                </div>
-                            </div>
-                        </div>
-                        <div class="row">
-                            <div class="col-lg-12">
-                                <div class="form-group">
-                                    <label for="post-job__email">Username</label>
-                                    <input type="text" name="username"  class="form-control" placeholder="Username">
-                                </div>
-                            </div>
-                        </div>
-                        <div class="row">
-                            <div class="col-lg-12">
-                                <div class="form-group">
-                                    <label for="post-job__email">Password</label>
-                                    <input type="password" name="nama_rental"  class="form-control" placeholder="Password">
+                                    <input type="number" value="<?php echo $data['no_hp_pemilik']?>" name="no_hp_pemilik"  class="form-control" placeholder="Nomor Hp Pemilik Rental">
                                 </div>
                             </div>
                         </div>
 
+
                         <div class="row">
                             <div class="col-lg-12">
                                 <div class="form-group">
-                                
+
                                     <label for="post-job__email">Foto Rental</label>
                                     <input type="file" name="foto_rental"  class="form-control" placeholder="">
+                                    <img src="rental/<?php echo $data['foto_rental']?>" width="30%">
                                 </div>
                             </div>
                         </div>
@@ -130,27 +123,11 @@
                     </div>
                 </div>
             </div>
-            <div class="col-lg-3">
-                <p class="post-job__useful-tips-heading">Tata Cara Mendaftar</p>
-
-                <ul class="list-unstyled post-job__useful-tips-items">
-                    <li class="post-job__useful-tip">
-                        <span class="point">1.</span> Isikan Data Dengan Benar
-                    </li>
-                    <li class="post-job__useful-tip">
-                        <span class="point">2.</span> Upload Data Yang Diperlukan, Seperti Foto Rental Mobil dan Selelah Data Lengkap Klik Daftar
-                    </li>
-                    <li class="post-job__useful-tip">
-                        <span class="point">3.</span> Admin Akan Menverifikasi Akun Anda
-                    </li>
-                    <li class="post-job__useful-tip">
-                        <span class="point">4.</span> Apabilan Data Yang Diberikan Benar, Akun Akan Di Aktifkan.
-                    </li>
-                </ul>
-            </div>
+            
         </div>
     </div>
 </form>
+<?php  }?>
 <?php include"share/footer.php";?>
 
 
