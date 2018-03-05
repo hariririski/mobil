@@ -71,15 +71,16 @@ session_start(); // Memulai Session
                                   if(isset($_SESSION['rental'])){
                                   ?>
                                     <a class="dropdown-item" href="profil.php?id=<?php echo $_SESSION['rental']?>">Profile</a>
-                                    <a class="dropdown-item" href="blog.html">Data Mobil</a>
-                                    <a class="dropdown-item" href="blog.html">Tambah Mobil</a>
-                                    <a class="dropdown-item" href="blog.html">Ubah Password</a>
+                                    <a class="dropdown-item" href="data_mobil.php?id=<?php echo $_SESSION['rental']?>">Data Mobil</a>
+                                    <a class="dropdown-item" href="tambah_mobil.php?id=<?php echo $_SESSION['rental']?>">Tambah Mobil</a>
+                                    <a class="dropdown-item" href="ubah_password.php?id=<?php echo $_SESSION['rental']?>">Ubah Password</a>
                                   <?php } ?>
                                   <?php
                                   if(isset($_SESSION['login'])){
                                   ?>
-                                    <a class="dropdown-item" href="blog.html">Data Rental Mobil</a>
-                                    <a class="dropdown-item" href="blog-post.html">User</a>
+                                    <a class="dropdown-item" href="a_data_rental.php">Data Rental Mobil</a>
+                                    <a class="dropdown-item" href="a_verifikasi_rental.php">Verifikasi Rental Mobil</a>
+                                    <a class="dropdown-item" href="a_user.php">User</a>
 
                                   <?php } ?>
                                 </div>
