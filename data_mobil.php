@@ -57,10 +57,12 @@
           <!-- /.row -->
           <div class="col-lg-12">
               <div class="col-lg-12">
-                  <div class="panel panel-default">
-                      <div class="panel-heading">
-                          Data Mobil
+                  <div class="card card-outline-primary mb-3">
+                      <div class="card-header bg-primary">
+                          Data mobil
                       </div>
+                      <!-- /.panel-heading -->
+
                       <!-- /.panel-heading -->
                       <?php
                       include 'share/db.php';
@@ -73,7 +75,7 @@
                         $id_rental= $data1['id_rental'];
                       }
                       ?>
-                      <div class="panel-body">
+                    <div class="card-block">
                           <table width="100%" class="table table-striped table-bordered table-hover" id="dataTables-example">
                               <thead>
                                   <tr>
