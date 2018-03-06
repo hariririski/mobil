@@ -129,7 +129,7 @@
                             <div class="listing-travel-trips__item-details-price">
                                 <span class="heading">Unit Mobil</span>
                                 <?php
-                                $query2 = mysqli_query($con,"SELECT COUNT(no_pol)as jumlah from mobil WHERE id_rental='1'");
+                                $query2 = mysqli_query($con,"SELECT COUNT(no_pol)as jumlah from mobil WHERE id_rental=".$data['id_rental']."");
                                 while($data2 = mysqli_fetch_array($query2)){
                                 ?>
                                 <span class="value"><?php echo $data2['jumlah'];?> Unit</span>

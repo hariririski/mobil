@@ -3,7 +3,7 @@
 <!-- BEGIN HEAD -->
 <head>
     <meta charset="UTF-8">
-    <title>DirectoryHub - Multipurpose Directory &amp; Listings HTML Template</title>
+    <title>Home</title>
 
     <meta http-equiv="X-UA-Compatible" content="IE=edge"/>
     <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -42,10 +42,7 @@
             <div class="hero-carousel__item-info">
                 <div class="container">
                     <h2 class="hero-carousel__item-heading">Tempat Terbaik Temukan Mobil Rental</h2>
-                    <p class="hero-carousel__item-description">
-                        Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. <br>
-                        Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.
-                    </p>
+
 
                     <a href="cari_mobil.php"><div class="btn btn-outline-secondary hero-carousel__item-read-more">Temukan Mobil</div></a>
                 </div>
@@ -56,10 +53,7 @@
             <div class="hero-carousel__item-info">
                 <div class="container">
                     <h2 class="hero-carousel__item-heading">Informasi Rental Terlengkap Di Banda Aceh</h2>
-                    <p class="hero-carousel__item-description">
-                        Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. <br>
-                        Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.
-                    </p>
+
 
 
                 </div>
@@ -128,43 +122,31 @@
         <h2 class="choose-us-default__heading">Kenapa Memilih Kami</h2>
 
         <div class="row">
-            <div class="col-lg-3">
+            <div class="col-lg-4">
                 <div class="choose-us-default__item">
-                    <h5 class="choose-us-default__item-heading">Sale Service</h5>
+                    <h5 class="choose-us-default__item-heading">Rental Terpercaya</h5>
                     <span class="choose-us-default__item-icon iconfont-user-outline"></span>
                     <div class="choose-us-default__item-description">
-                        Are you going to list something
-                        specific? Not a problem at all.
+                        Hanya Rental Terpercaya Dan Resmi Yang Kami Tampilkan
                     </div>
                 </div>
             </div>
-            <div class="col-lg-3">
+            <div class="col-lg-4">
                 <div class="choose-us-default__item">
-                    <h5 class="choose-us-default__item-heading">Rent Service</h5>
+                    <h5 class="choose-us-default__item-heading">Pelayanan Prima</h5>
                     <span class="choose-us-default__item-icon iconfont-hands-key-outline"></span>
                     <div class="choose-us-default__item-description">
-                        Are you going to list something
-                        specific? Not a problem at all.
+                        Kami Dan Rental Berkomitmen Memberikan Pelayanan Prima
                     </div>
                 </div>
             </div>
-            <div class="col-lg-3">
+
+            <div class="col-lg-4">
                 <div class="choose-us-default__item">
-                    <h5 class="choose-us-default__item-heading">Property Insurance</h5>
-                    <span class="choose-us-default__item-icon iconfont-shield"></span>
-                    <div class="choose-us-default__item-description">
-                        Are you going to list something
-                        specific? Not a problem at all.
-                    </div>
-                </div>
-            </div>
-            <div class="col-lg-3">
-                <div class="choose-us-default__item">
-                    <h5 class="choose-us-default__item-heading">Property Search</h5>
+                    <h5 class="choose-us-default__item-heading">Mudah Mencari Mobil</h5>
                     <span class="choose-us-default__item-icon iconfont-magnifier"></span>
                     <div class="choose-us-default__item-description">
-                        Are you going to list something
-                        specific? Not a problem at all.
+                        Mudah Mencari Mobil Sesuai Dengan Pilih Anda
                     </div>
                 </div>
             </div>

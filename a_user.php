@@ -3,7 +3,7 @@
 <!-- BEGIN HEAD -->
 <head>
     <meta charset="UTF-8">
-    <title>Profil Rental</title>
+    <title>User</title>
 
     <meta http-equiv="X-UA-Compatible" content="IE=edge"/>
     <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -21,7 +21,7 @@
 
        <!-- DataTables Responsive CSS -->
        <link href="data/vendor/datatables-responsive/dataTables.responsive.css" rel="stylesheet">
-       <link href="data/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+
        <link href="data/dist/css/sb-admin-2.css" rel="stylesheet">
        <link href="data/vendor/metisMenu/metisMenu.min.css" rel="stylesheet">
       <link href="data/vendor/font-awesome/css/font-awesome.min.css" rel="stylesheet" type="text/css">
@@ -182,8 +182,7 @@
 <script src="js/post-job.js"></script>
 <script src="data/vendor/jquery/jquery.min.js"></script>
 
-    <!-- Bootstrap Core JavaScript -->
-    <script src="data/vendor/bootstrap/js/bootstrap.min.js"></script>
+
 
     <!-- Metis Menu Plugin JavaScript -->
     <script src="data/vendor/metisMenu/metisMenu.min.js"></script>

@@ -3,7 +3,7 @@
 <!-- BEGIN HEAD -->
 <head>
     <meta charset="UTF-8">
-    <title>DirectoryHub - Multipurpose Directory &amp; Listings HTML Template</title>
+    <title>Kontak</title>
 
     <meta http-equiv="X-UA-Compatible" content="IE=edge"/>
     <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -35,46 +35,46 @@
 <div id="page-contact-map" class="page-contact__map"></div>
 <div class="container">
     <form class="page-contact__form">
-        <h2 class="page-contact__form-heading">Get in Touch!</h2>
+        <h2 class="page-contact__form-heading">Hubungi Kami</h2>
         <div class="row justify-content-center">
-            <div class="col-lg-5">
+            <div class="col-lg-3">
                 <div class="form-group">
-                    <input type="text" class="form-control" placeholder="Your full name">
-                </div>
-            </div>
-            <div class="col-lg-5">
-                <div class="form-group">
-                    <input type="text" class="form-control" placeholder="E-mail">
-                </div>
-            </div>
-        </div>
-        <div class="row justify-content-center">
-            <div class="col-lg-5">
-                <div class="form-group">
-                    <input type="text" class="form-control" placeholder="Company">
+                    <h4 >No Hp :</h4>
                 </div>
             </div>
             <div class="col-lg-5">
                 <div class="form-group">
-                    <input type="text" class="form-control" placeholder="Phone *">
+                  0852-0987-0123
                 </div>
             </div>
         </div>
         <div class="row justify-content-center">
-            <div class="col-lg-10">
+            <div class="col-lg-3">
                 <div class="form-group">
-                    <textarea rows="5" class="form-control" placeholder="Message *"></textarea>
+                    <h4 >Email :</h4>
                 </div>
             </div>
+            <div class="col-lg-5">
+                <div class="form-group">
+                    sirenbil@gmail.com
+                </div>
+            </div>
+
         </div>
         <div class="row justify-content-center">
-            <div class="col-lg-10">
+            <div class="col-lg-3">
                 <div class="form-group">
-                    <div class="btn btn-primary btn-lg">Contact Us</div>
-                    <span class="page-contact__form-fields-message">* Fields are required</span>
+                    <h4 >Alamat :</h4>
                 </div>
             </div>
+            <div class="col-lg-5">
+                <div class="form-group">
+                  JL. Sri Ratu Safiatuddin No.1 Simpang Lima, Banda Aceh, Peunayong, Kuta Alam, Banda Aceh City, Aceh 13430
+                </div>
+            </div>
+
         </div>
+
     </form>
 </div>
 <?php include"share/footer.php";?>
