@@ -55,7 +55,7 @@
                             <div class="col-lg-12">
                                 <div class="form-group">
                                     <label for="post-job__description" class="d-flex justify-content-between">Alamat Rental Anda<span class="icon iconfont-help-outline"></span></label>
-                                    <textarea id="post-job__description" class="form-control" placeholder="Alamat Rental Anda" rows="5"></textarea>
+                                    <textarea id="post-job__description" name="alamat" class="form-control" placeholder="Alamat Rental Anda" rows="5"></textarea>
                                 </div>
                             </div>
                         </div>
@@ -63,7 +63,7 @@
                             <div class="col-lg-12">
                                 <div class="form-group">
                                     <label for="post-job__email">Nomor Hp Rental Mobil</label>
-                                    <input type="number" name="nama_rental"  class="form-control" placeholder="Nama Rental Anda">
+                                    <input type="number" name="nama_rental"  name="no_hp_rental" class="form-control" placeholder="Nama Rental Anda">
                                 </div>
                             </div>
                         </div>
@@ -71,7 +71,7 @@
                             <div class="col-lg-12">
                                 <div class="form-group">
                                     <label for="post-job__email">No KTP Pemilik Rental</label>
-                                    <input type="number" name="nik"  class="form-control" placeholder="NIK">
+                                    <input type="number" name="nik"  name="nik"class="form-control" placeholder="NIK">
                                 </div>
                             </div>
                         </div>
@@ -79,7 +79,7 @@
                             <div class="col-lg-12">
                                 <div class="form-group">
                                     <label for="post-job__email">Nama Pemilik Rental</label>
-                                    <input type="text" name="nama_pemilik_rental"  class="form-control" placeholder="Nama Pemilik Rental Anda">
+                                    <input type="text" name="nama_pemilik_rental"  name="nama_pemilik"class="form-control" placeholder="Nama Pemilik Rental Anda">
                                 </div>
                             </div>
                         </div>
@@ -87,7 +87,7 @@
                             <div class="col-lg-12">
                                 <div class="form-group">
                                     <label for="post-job__email">No Hp Pemilik Rental</label>
-                                    <input type="number" name="no_hp_pemilik"  class="form-control" placeholder="Nomor Hp Pemilik Rental">
+                                    <input type="number" name="no_hp_pemilik" name="no_hp_pemilik"  class="form-control" placeholder="Nomor Hp Pemilik Rental">
                                 </div>
                             </div>
                         </div>
@@ -95,7 +95,7 @@
                             <div class="col-lg-12">
                                 <div class="form-group">
                                     <label for="post-job__email">Username</label>
-                                    <input type="text" name="username"  class="form-control" placeholder="Username">
+                                    <input type="text" name="username"  name="username"class="form-control" placeholder="Username">
                                 </div>
                             </div>
                         </div>
@@ -103,7 +103,7 @@
                             <div class="col-lg-12">
                                 <div class="form-group">
                                     <label for="post-job__email">Password</label>
-                                    <input type="password" name="nama_rental"  class="form-control" placeholder="Password">
+                                    <input type="password" name="nama_rental"  name="password"class="form-control" placeholder="Password">
                                 </div>
                             </div>
                         </div>
@@ -111,7 +111,7 @@
                         <div class="row">
                             <div class="col-lg-12">
                                 <div class="form-group">
-                                
+
                                     <label for="post-job__email">Foto Rental</label>
                                     <input type="file" name="foto_rental"  class="form-control" placeholder="">
                                 </div>
