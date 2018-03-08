@@ -63,7 +63,7 @@
                             <div class="col-lg-12">
                                 <div class="form-group">
                                     <label for="post-job__email">Nomor Hp Rental Mobil</label>
-                                    <input type="number" name="no_hp_rental"  name="no_hp_rental" class="form-control" placeholder="Nama Rental Anda">
+                                    <input type="number"  name="no_hp_rental" class="form-control" placeholder="Nama Rental Anda">
                                 </div>
                             </div>
                         </div>
@@ -87,7 +87,7 @@
                             <div class="col-lg-12">
                                 <div class="form-group">
                                     <label for="post-job__email">No Hp Pemilik Rental</label>
-                                    <input type="number" name="no_hp_pemilik" name="no_hp_pemilik"  class="form-control" placeholder="Nomor Hp Pemilik Rental">
+                                    <input type="number" name="no_hp_pemilik"  class="form-control" placeholder="Nomor Hp Pemilik Rental">
                                 </div>
                             </div>
                         </div>
@@ -95,7 +95,7 @@
                             <div class="col-lg-12">
                                 <div class="form-group">
                                     <label for="post-job__email">Username</label>
-                                    <input type="text" name="username"  name="username"class="form-control" placeholder="Username">
+                                    <input type="text" name="username"  class="form-control" placeholder="Username">
                                 </div>
                             </div>
                         </div>
@@ -103,7 +103,7 @@
                             <div class="col-lg-12">
                                 <div class="form-group">
                                     <label for="post-job__email">Password</label>
-                                    <input type="password" name="password"  name="password"class="form-control" placeholder="Password">
+                                    <input type="password" name="password"  class="form-control" placeholder="Password">
                                 </div>
                             </div>
                         </div>
