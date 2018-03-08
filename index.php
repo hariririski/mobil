@@ -38,21 +38,21 @@
 <div class="hero-carousel">
     <div class="owl-carousel owl-theme hero-carousel__items">
         <div class="item hero-carousel__item">
-            <img src="images/hero/properties.png" height="460" alt="">
+            <img src="data/home1.png" height="460" alt="">
             <div class="hero-carousel__item-info">
                 <div class="container">
-                    <h2 class="hero-carousel__item-heading">Tempat Terbaik Temukan Mobil Rental</h2>
+                    <h2 class="hero-carousel__item-heading"><font color="black">Tempat Terbaik Temukan Mobil Rental</font></h2>
 
 
-                    <a href="cari_mobil.php"><div class="btn btn-outline-secondary hero-carousel__item-read-more">Temukan Mobil</div></a>
+                    <a href="cari_mobil.php"><div class="btn btn-outline-info btn-lg"><font color="black">Temukan Mobil</font></div></a>
                 </div>
             </div>
         </div>
         <div class="item hero-carousel__item">
-            <img src="images/hero/properties.png" height="460" alt="">
+            <img src="data/home1.png" height="460" alt="">
             <div class="hero-carousel__item-info">
                 <div class="container">
-                    <h2 class="hero-carousel__item-heading">Informasi Rental Terlengkap Di Banda Aceh</h2>
+                    <h2 class="hero-carousel__item-heading black"><font color="black">Informasi Rental Terlengkap Di Banda Aceh</font></h2>
 
 
 

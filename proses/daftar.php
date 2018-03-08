@@ -13,7 +13,7 @@ session_start(); // Memulai Session
 		list($status, $name_file)=upload();
 		if($status){
 			$perintah="INSERT INTO `rental`(`nama_rental`, `alamat`, `nama_pemilik`, `no_hp_pemilik`, `no_hp_rental`,`username`, `password`, `foto_rental`, `nik`)
-								 VALUES 						 ('$nama_rental','$alamat','$nama_pemilik','$no_hp_pemilik','$no_hp_rental','$username','$password','$name_file','$nik')";
+								 VALUES 						 ('$nama_rental','$alamat','$nama_pemilik_rental','$no_hp_pemilik','$no_hp_rental','$username','$password','$name_file','$nik')";
 			$query = mysqli_query($con,$perintah);
 				if ($query) {
 							echo "<script>alert('Perdaftaran Berhasil, Tungggu Di Verifikasi Admin atau Mengkonfirmasi Langsung Ke admin')</script>";
