@@ -63,7 +63,7 @@
                             <div class="col-lg-12">
                                 <div class="form-group">
                                     <label for="post-job__email">Nomor Hp Rental Mobil</label>
-                                    <input type="number" name="nama_rental"  name="no_hp_rental" class="form-control" placeholder="Nama Rental Anda">
+                                    <input type="number" name="no_hp_rental"  name="no_hp_rental" class="form-control" placeholder="Nama Rental Anda">
                                 </div>
                             </div>
                         </div>
@@ -103,7 +103,7 @@
                             <div class="col-lg-12">
                                 <div class="form-group">
                                     <label for="post-job__email">Password</label>
-                                    <input type="password" name="nama_rental"  name="password"class="form-control" placeholder="Password">
+                                    <input type="password" name="password"  name="password"class="form-control" placeholder="Password">
                                 </div>
                             </div>
                         </div>

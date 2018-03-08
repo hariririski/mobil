@@ -111,7 +111,7 @@ while($data3 = mysqli_fetch_array($cari)){
         <div class="row">
           <?php
 
-          $query = mysqli_query($con,"select * from mobil left join rental on rental.id_rental=mobil.id_rental");
+          $query = mysqli_query($con,"select * from mobil left join rental on rental.id_rental=mobil.id_rental where mobil.id_rental='$id'");
           while($data1 = mysqli_fetch_array($query)){
 
 

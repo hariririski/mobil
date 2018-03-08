@@ -66,8 +66,8 @@
           $halaman = 8; //batasan halaman
           $page = isset($_GET['halaman'])? (int)$_GET["halaman"]:1;
           $mulai = ($page>1) ? ($page * $halaman) - $halaman : 0;
-          $query = mysqli_query($con,"select * from rental LIMIT $mulai, $halaman");
-          $sql = mysqli_query($con,"select * from rental");
+          $query = mysqli_query($con,"select * from rental where status='1' LIMIT $mulai, $halaman");
+          $sql = mysqli_query($con,"select * from rental where status='1'");
           $total = mysqli_num_rows($sql);
           $pages = ceil($total/$halaman);
           while($data = mysqli_fetch_array($query)){

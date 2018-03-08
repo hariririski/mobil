@@ -76,7 +76,7 @@
         <div class="row">
           <?php
           include 'share/db.php';
-          $query = mysqli_query($con,"select * from rental order by tanggal_daftar DESC limit 6");
+          $query = mysqli_query($con,"select * from rental where status='1' order by tanggal_daftar DESC limit 6 ");
           while($data = mysqli_fetch_array($query)){
           ?>
 
@@ -94,7 +94,8 @@
                         <span class="listing-properties__meta-item">
                           <img src="data/mobil.png" width="15%">
                           <?php
-                          $query2 = mysqli_query($con,"SELECT COUNT(no_pol)as jumlah from mobil WHERE id_rental='1'");
+                          $id=$data['foto_rental'];
+                          $query2 = mysqli_query($con,"SELECT COUNT(no_pol)as jumlah from mobil WHERE id_rental='$id' ");
                           while($data2 = mysqli_fetch_array($query2)){
                           ?>
 
