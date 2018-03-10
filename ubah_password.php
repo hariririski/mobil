@@ -40,76 +40,54 @@
 
   ?>
 
-<form action="proses/edit_profil.php?id=<?php echo $data['id_rental']?>" method="post" enctype="multipart/form-data" class="post-job">
+<form action="proses/edit_password.php?id=<?php echo $data['id_rental']?>" method="post" enctype="multipart/form-data" class="post-job">
     <div class="container">
 
 
         <div class="row">
             <div class="col-lg-9">
-                <p class="post-job__description">Data Profil</p>
+                <p class="post-job__description">Ubah Password</p>
 
                 <div class="row">
                     <div class="col-xl-12">
                         <div class="row">
                             <div class="col-lg-12">
                                 <div class="form-group">
-                                    <label for="post-job__email">Nama Rental Mobil</label>
-                                    <input type="text" name="nama_rental" value="<?php echo $data['nama_rental']?>" class="form-control" placeholder="Nama Rental Anda">
-                                </div>
-                            </div>
-                        </div>
-                        <div class="row">
-                            <div class="col-lg-12">
-                                <div class="form-group">
-                                    <label for="post-job__description" class="d-flex justify-content-between">Alamat Rental Anda<span class="icon iconfont-help-outline"></span></label>
-                                    <textarea id="post-job__description" class="form-control"  placeholder="Alamat Rental Anda" rows="5"><?php echo $data['alamat']?></textarea>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="row">
-                            <div class="col-lg-12">
-                                <div class="form-group">
-                                    <label for="post-job__email">Nomor Hp Rental Mobil</label>
-                                    <input type="number" name="nama_rental" value="<?php echo $data['no_hp_rental']?>" class="form-control" placeholder="Nama Rental Anda">
-                                </div>
-                            </div>
-                        </div>
-                        <div class="row">
-                            <div class="col-lg-12">
-                                <div class="form-group">
-                                    <label for="post-job__email">No KTP Pemilik Rental</label>
-                                    <input type="number" name="nik" value="<?php echo $data['nik']?>"  class="form-control" placeholder="NIK">
-                                </div>
-                            </div>
-                        </div>
-                        <div class="row">
-                            <div class="col-lg-12">
-                                <div class="form-group">
-                                    <label for="post-job__email">Nama Pemilik Rental</label>
-                                    <input type="text" name="nama_pemilik_rental" value="<?php echo $data['nama_pemilik']?>"  class="form-control" placeholder="Nama Pemilik Rental Anda">
-                                </div>
-                            </div>
-                        </div>
-                        <div class="row">
-                            <div class="col-lg-12">
-                                <div class="form-group">
-                                    <label for="post-job__email">No Hp Pemilik Rental</label>
-                                    <input type="number" value="<?php echo $data['no_hp_pemilik']?>" name="no_hp_pemilik"  class="form-control" placeholder="Nomor Hp Pemilik Rental">
+                                    <label for="post-job__email">Password Lama</label>
+                                    <input type="text" name="password_lama"  class="form-control" placeholder="Password Lama">
                                 </div>
                             </div>
                         </div>
 
+                    </div>
 
+                </div>
+                <div class="row">
+                    <div class="col-xl-12">
                         <div class="row">
                             <div class="col-lg-12">
                                 <div class="form-group">
-
-                                    <label for="post-job__email">Foto Rental</label>
-                                    <input type="file" name="foto_rental"  class="form-control" placeholder="">
-                                    <img src="rental/<?php echo $data['foto_rental']?>" width="30%">
+                                    <label for="post-job__email">Password Baru</label>
+                                    <input type="text" name="password_baru"  class="form-control" placeholder="Password Baru">
                                 </div>
                             </div>
                         </div>
+
+                    </div>
+
+                </div>
+
+                <div class="row">
+                    <div class="col-xl-12">
+                        <div class="row">
+                            <div class="col-lg-12">
+                                <div class="form-group">
+                                    <label for="post-job__email">Ulangi Password Baru</label>
+                                    <input type="text" name="ulangi_password_baru"  class="form-control" placeholder="ulangi_password_baru">
+                                </div>
+                            </div>
+                        </div>
+
                     </div>
 
                 </div>
@@ -118,7 +96,7 @@
                 <div class="row">
                     <div class="col-lg-4">
                         <div class="form-group">
-                            <button class="btn btn-primary btn-block post-job__submit-button">Daftar</button>
+                            <button class="btn btn-primary btn-block post-job__submit-button">Perbaharui</button>
                         </div>
                     </div>
                 </div>

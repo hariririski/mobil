@@ -51,19 +51,19 @@
     <div class="apartment__image-slider">
         <ul id="apartment-image-slider">
             <li data-thumb="mobil/<?php echo $data['foto_depan']?>">
-                <img height="50px" src="mobil/<?php echo $data['foto_depan']?>" alt="">
+                <img height="30px" width="100%"src="mobil/<?php echo $data['foto_depan']?>" alt="">
             </li>
             <li data-thumb="mobil/<?php echo $data['foto_samping']?>">
-                <img  height="50px" src="mobil/<?php echo $data['foto_samping']?>" alt="">
+                <img  height="30px" width="100%" src="mobil/<?php echo $data['foto_samping']?>" alt="">
             </li>
             <li data-thumb="mobil/<?php echo $data['foto_belakang']?>">
-                <img  height="50px" src="mobil/<?php echo $data['foto_belakang']?>" alt="">
+                <img  height="30px" width="100%" src="mobil/<?php echo $data['foto_belakang']?>" alt="">
             </li>
             <li data-thumb="mobil/<?php echo $data['foto_dalam1']?>">
-                <img  height="50px" src="mobil/<?php echo $data['foto_dalam1']?>" alt="">
+                <img  height="30px" width="100%" src="mobil/<?php echo $data['foto_dalam1']?>" alt="">
             </li>
             <li data-thumb="mobil/<?php echo $data['foto_dalam2']?>">
-                <img  height="50px" src="mobil/<?php echo $data['foto_dalam2']?>" alt="">
+                <img  height="30px" width="100%" src="mobil/<?php echo $data['foto_dalam2']?>" alt="">
             </li>
 
         </ul>
@@ -117,7 +117,7 @@
 
 <div class="container apartment__owner">
     <div class="apartment__owner-avatar-wrap">
-        <img src="rental/<?php echo $data['foto_rental'];?>" alt="" class="apartment__owner-avatar" width="170" height="170">
+        <img src="rental/<?php echo $data['foto_rental'];?>" alt="" class="apartment__owner-avatar" width="250px" height="170px">
     </div>
     <div class="apartment__owner-info">
         <div class="apartment__owner-info-name"><?php echo $data['nama_rental'];?></div>
@@ -141,6 +141,20 @@
 
     </div>
 </div>
+        <?php
+        if(isset($_SESSION['rental'])){
+          if($_SESSION['rental']==$data['username']){
+        ?>
+        <center>
+        <a href="edit_mobil.php?id=<?php echo $data['no_pol'];?>" class="btn btn-warning">Perbaharui</a>
+        <a href="proses/hapus_mobil.php?id=<?php echo $data['no_pol'];?>&&g1=<?php echo $data['foto_depan'];?>&&g2=<?php echo $data['foto_belakang'];?>&&g3=<?php echo $data['foto_samping'];?>&&g4=<?php echo $data['foto_dalam1'];?>&&g5=<?php echo $data['foto_dalam2'];?>" class="btn btn-danger">Hapus</a>
+        <br>
+        <br>
+        </center>
+        <?php
+          }
+        }
+        ?>
 <?php } ?>
 <?php include"share/footer.php";?>
 

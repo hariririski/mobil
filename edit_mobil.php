@@ -33,14 +33,13 @@
 <?php include"share/menu.php";?>
   <?php
   include 'share/db.php';
-  $id=$_SESSION['rental'];
-  $query1 = mysqli_query($con,"select * from rental where username='$id'");
-  while($data1 = mysqli_fetch_array($query1)){
-    $id_rental= $data1['id_rental'];
-  }
+  $id=$_GET['id'];
+  $query1 = mysqli_query($con,"select * from mobil where no_pol='$id'");
+  while($data= mysqli_fetch_array($query1)){
+
 
 ?>
-<form action="proses/tambah_mobil.php?id=<?php echo $id_rental;?>" method="POST" enctype="multipart/form-data" class="post-job">
+<form action="proses/tambah_mobil.php?id=<?php echo $data['id_rental'];?>" method="POST" enctype="multipart/form-data" class="post-job">
     <div class="container">
         <div class="row">
             <div class="col-lg-9">
@@ -52,7 +51,7 @@
                             <div class="col-lg-12">
                                 <div class="form-group">
                                     <label for="post-job__email">Nomor Polisi</label>
-                                    <input type="text" name="no_polisi" class="form-control" required placeholder="No Polisi">
+                                    <input type="text" name="no_polisi" value="<?php echo $data['no_pol'];?>" class="form-control" required placeholder="No Polisi">
                                 </div>
                             </div>
                         </div>
@@ -61,7 +60,7 @@
                             <div class="col-lg-12">
                                 <div class="form-group">
                                     <label for="post-job__email">Merek</label>
-                                    <input type="text" name="merek" class="form-control" required placeholder="Merek Mobil">
+                                    <input type="text" name="merek" value="<?php echo $data['merek'];?>" class="form-control" required placeholder="Merek Mobil">
                                 </div>
                             </div>
                         </div>
@@ -70,7 +69,7 @@
                             <div class="col-lg-12">
                                 <div class="form-group">
                                     <label for="post-job__email">Tipe</label>
-                                    <input type="text" name="tipe" class="form-control" required placeholder="Tipe Mobil">
+                                    <input type="text" name="tipe" value="<?php echo $data['tipe'];?>" class="form-control" required placeholder="Tipe Mobil">
                                 </div>
                             </div>
                         </div>
@@ -79,7 +78,7 @@
                             <div class="col-lg-12">
                                 <div class="form-group">
                                     <label for="post-job__email">Jenis Mobil</label>
-                                    <input type="text" name="jenis" class="form-control" required placeholder="Jenis Mobil">
+                                    <input type="text" name="jenis" value="<?php echo $data['jenis'];?>" class="form-control" required placeholder="Jenis Mobil">
                                 </div>
                             </div>
                         </div>
@@ -88,7 +87,7 @@
                             <div class="col-lg-12">
                                 <div class="form-group">
                                     <label for="post-job__email">Tahun Pembuatan</label>
-                                    <input type="number" name="tahun_pembuatan" class="form-control" required placeholder="Tahun Pembuatan">
+                                    <input type="number" name="tahun_pembuatan" value="<?php echo $data['tahun_pembuatan'];?>" class="form-control" required placeholder="Tahun Pembuatan">
                                 </div>
                             </div>
                         </div>
@@ -97,7 +96,7 @@
                             <div class="col-lg-12">
                                 <div class="form-group">
                                     <label for="post-job__email">Kapasitas Peumpang</label>
-                                    <input type="text" name="kapasitas_penumpang" class="form-control" required placeholder="Kapasitas Penumbang">
+                                    <input type="text" name="kapasitas_penumpang" value="<?php echo $data['kapasitas_penumpang'];?>" class="form-control" required placeholder="Kapasitas Penumbang">
                                 </div>
                             </div>
                         </div>
@@ -106,7 +105,7 @@
                             <div class="col-lg-12">
                                 <div class="form-group">
                                     <label for="post-job__email">Bakan Bakar</label>
-                                    <input type="text" name="bahan_bakar" class="form-control" required placeholder="Bahan Bakar">
+                                    <input type="text" name="bahan_bakar" value="<?php echo $data['bahan_bakar'];?>" class="form-control" required placeholder="Bahan Bakar">
                                 </div>
                             </div>
                         </div>
@@ -115,7 +114,7 @@
                             <div class="col-lg-12">
                                 <div class="form-group">
                                     <label for="post-job__email">Harga Sewa</label>
-                                    <input type="number" name="harga_sewa" class="form-control" required placeholder="Harga Sewa">
+                                    <input type="number" name="harga_sewa" value="<?php echo $data['harga_sewa'];?>" class="form-control" required placeholder="Harga Sewa">
                                 </div>
                             </div>
                         </div>
@@ -123,7 +122,7 @@
                             <div class="col-lg-12">
                                 <div class="form-group">
                                     <label for="post-job__description" class="d-flex justify-content-between">Fasititas Mobil<span class="icon iconfont-help-outline"></span></label>
-                                    <textarea id="post-job__description" class="form-control" required  name="fasilitas" placeholder="Fasilitas Mobil" rows="5"></textarea>
+                                    <textarea id="post-job__description"  class="form-control" required  name="fasilitas" placeholder="Fasilitas Mobil" rows="5"><?php echo $data['fasilitas'];?></textarea>
                                 </div>
                             </div>
                         </div>
@@ -134,7 +133,7 @@
 
                                     <label for="post-job__email">Foto Depan</label>
                                     <input type="file" name="foto_depan"  class="form-control" required placeholder="">
-
+                                    <img src="mobil/<?php echo $data['foto_depan']?>" width="30%">
                                 </div>
                             </div>
                         </div>
@@ -145,7 +144,7 @@
 
                                     <label for="post-job__email">Foto Belakang</label>
                                     <input type="file" name="foto_belakang"  class="form-control" required placeholder="">
-
+                                    <img src="mobil/<?php echo $data['foto_belakang']?>" width="30%">
                                 </div>
                             </div>
                         </div>
@@ -156,7 +155,7 @@
 
                                     <label for="post-job__email">Foto Samping</label>
                                     <input type="file" name="foto_samping"  class="form-control" required placeholder="">
-
+                                    <img src="mobil/<?php echo $data['foto_samping']?>" width="30%">
                                 </div>
                             </div>
                         </div>
@@ -167,7 +166,7 @@
 
                                     <label for="post-job__email">Foto Belakang</label>
                                     <input type="file" name="foto_depan"  class="form-control" required placeholder="">
-
+                                    <img src="mobil/<?php echo $data['foto_belakang']?>" width="30%">
                                 </div>
                             </div>
                         </div>
@@ -178,7 +177,7 @@
 
                                     <label for="post-job__email">Foto Interior Mobil</label>
                                     <input type="file" name="foto_dalam1"  class="form-control" required placeholder="">
-
+                                    <img src="mobil/<?php echo $data['foto_dalam1']?>" width="30%">
                                 </div>
                             </div>
                         </div>
@@ -189,7 +188,7 @@
 
                                     <label for="post-job__email">Foto Interior Mobil</label>
                                     <input type="file" name="foto_dalam2"  class="form-control" required placeholder="">
-
+                                    <img src="mobil/<?php echo $data['foto_dalam2']?>" width="30%">
                                 </div>
                             </div>
                         </div>
@@ -202,7 +201,7 @@
                 <div class="row">
                     <div class="col-lg-4">
                         <div class="form-group">
-                            <button type="submit" class="btn btn-primary btn-block post-job__submit-button">Tambah Mobil</button>
+                            <button type="submit" class="btn btn-primary btn-block post-job__submit-button">Perbaharui Data Mobil</button>
                         </div>
                     </div>
                 </div>
@@ -211,7 +210,7 @@
         </div>
     </div>
 </form>
-
+<?php } ?>
 <?php include"share/footer.php";?>
 
 

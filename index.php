@@ -94,7 +94,7 @@
                         <span class="listing-properties__meta-item">
                           <img src="data/mobil.png" width="15%">
                           <?php
-                          $id=$data['foto_rental'];
+                          $id=$data['id_rental'];
                           $query2 = mysqli_query($con,"SELECT COUNT(no_pol)as jumlah from mobil WHERE id_rental='$id' ");
                           while($data2 = mysqli_fetch_array($query2)){
                           ?>

@@ -24,7 +24,7 @@ $error=''; // Variabel untuk menyimpan pesan error
 		$perintah="select * from admin where password='$password' AND username='$username'";
 		$query = mysqli_query($con,$perintah);
 		$rows = mysqli_num_rows($query);
-
+		$status=0;
 			if ($rows == 1) {
 				$_SESSION['login']=$username; // Membuat Sesi/session
 				header("location: ../index.php"); // Mengarahkan ke halaman profil
@@ -43,11 +43,12 @@ $error=''; // Variabel untuk menyimpan pesan error
 							$_SESSION['rental']=$username; // Membuat Sesi/session
 							header("location: ../index.php"); // Mengarahkan ke halaman profil
 						} else if($rows == 1 && $status==0) {
-							echo $error = "<script>alert('Maaf Akun Anda Belum Di Verifikasi')</script>";
-							header("location: ../login.php"); // Mengarahkan ke halaman profil
+							$_SESSION['rental']=$username; // Membuat Sesi/session
+						  echo "<script>alert('Warning, Akun Anda Belum Di Verifikasi Admin Silahkan Menghubungi admin')</script>";
+							echo '<script type="text/javascript">window.location = "../profil.php"</script>';
 						} else if($rows == 0 && $status==0) {
-							echo $error = "<script>alert('Maaf Data Tidak Cocok')</script>";
-							header("location: ../login.php"); // Mengarahkan ke halaman profil
+							echo "<script>alert('Maaf Data Tidak Cocok')</script>";
+							echo '<script type="text/javascript">window.location = "../login.php"</script>';
 						}
 			}
 

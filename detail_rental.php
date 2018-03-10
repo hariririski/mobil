@@ -224,7 +224,7 @@ while($data3 = mysqli_fetch_array($cari)){
 
 <div class="container apartment__owner">
     <div class="apartment__owner-avatar-wrap">
-        <img src="rental/<?php echo $data['foto_rental'];?>" alt="" class="apartment__owner-avatar" width="170" height="170">
+        <img src="rental/<?php echo $data['foto_rental'];?>" alt="" class="apartment__owner-avatar" width="250px" height="170">
     </div>
     <div class="apartment__owner-info">
         <div class="apartment__owner-info-name"><?php echo $data['nama_rental'];?></div>
