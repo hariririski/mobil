@@ -36,10 +36,21 @@
 <div class="hero-travel-trips">
     <div class="container">
         <h2 class="hero-travel-trips__heading">Cari Rental</h2>
-        <form action="#" class="hero-travel-trips__form">
+        <form action="rental.php" method="GET" class="hero-travel-trips__form">
             <div class="form-control-inline-icon inline-icon-left hero-travel-trips__search-input">
                 <span class="icon iconfont-left iconfont-search-v2"></span>
-                <input type="text" class="form-control" placeholder="Contoh: Avanza">
+                <?php
+                $cari=$_GET['cari'];
+                if($cari=='semua'){
+                ?>
+                    <input type="text" name="cari" class="form-control" placeholder="Contoh: CV. Mobil Pratama">
+                <?php
+                }else if($cari!='semua'){
+                ?>
+                    <input type="text" name="cari" value="<?php echo $cari;?>" class="form-control" placeholder="Contoh: CV. Mobil Pratama">
+                <?php
+                }
+                ?>
             </div>
 
 
@@ -47,7 +58,7 @@
 
 
 
-            <button type="button" class="btn btn-primary hero-travel-trips__search-btn">Temukan</button>
+            <button type="submit" class="btn btn-primary hero-travel-trips__search-btn">Temukan</button>
         </form>
     </div>
 </div>
@@ -60,15 +71,36 @@
 
 <div class="listing-travel-trips">
     <div class="container">
-        <div class="row">
+        <div class="row col-lg-12">
           <?php
           include 'share/db.php';
           $halaman = 8; //batasan halaman
           $page = isset($_GET['halaman'])? (int)$_GET["halaman"]:1;
           $mulai = ($page>1) ? ($page * $halaman) - $halaman : 0;
-          $query = mysqli_query($con,"select * from rental where status='1' LIMIT $mulai, $halaman");
-          $sql = mysqli_query($con,"select * from rental where status='1'");
+          $cari=$_GET['cari'];
+          if($cari=='semua'){
+            $query = mysqli_query($con,"select * from rental where status='1' LIMIT $mulai, $halaman");
+            $sql = mysqli_query($con,"select * from rental where status='1'");
+          }else if($cari!='semua'){
+            $query = mysqli_query($con,"select * from rental where status='1' and  nama_rental LIKE '%$cari%' or alamat like '%$cari%' LIMIT $mulai, $halaman");
+            $sql = mysqli_query($con,"select * from rental where status='1' and nama_rental LIKE '%$cari%' or alamat like '%$cari%'  ");
+
+          }
           $total = mysqli_num_rows($sql);
+          if($total==0){
+            echo'
+            <div class="alert col-lg-12 alert-success" role="alert">
+                <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                    <span aria-hidden="true">×</span>
+                </button>
+                <h5 class="alert-heading">Maaf!!</h5>
+                <p>Rental Yang Anda Cari Tidak Ditemukan.</p>
+                <hr>
+                <p class="mb-0">Kembali Untuk Melihat Semua Rentak Mobil, Silahkan Klik Kembali  <a href="rental.php?cari=semua" class="alert-link">Kembali</a></p>
+            </div>
+
+            ';
+          }
           $pages = ceil($total/$halaman);
           while($data = mysqli_fetch_array($query)){
 
@@ -78,7 +110,7 @@
             <div class="col-xl-3 col-lg-4 col-md-6">
                 <div class="listing-travel-trips__item">
                     <div class="listing-travel-trips__item-image" >
-                        <center><img height="160px" width="270px" src="rental/<?php echo $data['foto_rental'];?>" alt="" ></center>
+                        <center><img height="160px" width="255px" src="rental/<?php echo $data['foto_rental'];?>" alt="" ></center>
                         <div class="listing-travel-trips__item-title">
                             <span><?php echo $data['nama_rental'];?></span>
                         </div>
@@ -150,7 +182,7 @@
         <nav class="listings-pagination listings-travel-trips-pagination d-flex justify-content-center">
             <ul class="pagination">
               <?php for ($i=1; $i<=$pages ; $i++){ ?>
-                <li class="page-item <?php if($_GET["halaman"]==$i){echo "active"; }?>"><a  href="?halaman=<?php echo $i; ?>" class="page-link" ><?php echo $i; ?></a></li>
+                <li class="page-item <?php if($_GET["halaman"]==$i){echo "active"; }?>"><a  href="?cari=<?php echo $cari; ?>&&halaman=<?php echo $i; ?>" class="page-link" ><?php echo $i; ?></a></li>
                <?php } ?>
             </ul>
         </nav>

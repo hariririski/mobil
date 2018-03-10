@@ -37,14 +37,14 @@ session_start(); // Memulai Session
                                 </div>
 
                                 <li class="nav-item dropdown">
-                                    <a class="nav-link "  href="rental.php" role="button" aria-haspopup="true" aria-expanded="false">Rental Mobil</a>
+                                    <a class="nav-link "  href="rental.php?cari=semua" role="button" aria-haspopup="true" aria-expanded="false">Rental Mobil</a>
                                     <div class="dropdown-menu" data-dropdown-in="zoomIn" data-dropdown-out="zoomOut">
 
                                     </div>
                                 </li>
 
                                 <li class="nav-item dropdown">
-                                    <a class="nav-link "  href="cari_mobil.php" role="button" aria-haspopup="true" aria-expanded="false">Cari Mobil</a>
+                                    <a class="nav-link "  href="cari_mobil.php?cari=semua" role="button" aria-haspopup="true" aria-expanded="false">Cari Mobil</a>
                                     <div class="dropdown-menu" data-dropdown-in="zoomIn" data-dropdown-out="zoomOut">
 
                                 </div>

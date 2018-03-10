@@ -6,7 +6,7 @@ if (!$con) {
             . mysqli_connect_error());
 }
 
-error_reporting(E_ALL ^ (E_NOTICE | E_WARNING|E_ALL));
+//error_reporting(E_ALL ^ (E_NOTICE | E_WARNING|E_ALL));
 
 
 ?>
