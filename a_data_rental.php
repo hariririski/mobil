@@ -41,20 +41,13 @@
 
   <div class="choose-us-default">
     <div class="container">
-        <h4>Data Rental Belum verifikasi</h4>
+        <h4>Data Rental</h4>
     </div>
 </div>
 
 
 <div class="container">
-  <div class="col-lg-12">
-              <!-- <div class="col-lg-12">
-                  <h1 class="page-header">Tables</h1>
-              </div> -->
-              <!-- /.col-lg-12 -->
-              <br>
-          </div>
-          <!-- /.row -->
+<br>
           <div class="col-lg-12">
               <div class="col-lg-12">
                   <div class="card card-outline-primary mb-3">
@@ -77,6 +70,7 @@
                                 <?php
                                 include 'share/db.php';
                                 $i=0;
+                                
                                 $query = mysqli_query($con,"select * from rental where status='1' ");
                                 while($data = mysqli_fetch_array($query)){
                                   $i++;
@@ -103,7 +97,8 @@
               </div>
               <!-- /.col-lg-12 -->
           </div>
-</div>
+
+          </div>
 
 
 <?php include"share/footer.php";?>
@@ -166,6 +161,14 @@
     <script>
     $(document).ready(function() {
         $('#dataTables-example').DataTable({
+            responsive: true
+        });
+    });
+    </script>
+
+    <script>
+    $(document).ready(function() {
+        $('#dataTables-example2').DataTable({
             responsive: true
         });
     });

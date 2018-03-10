@@ -33,7 +33,7 @@
 <?php include"share/menu.php";?>
   <?php
   include 'share/db.php';
-  $id=$_GET['id'];
+  $id=$_SESSION['rental'];
   $query = mysqli_query($con,"select * from rental where username='$id'");
   while($data = mysqli_fetch_array($query)){
 

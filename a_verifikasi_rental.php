@@ -47,64 +47,55 @@
 
 
 <div class="container">
-  <div class="col-lg-12">
-              <!-- <div class="col-lg-12">
-                  <h1 class="page-header">Tables</h1>
-              </div> -->
-              <!-- /.col-lg-12 -->
-              <br>
-          </div>
+<br>
+<div class="col-lg-12">
+    <div class="col-lg-12">
+        <div class="card card-outline-warning mb-3">
+            <div class="card-header bg-warning">
+                Data Rental Belum Verifikasi
+            </div>
+            <!-- /.panel-heading -->
+            <div class="card-block">
+                <table width="100%" class="table table-striped table-bordered table-hover" id="dataTables-example2">
+                    <thead>
+                        <tr>
+                            <th>NO</th>
+                            <th>Nama Rental</th>
+                            <th>Alamat</th>
+                            <th>Pemilik</th>
+                            <th>Detail</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                      <?php
+                      include 'share/db.php';
+                      $i=0;
+                      $query = mysqli_query($con,"select * from rental where status='0' ");
+                      while($data = mysqli_fetch_array($query)){
+                        $i++;
 
+                      ?>
 
+                        <tr class="odd gradeX">
+                            <td class="center"><?php echo $i;?></td>
+                            <td><?php echo $data['nama_rental'];?></td>
+                            <td><?php echo $data['alamat'];?></td>
+                            <td><?php echo $data['nama_pemilik'];?></td>
+                            <td class="center"><a href="detail_rental.php?id=<?php echo $data['id_rental'];?>&&status=<?php echo $data['status'];?>"><button type="button" class="btn btn-warning btn-xs">Detail</button></td>
+                        </tr>
+                        <?php  }?>
 
-          <div class="col-lg-12">
-              <div class="col-lg-12">
-                  <div class="card card-outline-primary mb-3">
-                      <div class="card-header bg-primary">
-                          Verifikasi Rental
-                      </div>
-                      <!-- /.panel-heading -->
-                      <div class="card-block">
-                          <table width="100%" class="table table-striped table-bordered table-hover" id="dataTables-example">
-                              <thead>
-                                  <tr>
-                                      <th>NO</th>
-                                      <th>Nama Rental</th>
-                                      <th>Alamat</th>
-                                      <th>Pemilik</th>
-                                      <th>Detail</th>
-                                  </tr>
-                              </thead>
-                              <tbody>
-                                <?php
-                                include 'share/db.php';
-                                $i=0;
-                                $query = mysqli_query($con,"select * from rental where status='0'");
-                                while($data = mysqli_fetch_array($query)){
-                                  $i++;
+                    </tbody>
+                </table>
+                <!-- /.table-responsive -->
 
-                                ?>
-
-                                  <tr class="odd gradeX">
-                                      <td class="center"><?php echo $i;?></td>
-                                      <td><?php echo $data['nama_rental'];?></td>
-                                      <td><?php echo $data['alamat'];?></td>
-                                      <td><?php echo $data['nama_pemilik'];?></td>
-                                      <td class="center"><a href="detail_rental.php?id=<?php echo $data['id_rental'];?>"><button type="button" class="btn btn-info btn-xs">Detail</button></td>
-                                  </tr>
-                                  <?php  }?>
-
-                              </tbody>
-                          </table>
-                          <!-- /.table-responsive -->
-
-                      </div>
-                      <!-- /.panel-body -->
-                  </div>
-                  <!-- /.panel -->
-              </div>
-              <!-- /.col-lg-12 -->
-          </div>
+            </div>
+            <!-- /.panel-body -->
+        </div>
+        <!-- /.panel -->
+    </div>
+    <!-- /.col-lg-12 -->
+</div>
 </div>
 
 
@@ -167,7 +158,7 @@
     <!-- Page-Level Demo Scripts - Tables - Use for reference -->
     <script>
     $(document).ready(function() {
-        $('#dataTables-example').DataTable({
+        $('#dataTables-example2').DataTable({
             responsive: true
         });
     });

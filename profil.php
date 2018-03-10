@@ -33,17 +33,23 @@
 <?php include"share/menu.php";?>
   <?php
   include 'share/db.php';
-  $id=$_GET['id'];
+  $id=$_SESSION['rental'];
   $query = mysqli_query($con,"select * from rental where username='$id'");
   while($data = mysqli_fetch_array($query)){
 
 
   ?>
 
-<form action="proses/edit_profil.php?id=<?php echo $data['id_rental']?>" method="post" enctype="multipart/form-data" class="post-job">
+<form action="proses/edit_profil.php?id=<?php echo $data['id_rental']?>&&gambar=<?php echo $data['foto_rental']?>&&id2=<?php echo $id?>" method="post" enctype="multipart/form-data" class="post-job">
     <div class="container">
-
-
+      <?php if( $data['status']==0){?>
+      <div class="alert alert-warning alert-solid-warning" role="alert">
+                <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                    <span aria-hidden="true">×</span>
+                </button>
+                <strong>Warning!</strong> Akun Anda Belum Aktif....
+            </div>
+      <?php }?>
         <div class="row">
             <div class="col-lg-9">
                 <p class="post-job__description">Data Profil</p>
@@ -62,7 +68,7 @@
                             <div class="col-lg-12">
                                 <div class="form-group">
                                     <label for="post-job__description" class="d-flex justify-content-between">Alamat Rental Anda<span class="icon iconfont-help-outline"></span></label>
-                                    <textarea id="post-job__description" class="form-control"  placeholder="Alamat Rental Anda" rows="5"><?php echo $data['alamat']?></textarea>
+                                    <textarea id="post-job__description" class="form-control"  name="alamat" placeholder="Alamat Rental Anda" rows="5"><?php echo $data['alamat']?></textarea>
                                 </div>
                             </div>
                         </div>
@@ -70,7 +76,7 @@
                             <div class="col-lg-12">
                                 <div class="form-group">
                                     <label for="post-job__email">Nomor Hp Rental Mobil</label>
-                                    <input type="number" name="nama_rental" value="<?php echo $data['no_hp_rental']?>" class="form-control" placeholder="Nama Rental Anda">
+                                    <input type="number" name="no_hp_rental" value="<?php echo $data['no_hp_rental']?>" class="form-control" placeholder="Nama Rental Anda">
                                 </div>
                             </div>
                         </div>
@@ -118,12 +124,12 @@
                 <div class="row">
                     <div class="col-lg-4">
                         <div class="form-group">
-                            <button class="btn btn-primary btn-block post-job__submit-button">Daftar</button>
+                            <button type="submit"class="btn btn-primary btn-block post-job__submit-button">Perbaharui</button>
                         </div>
                     </div>
                 </div>
             </div>
-            
+
         </div>
     </div>
 </form>

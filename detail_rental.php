@@ -203,7 +203,7 @@ while($data3 = mysqli_fetch_array($cari)){
                         <div class="listing-travel-trips__item-details">
                             <div class="listing-travel-trips__item-details-price">
                                 <span class="heading">Harga Sewa</span>
-                                <span class="value">Rp.<?php echo $data12['harga_sewa'];?> </span>
+                                <span class="value">Rp.<?php echo $data1['harga_sewa'];?> </span>
                             </div>
                             <div class="listing-travel-trips__item-details-price">
                                 <span class="heading">Waktu</span>
@@ -248,6 +248,19 @@ while($data3 = mysqli_fetch_array($cari)){
 
     </div>
 </div>
+
+          <?php
+          if(isset($_GET['status'])){
+          ?>
+          <center>
+          <a href="proses/tidak_memenuhi_syarat.php?id=<?php echo $data['id_rental'];?>&&gambar=<?php echo $data['foto_rental'];?>" class="btn btn-danger">Tidak Memenuhi Syarat</a>
+          <a href="proses/memenuhi_syarat.php?id=<?php echo $data['id_rental'];?>" class="btn btn-primary">Memenuhi Syarat</a>
+          <br>
+          <br>
+          </center>
+          <?php }?>
+
+
 <?php }?>
 <?php include"share/footer.php";?>
 

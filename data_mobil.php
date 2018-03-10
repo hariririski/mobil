@@ -68,8 +68,7 @@
                       include 'share/db.php';
                       $i=0;
                       $id_rental;
-                      $id=$_GET['id'];
-
+                      $id=$_SESSION['rental'];
                       $query1 = mysqli_query($con,"select * from rental where username='$id'");
                       while($data1 = mysqli_fetch_array($query1)){
                         $id_rental= $data1['id_rental'];
