@@ -38,6 +38,11 @@
 <body class="">
 
 <?php include"share/menu.php";?>
+<?php
+if((empty($_SESSION['login']))){
+  echo '<script type="text/javascript">window.location = "index.php"</script>';
+}
+?>
 
   <div class="choose-us-default">
     <div class="container">
@@ -70,7 +75,7 @@
                                 <?php
                                 include 'share/db.php';
                                 $i=0;
-                                
+
                                 $query = mysqli_query($con,"select * from rental where status='1' ");
                                 while($data = mysqli_fetch_array($query)){
                                   $i++;

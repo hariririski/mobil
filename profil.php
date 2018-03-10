@@ -1,3 +1,4 @@
+
 <!DOCTYPE html>
 <html lang="en">
 <!-- BEGIN HEAD -->
@@ -31,6 +32,11 @@
 <body class="">
 
 <?php include"share/menu.php";?>
+<?php
+if((empty($_SESSION['rental']))){
+  echo '<script type="text/javascript">window.location = "index.php"</script>';
+}
+?>
   <?php
   include 'share/db.php';
   $id=$_SESSION['rental'];

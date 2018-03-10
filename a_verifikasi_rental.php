@@ -38,6 +38,11 @@
 <body class="">
 
 <?php include"share/menu.php";?>
+<?php
+if((empty($_SESSION['login']))){
+  echo '<script type="text/javascript">window.location = "index.php"</script>';
+}
+?>
 
   <div class="choose-us-default">
     <div class="container">

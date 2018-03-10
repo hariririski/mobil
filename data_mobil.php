@@ -1,3 +1,4 @@
+
 <!DOCTYPE html>
 <html lang="en">
 <!-- BEGIN HEAD -->
@@ -38,7 +39,11 @@
 <body class="">
 
 <?php include"share/menu.php";?>
-
+<?php
+if((empty($_SESSION['rental']))){
+  echo '<script type="text/javascript">window.location = "index.php"</script>';
+}
+?>
   <div class="choose-us-default">
     <div class="container">
         <h4 >Data Mobil</h4>

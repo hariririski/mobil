@@ -38,10 +38,15 @@
 <body class="">
 
 <?php include"share/menu.php";?>
+<?php
+if((empty($_SESSION['login']))){
+  echo '<script type="text/javascript">window.location = "index.php"</script>';
+}
+?>
 
   <div class="choose-us-default">
     <div class="container">
-        <h4 >Data Rental</h4>
+        <h4 >Data User</h4>
     </div>
 </div>
 
@@ -49,30 +54,48 @@
 <div class="container">
   <br>
   <div class="col-lg-12">
+    <form action="proses/tambah_admin.php" method="Post">
       <div class="col-lg-12">
           <div class="card card-outline-primary mb-3">
               <div class="card-header bg-primary">
-                  Tambah User
+                  Tambah User Admin
               </div>
-
+              <br>
             <div class="col-xl-12">
                 <div class="row">
                     <div class="col-lg-12">
                         <div class="form-group">
-                            <label for="post-job__email">Nama Rental Mobil</label>
-                            <input type="text" name="nama_rental"  class="form-control" placeholder="Nama Rental Anda">
+                            <label for="post-job__email">Nama Lengkap</label>
+                            <input type="text" name="nama"  required class="form-control" placeholder="Nama Lengkap Anda">
                         </div>
                     </div>
                 </div>
                 <div class="row">
                     <div class="col-lg-12">
                         <div class="form-group">
-                            <label for="post-job__description" class="d-flex justify-content-between">Alamat Rental Anda<span class="icon iconfont-help-outline"></span></label>
-                            <textarea id="post-job__description" class="form-control"  placeholder="Alamat Rental Anda" rows="5"></textarea>
+                            <label for="post-job__email">Username</label>
+                            <input type="text" name="username"  required class="form-control" placeholder="Nama Lengkap Anda">
                         </div>
                     </div>
                 </div>
-                <p align="right"><button type="button" class="btn btn-info btn-medium">Detail</button></p>
+
+                <div class="row">
+                    <div class="col-lg-12">
+                        <div class="form-group">
+                            <label for="post-job__email">Password</label>
+                            <input type="text" name="password"  required class="form-control" placeholder="Password">
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-lg-12">
+                        <div class="form-group">
+                            <label for="post-job__email">Ulangi Password</label>
+                            <input type="text" name="ulangi Password"  required class="form-control" placeholder="Ulangi Password">
+                        </div>
+                    </div>
+                </div>
+                <p align="right"><button type="submit" class="btn btn-info btn-medium">Tambah Admin</button></p>
 
                 <br>
             </div>
@@ -81,6 +104,7 @@
 
           </div>
       </div>
+    </form>
   </div>
   <div class="col-lg-12">
               <!-- <div class="col-lg-12">
@@ -94,7 +118,7 @@
               <div class="col-lg-12">
                   <div class="card card-outline-primary mb-3">
                       <div class="card-header bg-primary">
-                          Data User
+                          Data Admin
                       </div>
                       <!-- /.panel-heading -->
                       <div class="card-block">
@@ -102,10 +126,57 @@
                               <thead>
                                   <tr>
                                       <th>NO</th>
+                                      <th>Username</th>
+                                      <th>Nama</th>
+                                      <th>Hapus</th>
+                                  </tr>
+                              </thead>
+                              <tbody>
+                                <?php
+                                include 'share/db.php';
+                                $i=0;
+                                $query = mysqli_query($con,"select * from admin ");
+                                while($data = mysqli_fetch_array($query)){
+                                  $i++;
+
+                                ?>
+
+                                  <tr class="odd gradeX">
+                                      <td class="center"><?php echo $i;?></td>
+                                      <td><?php echo $data['username'];?></td>
+                                      <td><?php echo $data['nama'];?></td>
+                                      <td class="center"><a href="detail_rental.php?id=<?php echo $data['id_rental'];?>"><button type="button" class="btn btn-danger btn-xs">Detail</button></td>
+                                  </tr>
+                                  <?php  }?>
+
+                              </tbody>
+                          </table>
+                          <!-- /.table-responsive -->
+
+                      </div>
+                      <!-- /.panel-body -->
+                  </div>
+                  <!-- /.panel -->
+              </div>
+              <!-- /.col-lg-12 -->
+          </div>
+
+          <div class="col-lg-12">
+              <div class="col-lg-12">
+                  <div class="card card-outline-success mb-3">
+                      <div class="card-header bg-success">
+                          Data User Rental Mobil
+                      </div>
+                      <!-- /.panel-heading -->
+                      <div class="card-block">
+                          <table width="100%" class="table table-striped table-bordered table-hover" id="dataTables-example2">
+                              <thead>
+                                  <tr>
+                                      <th>NO</th>
                                       <th>Nama Rental</th>
                                       <th>Alamat</th>
                                       <th>Pemilik</th>
-                                      <th>Detail</th>
+                                      <th>Hapus</th>
                                   </tr>
                               </thead>
                               <tbody>
@@ -123,7 +194,7 @@
                                       <td><?php echo $data['nama_rental'];?></td>
                                       <td><?php echo $data['alamat'];?></td>
                                       <td><?php echo $data['nama_pemilik'];?></td>
-                                      <td class="center"><a href="detail_rental.php?id=<?php echo $data['id_rental'];?>"><button type="button" class="btn btn-info btn-xs">Detail</button></td>
+                                      <td class="center"><a href="detail_rental.php?id=<?php echo $data['id_rental'];?>"><button type="button" class="btn btn-danger btn-xs">Detail</button></td>
                                   </tr>
                                   <?php  }?>
 
@@ -138,6 +209,7 @@
               </div>
               <!-- /.col-lg-12 -->
           </div>
+
 </div>
 
 
@@ -200,6 +272,13 @@
     <script>
     $(document).ready(function() {
         $('#dataTables-example').DataTable({
+            responsive: true
+        });
+    });
+    </script>
+    <script>
+    $(document).ready(function() {
+        $('#dataTables-example2').DataTable({
             responsive: true
         });
     });

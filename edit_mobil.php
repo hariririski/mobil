@@ -3,7 +3,7 @@
 <!-- BEGIN HEAD -->
 <head>
     <meta charset="UTF-8">
-    <title>Profil Rental</title>
+    <title>Edit Mobil</title>
 
     <meta http-equiv="X-UA-Compatible" content="IE=edge"/>
     <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -39,7 +39,7 @@
 
 
 ?>
-<form action="proses/tambah_mobil.php?id=<?php echo $data['id_rental'];?>" method="POST" enctype="multipart/form-data" class="post-job">
+<form action="proses/edit_mobil.php?id=<?php echo $data['id_rental'];?>" method="POST" enctype="multipart/form-data" class="post-job">
     <div class="container">
         <div class="row">
             <div class="col-lg-9">
@@ -132,7 +132,7 @@
                                 <div class="form-group">
 
                                     <label for="post-job__email">Foto Depan</label>
-                                    <input type="file" name="foto_depan"  class="form-control" required placeholder="">
+                                    <input type="file" name="foto_depan"  class="form-control"  placeholder="">
                                     <img src="mobil/<?php echo $data['foto_depan']?>" width="30%">
                                 </div>
                             </div>
@@ -143,7 +143,7 @@
                                 <div class="form-group">
 
                                     <label for="post-job__email">Foto Belakang</label>
-                                    <input type="file" name="foto_belakang"  class="form-control" required placeholder="">
+                                    <input type="file" name="foto_belakang"  class="form-control"  placeholder="">
                                     <img src="mobil/<?php echo $data['foto_belakang']?>" width="30%">
                                 </div>
                             </div>
@@ -154,29 +154,19 @@
                                 <div class="form-group">
 
                                     <label for="post-job__email">Foto Samping</label>
-                                    <input type="file" name="foto_samping"  class="form-control" required placeholder="">
+                                    <input type="file" name="foto_samping"  class="form-control"  placeholder="">
                                     <img src="mobil/<?php echo $data['foto_samping']?>" width="30%">
                                 </div>
                             </div>
                         </div>
 
-                        <div class="row">
-                            <div class="col-lg-12">
-                                <div class="form-group">
-
-                                    <label for="post-job__email">Foto Belakang</label>
-                                    <input type="file" name="foto_depan"  class="form-control" required placeholder="">
-                                    <img src="mobil/<?php echo $data['foto_belakang']?>" width="30%">
-                                </div>
-                            </div>
-                        </div>
 
                         <div class="row">
                             <div class="col-lg-12">
                                 <div class="form-group">
 
                                     <label for="post-job__email">Foto Interior Mobil</label>
-                                    <input type="file" name="foto_dalam1"  class="form-control" required placeholder="">
+                                    <input type="file" name="foto_dalam1"  class="form-control"  placeholder="">
                                     <img src="mobil/<?php echo $data['foto_dalam1']?>" width="30%">
                                 </div>
                             </div>
@@ -187,7 +177,7 @@
                                 <div class="form-group">
 
                                     <label for="post-job__email">Foto Interior Mobil</label>
-                                    <input type="file" name="foto_dalam2"  class="form-control" required placeholder="">
+                                    <input type="file" name="foto_dalam2"  class="form-control"  placeholder="">
                                     <img src="mobil/<?php echo $data['foto_dalam2']?>" width="30%">
                                 </div>
                             </div>
