@@ -3,459 +3,391 @@
 <!-- BEGIN HEAD -->
 <head>
     <meta charset="UTF-8">
-    <title>DirectoryHub - Multipurpose Directory &amp; Listings HTML Template</title>
+    <title>Bandingkan Mobil</title>
 
     <meta http-equiv="X-UA-Compatible" content="IE=edge"/>
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
-    <!-- BEGIN GLOBAL MANDATORY STYLES -->
+
     <link rel="stylesheet" type="text/css" href="vendors/bootstrap/css/bootstrap.min.css">
     <link rel="stylesheet" type="text/css" href="vendors/tether/css/tether.min.css">
     <link rel="stylesheet" type="text/css" href="vendors/animate-css/animate.css">
     <link rel="stylesheet" type="text/css" href="fonts/circular/styles.css">
     <link rel="stylesheet" type="text/css" href="fonts/open-sans/styles.css">
     <link rel="stylesheet" type="text/css" href="fonts/iconfont/styles.css">
-    <!-- END GLOBAL MANDATORY STYLES -->
-
-
-
-<link rel="stylesheet" type="text/css" href="vendors/select2/css/select2.min.css">
-<link rel="stylesheet" type="text/css" href="css/vendors/select2/select2.min.css">
-
-
-    <!-- BEGIN THEME STYLES -->
+    <link rel="stylesheet" type="text/css" href="vendors/select2/css/select2.min.css">
+    <link rel="stylesheet" type="text/css" href="css/vendors/select2/select2.min.css">
     <link rel="stylesheet" type="text/css" href="css/style.min.css">
-    <!-- END THEME STYLES -->
+
+
+    <link rel="stylesheet" href="data/dist2/bootstrap2.css">
+    <link rel="stylesheet" href="data/dist2/css/bootstrap-select.css">
+    <script src="https://code.jquery.com/jquery-3.2.1.slim.js" defer></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.js" defer></script>
+    <script src="data/dist2/js/bootstrap-select.js" defer></script>
+
+
 </head>
 <!-- BEGIN HEAD -->
-<body class="">
+<body >
 
 
 
 <?php include"share/menu.php";?>
+
+
+<div>
+
 <div class="hero-travel-trips">
+  <form action="banding_mobil.php" method="GET">
     <div class="container">
-        <h2 class="hero-travel-trips__heading">Search for expedition</h2>
-        <form action="#" class="hero-travel-trips__form">
-            <div class="form-control-inline-icon inline-icon-left hero-travel-trips__search-input">
-                <span class="icon iconfont-left iconfont-search-v2"></span>
-                <input type="text" class="form-control" placeholder="Ex.Summer camp...">
-            </div>
+        <h2 class="hero-travel-trips__heading">Bandingkan Mobil</h2>
 
-            <div class="hero-travel-trips__select">
-                <div class="hero-travel-trips__select-heading">Type</div>
-                <select class="form-control selectable" data-selectable-no-search="true">
-                    <option value="" selected>All</option>
-                    <option value="">All</option>
-                    <option value="">sfasf</option>
-                    <option value="">sfasf</option>
-                </select>
-            </div>
+          <div class="col-lg-3">
+            <select id="basic" name="mobil1" class="selectpicker show-tick form-control" data-live-search="true">
+              <?php
+              include 'share/db.php';
+              if(empty($_GET['mobil1'])){
+              ?>
+              <option value="">Pilih Mobil</option>
+              <?php
+              }else{
+                $no_polisi1=$_GET['mobil1'];
+                $cari1 = mysqli_query($con,"select * from mobil where no_pol='$no_polisi1' ");
+                while($data_cari = mysqli_fetch_array($cari1)){
+              ?>
+              <option value="<?php echo $data_cari['no_pol']?>"><?php echo $data_cari['merek']?></option>
+              <?php
+                }
+              }
+              ?>
+              <?php
 
-            <div class="hero-travel-trips__select">
-                <div class="hero-travel-trips__select-heading">Period</div>
-                <select class="form-control selectable" data-selectable-no-search="true">
-                    <option value="" selected>Anytime</option>
-                    <option value="">Anytime</option>
-                    <option value="">sfasf</option>
-                    <option value="">sfasf</option>
-                </select>
-            </div>
+              $query = mysqli_query($con,"select * from rental where status='1' ");
+              while($data = mysqli_fetch_array($query)){
+              ?>
+              <optgroup label="<?php echo $data['nama_rental'];?>" data-subtext="Rental">
+                <?php
+                include 'share/db.php';
+                $id_rental=$data['id_rental'];
+                $query2 = mysqli_query($con,"select * from mobil where id_rental='$id_rental' ");
+                while($data2 = mysqli_fetch_array($query2)){
+                ?>
+                <option value="<?php echo $data2['no_pol']?>"><?php echo $data2['merek'];?></option>
+                <?php
+                  }
+                ?>
+              </optgroup>
+              <?php
+                }
+              ?>
 
-            <div class="hero-travel-trips__select">
-                <div class="hero-travel-trips__select-heading">Price</div>
-                <select class="form-control selectable" data-selectable-no-search="true">
-                    <option value="" selected>Anyprice</option>
-                    <option value="">sfasf</option>
-                    <option value="">sfasf</option>
-                    <option value="">sfasf</option>
-                </select>
-            </div>
 
-            <button type="button" class="btn btn-primary hero-travel-trips__search-btn">Search</button>
-        </form>
+            </select>
+          </div>
+
+          <div class="col-lg-3">
+            <select id="basic" name="mobil2" class="selectpicker show-tick form-control" data-live-search="true">
+              <?php
+
+              if(empty($_GET['mobil2'])){
+              ?>
+              <option value="">Pilih Mobil</option>
+              <?php
+              }else{
+                $no_polisi2=$_GET['mobil2'];
+                $cari2 = mysqli_query($con,"select * from mobil where no_pol='$no_polisi2' ");
+                while($data_cari2 = mysqli_fetch_array($cari2)){
+              ?>
+              <option value="<?php echo $data_cari2['no_pol']?>"><?php echo $data_cari2['merek']?></option>
+              <?php
+                }
+              }
+              ?>
+              <?php
+
+              $query = mysqli_query($con,"select * from rental where status='1' ");
+              while($data = mysqli_fetch_array($query)){
+              ?>
+              <optgroup label="<?php echo $data['nama_rental'];?>" data-subtext="Rental">
+                <?php
+                include 'share/db.php';
+                $id_rental=$data['id_rental'];
+                $query2 = mysqli_query($con,"select * from mobil where id_rental='$id_rental' ");
+                while($data2 = mysqli_fetch_array($query2)){
+                ?>
+                <option value="<?php echo $data2['no_pol']?>"><?php echo $data2['merek'];?></option>
+                <?php
+                  }
+                ?>
+              </optgroup>
+              <?php
+                }
+              ?>
+
+
+            </select>
+          </div>
+
+          <div class="col-lg-3">
+            <select id="basic" name="mobil3" class="selectpicker show-tick form-control" data-live-search="true">
+              <?php
+              if(empty($_GET['mobil3'])){
+              ?>
+              <option value="">Pilih Mobil</option>
+              <?php
+              }else{
+                $no_polisi3=$_GET['mobil3'];
+                $cari3 = mysqli_query($con,"select * from mobil where no_pol='$no_polisi3' ");
+                while($data_cari3 = mysqli_fetch_array($cari3)){
+              ?>
+              <option value="<?php echo $data_cari3['no_pol']?>"><?php echo $data_cari3['merek']?></option>
+              <?php
+                }
+              }
+              ?>
+              <?php
+              include 'share/db.php';
+              $query = mysqli_query($con,"select * from rental where status='1' ");
+              while($data = mysqli_fetch_array($query)){
+              ?>
+              <optgroup label="<?php echo $data['nama_rental'];?>" data-subtext="Rental">
+                <?php
+                include 'share/db.php';
+                $id_rental=$data['id_rental'];
+                $query2 = mysqli_query($con,"select * from mobil where id_rental='$id_rental' ");
+                while($data2 = mysqli_fetch_array($query2)){
+                ?>
+                <option value="<?php echo $data2['no_pol']?>"><?php echo $data2['merek'];?></option>
+                <?php
+                  }
+                ?>
+              </optgroup>
+              <?php
+                }
+              ?>
+
+
+            </select>
+          </div>
+
+          <div class="col-lg-3">
+            <button type="submit" class="btn btn-primary col-lg-12 ">Bandingkan</button>
+          </div>
     </div>
+  </form>
 </div>
-<div class="listing-travel-trips">
+
+
+<div class="container">
+<br>
+
+  <?php
+  if((empty($_GET['mobil1']))&&(empty($_GET['mobil2']))&&(empty($_GET['mobil3']))){
+  ?>
+
+  <?php
+  }else{
+  ?>
+  <div class="card card-outline-primary mb-3">
+  <div class="card-block">
     <div class="container">
-        <div class="row">
-            <div class="col-xl-3 col-lg-4 col-md-6">
-                <div class="listing-travel-trips__item">
-                    <div class="listing-travel-trips__item-image">
-                        <img src="images/listings/travel-trips/01.png" alt="" class="embed-responsive">
-                        <div class="listing-travel-trips__item-title">
-                            <span>Swimming with Dolphins</span>
-                        </div>
-                    </div>
-                    <div class="listing-travel-trips__item-info">
-                        <div class="listing-travel-trips__item-description">
-                            It is possible to charter, rent or
-                            lease an aircraft for less than ever
-                            before and it has also become
-                        </div>
-                        <div class="listing-travel-trips__item-details">
-                            <div class="listing-travel-trips__item-details-price">
-                                <span class="heading">Price</span>
-                                <span class="value">$450</span>
-                            </div>
-                            <div class="listing-travel-trips__item-details-duration">
-                                <span class="heading">Duration</span>
-                                <span class="value">5 nights</span>
-                            </div>
-                            <a href="#" class="btn btn-outline-default listing-travel-trips__item-details-view-link">Details</a>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <div class="col-xl-3 col-lg-4 col-md-6">
-                <div class="listing-travel-trips__item">
-                    <div class="listing-travel-trips__item-image">
-                        <div class="listing-travel-trips__item-users">
-                            <img src="images/listings/travel-trips/avatar-1.png" alt="" width="34" height="34">
-                            <img src="images/listings/travel-trips/avatar-2.png" alt="" width="34" height="34">
-                        </div>
-                        <img src="images/listings/travel-trips/02.png" alt="" class="embed-responsive">
-                        <div class="listing-travel-trips__item-title">
-                            <span>How Hypnosis Can Help You</span>
-                        </div>
-                    </div>
-                    <div class="listing-travel-trips__item-info">
-                        <div class="listing-travel-trips__item-description">
-                            It is possible to charter, rent or
-                            lease an aircraft for less than ever
-                            before and it has also become
-                        </div>
-                        <div class="listing-travel-trips__item-details">
-                            <div class="listing-travel-trips__item-details-price">
-                                <span class="heading">Price</span>
-                                <span class="value">$450</span>
-                            </div>
-                            <div class="listing-travel-trips__item-details-duration">
-                                <span class="heading">Duration</span>
-                                <span class="value">5 nights</span>
-                            </div>
-                            <a href="#" class="btn btn-outline-default listing-travel-trips__item-details-view-link">Details</a>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <div class="col-xl-3 col-lg-4 col-md-6">
-                <div class="listing-travel-trips__item">
-                    <div class="listing-travel-trips__item-image">
-                        <div class="listing-travel-trips__item-users">
-                            <img src="images/listings/travel-trips/avatar-3.png" alt="" width="34" height="34">
-                        </div>
-                        <img src="images/listings/travel-trips/03.png" alt="" class="embed-responsive">
-                        <div class="listing-travel-trips__item-title">
-                            <span>
-                                When you are Down and out How <br> do You Get Up and Go Forward
-                            </span>
-                        </div>
-                    </div>
-                    <div class="listing-travel-trips__item-info">
-                        <div class="listing-travel-trips__item-description">
-                            It is possible to charter, rent or
-                            lease an aircraft for less than ever
-                            before and it has also become
-                        </div>
-                        <div class="listing-travel-trips__item-details">
-                            <div class="listing-travel-trips__item-details-price">
-                                <span class="heading">Price</span>
-                                <span class="value">$450</span>
-                            </div>
-                            <div class="listing-travel-trips__item-details-duration">
-                                <span class="heading">Duration</span>
-                                <span class="value">5 nights</span>
-                            </div>
-                            <a href="#" class="btn btn-outline-default listing-travel-trips__item-details-view-link">Details</a>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <div class="col-xl-3 col-lg-4 col-md-6">
-                <div class="listing-travel-trips__item">
-                    <div class="listing-travel-trips__item-image">
-                        <img src="images/listings/travel-trips/04.png" alt="" class="embed-responsive">
-                        <div class="listing-travel-trips__item-title">
-                            <span>Why Las Vegas Hotel Rooms For You</span>
-                        </div>
-                    </div>
-                    <div class="listing-travel-trips__item-info">
-                        <div class="listing-travel-trips__item-description">
-                            It is possible to charter, rent or
-                            lease an aircraft for less than ever
-                            before and it has also become
-                        </div>
-                        <div class="listing-travel-trips__item-details">
-                            <div class="listing-travel-trips__item-details-price">
-                                <span class="heading">Price</span>
-                                <span class="value">$450</span>
-                            </div>
-                            <div class="listing-travel-trips__item-details-duration">
-                                <span class="heading">Duration</span>
-                                <span class="value">5 nights</span>
-                            </div>
-                            <a href="#" class="btn btn-outline-default listing-travel-trips__item-details-view-link">Details</a>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <div class="col-xl-3 col-lg-4 col-md-6">
-                <div class="listing-travel-trips__item">
-                    <div class="listing-travel-trips__item-image">
-                        <div class="listing-travel-trips__item-users">
-                            <img src="images/listings/travel-trips/avatar-3.png" alt="" width="34" height="34">
-                        </div>
-                        <img src="images/listings/travel-trips/05.png" alt="" class="embed-responsive">
-                        <div class="listing-travel-trips__item-title">
-                            <span>Swimming with Dolphins</span>
-                        </div>
-                    </div>
-                    <div class="listing-travel-trips__item-info">
-                        <div class="listing-travel-trips__item-description">
-                            It is possible to charter, rent or
-                            lease an aircraft for less than ever
-                            before and it has also become
-                        </div>
-                        <div class="listing-travel-trips__item-details">
-                            <div class="listing-travel-trips__item-details-price">
-                                <span class="heading">Price</span>
-                                <span class="value">$450</span>
-                            </div>
-                            <div class="listing-travel-trips__item-details-duration">
-                                <span class="heading">Duration</span>
-                                <span class="value">5 nights</span>
-                            </div>
-                            <a href="#" class="btn btn-outline-default listing-travel-trips__item-details-view-link">Details</a>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <div class="col-xl-3 col-lg-4 col-md-6">
-                <div class="listing-travel-trips__item">
-                    <div class="listing-travel-trips__item-image">
-                        <img src="images/listings/travel-trips/06.png" alt="" class="embed-responsive">
-                        <div class="listing-travel-trips__item-title">
-                            <span>How Hypnosis Can Help You</span>
-                        </div>
-                    </div>
-                    <div class="listing-travel-trips__item-info">
-                        <div class="listing-travel-trips__item-description">
-                            It is possible to charter, rent or
-                            lease an aircraft for less than ever
-                            before and it has also become
-                        </div>
-                        <div class="listing-travel-trips__item-details">
-                            <div class="listing-travel-trips__item-details-price">
-                                <span class="heading">Price</span>
-                                <span class="value">$450</span>
-                            </div>
-                            <div class="listing-travel-trips__item-details-duration">
-                                <span class="heading">Duration</span>
-                                <span class="value">5 nights</span>
-                            </div>
-                            <a href="#" class="btn btn-outline-default listing-travel-trips__item-details-view-link">Details</a>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <div class="col-xl-3 col-lg-4 col-md-6">
-                <div class="listing-travel-trips__item">
-                    <div class="listing-travel-trips__item-image">
-                        <img src="images/listings/travel-trips/07.png" alt="" class="embed-responsive">
-                        <div class="listing-travel-trips__item-title">
-                            <span>
-                                When you are Down and out How <br> do You Get Up and Go Forward
-                            </span>
-                        </div>
-                    </div>
-                    <div class="listing-travel-trips__item-info">
-                        <div class="listing-travel-trips__item-description">
-                            It is possible to charter, rent or
-                            lease an aircraft for less than ever
-                            before and it has also become
-                        </div>
-                        <div class="listing-travel-trips__item-details">
-                            <div class="listing-travel-trips__item-details-price">
-                                <span class="heading">Price</span>
-                                <span class="value">$450</span>
-                            </div>
-                            <div class="listing-travel-trips__item-details-duration">
-                                <span class="heading">Duration</span>
-                                <span class="value">5 nights</span>
-                            </div>
-                            <a href="#" class="btn btn-outline-default listing-travel-trips__item-details-view-link">Details</a>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <div class="col-xl-3 col-lg-4 col-md-6">
-                <div class="listing-travel-trips__item">
-                    <div class="listing-travel-trips__item-image">
-                        <div class="listing-travel-trips__item-users">
-                            <img src="images/listings/travel-trips/avatar-1.png" alt="" width="34" height="34">
-                            <img src="images/listings/travel-trips/avatar-2.png" alt="" width="34" height="34">
-                            <img src="images/listings/travel-trips/avatar-3.png" alt="" width="34" height="34">
-                            <img src="images/listings/travel-trips/avatar-1.png" alt="" width="34" height="34">
-                        </div>
-                        <img src="images/listings/travel-trips/08.png" alt="" class="embed-responsive">
-                        <div class="listing-travel-trips__item-title">
-                            <span>Why Las Vegas Hotel Rooms For You</span>
-                        </div>
-                    </div>
-                    <div class="listing-travel-trips__item-info">
-                        <div class="listing-travel-trips__item-description">
-                            It is possible to charter, rent or
-                            lease an aircraft for less than ever
-                            before and it has also become
-                        </div>
-                        <div class="listing-travel-trips__item-details">
-                            <div class="listing-travel-trips__item-details-price">
-                                <span class="heading">Price</span>
-                                <span class="value">$450</span>
-                            </div>
-                            <div class="listing-travel-trips__item-details-duration">
-                                <span class="heading">Duration</span>
-                                <span class="value">5 nights</span>
-                            </div>
-                            <a href="#" class="btn btn-outline-default listing-travel-trips__item-details-view-link">Details</a>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <div class="col-xl-3 col-lg-4 col-md-6">
-                <div class="listing-travel-trips__item">
-                    <div class="listing-travel-trips__item-image">
-                        <img src="images/listings/travel-trips/09.png" alt="" class="embed-responsive">
-                        <div class="listing-travel-trips__item-title">
-                            <span>Swimming with Dolphins</span>
-                        </div>
-                    </div>
-                    <div class="listing-travel-trips__item-info">
-                        <div class="listing-travel-trips__item-description">
-                            It is possible to charter, rent or
-                            lease an aircraft for less than ever
-                            before and it has also become
-                        </div>
-                        <div class="listing-travel-trips__item-details">
-                            <div class="listing-travel-trips__item-details-price">
-                                <span class="heading">Price</span>
-                                <span class="value">$450</span>
-                            </div>
-                            <div class="listing-travel-trips__item-details-duration">
-                                <span class="heading">Duration</span>
-                                <span class="value">5 nights</span>
-                            </div>
-                            <a href="#" class="btn btn-outline-default listing-travel-trips__item-details-view-link">Details</a>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <div class="col-xl-3 col-lg-4 col-md-6">
-                <div class="listing-travel-trips__item">
-                    <div class="listing-travel-trips__item-image">
-                        <img src="images/listings/travel-trips/10.png" alt="" class="embed-responsive">
-                        <div class="listing-travel-trips__item-title">
-                            <span>How Hypnosis Can Help You</span>
-                        </div>
-                    </div>
-                    <div class="listing-travel-trips__item-info">
-                        <div class="listing-travel-trips__item-description">
-                            It is possible to charter, rent or
-                            lease an aircraft for less than ever
-                            before and it has also become
-                        </div>
-                        <div class="listing-travel-trips__item-details">
-                            <div class="listing-travel-trips__item-details-price">
-                                <span class="heading">Price</span>
-                                <span class="value">$450</span>
-                            </div>
-                            <div class="listing-travel-trips__item-details-duration">
-                                <span class="heading">Duration</span>
-                                <span class="value">5 nights</span>
-                            </div>
-                            <a href="#" class="btn btn-outline-default listing-travel-trips__item-details-view-link">Details</a>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <div class="col-xl-3 col-lg-4 col-md-6">
-                <div class="listing-travel-trips__item">
-                    <div class="listing-travel-trips__item-image">
-                        <div class="listing-travel-trips__item-users">
-                            <img src="images/listings/travel-trips/avatar-1.png" alt="" width="34" height="34">
-                            <img src="images/listings/travel-trips/avatar-2.png" alt="" width="34" height="34">
-                        </div>
-                        <img src="images/listings/travel-trips/11.png" alt="" class="embed-responsive">
-                        <div class="listing-travel-trips__item-title">
-                            <span>
-                                When you are Down and out How <br> do You Get Up and Go Forward
-                            </span>
-                        </div>
-                    </div>
-                    <div class="listing-travel-trips__item-info">
-                        <div class="listing-travel-trips__item-description">
-                            It is possible to charter, rent or
-                            lease an aircraft for less than ever
-                            before and it has also become
-                        </div>
-                        <div class="listing-travel-trips__item-details">
-                            <div class="listing-travel-trips__item-details-price">
-                                <span class="heading">Price</span>
-                                <span class="value">$450</span>
-                            </div>
-                            <div class="listing-travel-trips__item-details-duration">
-                                <span class="heading">Duration</span>
-                                <span class="value">5 nights</span>
-                            </div>
-                            <a href="#" class="btn btn-outline-default listing-travel-trips__item-details-view-link">Details</a>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <div class="col-xl-3 col-lg-4 col-md-6">
-                <div class="listing-travel-trips__item">
-                    <div class="listing-travel-trips__item-image">
-                        <img src="images/listings/travel-trips/12.png" alt="" class="embed-responsive">
-                        <div class="listing-travel-trips__item-title">
-                            <span>Why Las Vegas Hotel Rooms For You</span>
-                        </div>
-                    </div>
-                    <div class="listing-travel-trips__item-info">
-                        <div class="listing-travel-trips__item-description">
-                            It is possible to charter, rent or
-                            lease an aircraft for less than ever
-                            before and it has also become
-                        </div>
-                        <div class="listing-travel-trips__item-details">
-                            <div class="listing-travel-trips__item-details-price">
-                                <span class="heading">Price</span>
-                                <span class="value">$450</span>
-                            </div>
-                            <div class="listing-travel-trips__item-details-duration">
-                                <span class="heading">Duration</span>
-                                <span class="value">5 nights</span>
-                            </div>
-                            <a href="#" class="btn btn-outline-default listing-travel-trips__item-details-view-link">Details</a>
-                        </div>
-                    </div>
-                </div>
-            </div>
+      <br>
+      <?php
+      if((isset($_GET['mobil1']))||(isset($_GET['mobil2']))||(isset($_GET['mobil3']))){
+        $nopol1=$_GET['mobil1'];
+        $nopol2=$_GET['mobil2'];
+        $nopol3=$_GET['mobil3'];
+      ?>
+      <div class="col-lg-12">
+      <table class="table table-striped">
+        <tbody>
+          <tr>
+              <th>#</th>
+
+                        <?php
+                          $bandingkan1 = mysqli_query($con,"select * from mobil left join rental on rental.id_rental=mobil.id_rental where mobil.no_pol='$nopol1' or mobil.no_pol='$nopol2' or mobil.no_pol='$nopol3' ");
+                          while($data_bandingkan1= mysqli_fetch_array($bandingkan1)){
+                        ?>
+                                    <th width="27%"><?php echo $data_bandingkan1['nama_rental']?></th>
+                        <?php
+                          }
+                        ?>
+          </tr>
+          <tr>
+              <th>Foto Mobil</th>
+
+                        <?php
+                          $bandingkan1 = mysqli_query($con,"select * from mobil left join rental on rental.id_rental=mobil.id_rental where mobil.no_pol='$nopol1' or mobil.no_pol='$nopol2' or mobil.no_pol='$nopol3' ");
+                          while($data_bandingkan1= mysqli_fetch_array($bandingkan1)){
+                        ?>
+                                    <td><img width ="100%" src="mobil/<?php echo $data_bandingkan1['foto_depan']?>"></td>
+                        <?php
+                          }
+                        ?>
+          </tr>
+          <tr>
+              <th>Harga Sewa</th>
+
+                        <?php
+                          $bandingkan1 = mysqli_query($con,"select * from mobil left join rental on rental.id_rental=mobil.id_rental where mobil.no_pol='$nopol1' or mobil.no_pol='$nopol2' or mobil.no_pol='$nopol3' ");
+                          while($data_bandingkan1= mysqli_fetch_array($bandingkan1)){
+                        ?>
+                                    <td><?php echo $data_bandingkan1['harga_sewa']?>/Hari</td>
+                        <?php
+                          }
+                        ?>
+          </tr>
+          <tr>
+              <th>Merek</th>
+
+                        <?php
+                          $bandingkan1 = mysqli_query($con,"select * from mobil left join rental on rental.id_rental=mobil.id_rental where mobil.no_pol='$nopol1' or mobil.no_pol='$nopol2' or mobil.no_pol='$nopol3' ");
+                          while($data_bandingkan1= mysqli_fetch_array($bandingkan1)){
+                        ?>
+                                    <td><?php echo $data_bandingkan1['merek']?></td>
+                        <?php
+                          }
+                        ?>
+          </tr>
+          <tr>
+              <th>Tipe</th>
+
+                        <?php
+                          $bandingkan1 = mysqli_query($con,"select * from mobil left join rental on rental.id_rental=mobil.id_rental where mobil.no_pol='$nopol1' or mobil.no_pol='$nopol2' or mobil.no_pol='$nopol3' ");
+                          while($data_bandingkan1= mysqli_fetch_array($bandingkan1)){
+                        ?>
+                                    <td><?php echo $data_bandingkan1['tipe']?></td>
+                        <?php
+                          }
+                        ?>
+          </tr>
+          <tr>
+              <th>Jenis</th>
+
+                        <?php
+                          $bandingkan1 = mysqli_query($con,"select * from mobil left join rental on rental.id_rental=mobil.id_rental where mobil.no_pol='$nopol1' or mobil.no_pol='$nopol2' or mobil.no_pol='$nopol3' ");
+                          while($data_bandingkan1= mysqli_fetch_array($bandingkan1)){
+                        ?>
+                                    <td><?php echo $data_bandingkan1['jenis']?></td>
+                        <?php
+                          }
+                        ?>
+          </tr>
+          <tr>
+              <th>Tahun Pembuatan</th>
+
+                        <?php
+                          $bandingkan1 = mysqli_query($con,"select * from mobil left join rental on rental.id_rental=mobil.id_rental where mobil.no_pol='$nopol1' or mobil.no_pol='$nopol2' or mobil.no_pol='$nopol3' ");
+                          while($data_bandingkan1= mysqli_fetch_array($bandingkan1)){
+                        ?>
+                                    <td><?php echo $data_bandingkan1['tahun_pembuatan']?></td>
+                        <?php
+                          }
+                        ?>
+          </tr>
+          <tr>
+              <th>Bahan Bakar</th>
+
+                        <?php
+                          $bandingkan1 = mysqli_query($con,"select * from mobil left join rental on rental.id_rental=mobil.id_rental where mobil.no_pol='$nopol1' or mobil.no_pol='$nopol2' or mobil.no_pol='$nopol3' ");
+                          while($data_bandingkan1= mysqli_fetch_array($bandingkan1)){
+                        ?>
+                                    <td><?php echo $data_bandingkan1['bahan_bakar']?></td>
+                        <?php
+                          }
+                        ?>
+          </tr>
+          <tr>
+              <th>Kapasitas Penumbang</th>
+
+                        <?php
+                          $bandingkan1 = mysqli_query($con,"select * from mobil left join rental on rental.id_rental=mobil.id_rental where mobil.no_pol='$nopol1' or mobil.no_pol='$nopol2' or mobil.no_pol='$nopol3' ");
+                          while($data_bandingkan1= mysqli_fetch_array($bandingkan1)){
+                        ?>
+                                    <td><?php echo $data_bandingkan1['kapasitas_penumpang']?></td>
+                        <?php
+                          }
+                        ?>
+          </tr>
+          <tr>
+              <th>Fasilitas</th>
+
+                        <?php
+                          $bandingkan1 = mysqli_query($con,"select * from mobil left join rental on rental.id_rental=mobil.id_rental where mobil.no_pol='$nopol1' or mobil.no_pol='$nopol2' or mobil.no_pol='$nopol3' ");
+                          while($data_bandingkan1= mysqli_fetch_array($bandingkan1)){
+                        ?>
+                                    <td><?php echo $data_bandingkan1['fasilitas']?></td>
+                        <?php
+                          }
+                        ?>
+          </tr>
+          <tr>
+              <th>Foto Belakang</th>
+
+                        <?php
+                          $bandingkan1 = mysqli_query($con,"select * from mobil left join rental on rental.id_rental=mobil.id_rental where mobil.no_pol='$nopol1' or mobil.no_pol='$nopol2' or mobil.no_pol='$nopol3' ");
+                          while($data_bandingkan1= mysqli_fetch_array($bandingkan1)){
+                        ?>
+                                    <td><img width ="100%" src="mobil/<?php echo $data_bandingkan1['foto_belakang']?>"></td>
+                        <?php
+                          }
+                        ?>
+          </tr>
+          <tr>
+              <th>Foto Samping</th>
+
+                        <?php
+                          $bandingkan1 = mysqli_query($con,"select * from mobil left join rental on rental.id_rental=mobil.id_rental where mobil.no_pol='$nopol1' or mobil.no_pol='$nopol2' or mobil.no_pol='$nopol3' ");
+                          while($data_bandingkan1= mysqli_fetch_array($bandingkan1)){
+                        ?>
+                                    <td><img width ="100%" src="mobil/<?php echo $data_bandingkan1['foto_samping']?>"></td>
+                        <?php
+                          }
+                        ?>
+          </tr>
+          <tr>
+              <th>Foto Interior 1</th>
+
+                        <?php
+                          $bandingkan1 = mysqli_query($con,"select * from mobil left join rental on rental.id_rental=mobil.id_rental where mobil.no_pol='$nopol1' or mobil.no_pol='$nopol2' or mobil.no_pol='$nopol3' ");
+                          while($data_bandingkan1= mysqli_fetch_array($bandingkan1)){
+                        ?>
+                                    <td><img width ="100%" src="mobil/<?php echo $data_bandingkan1['foto_dalam1']?>"></td>
+                        <?php
+                          }
+                        ?>
+          </tr>
+          <tr>
+              <th>Foto Interior 2</th>
+
+                        <?php
+                          $bandingkan1 = mysqli_query($con,"select * from mobil left join rental on rental.id_rental=mobil.id_rental where mobil.no_pol='$nopol1' or mobil.no_pol='$nopol2' or mobil.no_pol='$nopol3' ");
+                          while($data_bandingkan1= mysqli_fetch_array($bandingkan1)){
+                        ?>
+                                    <td><img width ="100%" src="mobil/<?php echo $data_bandingkan1['foto_dalam2']?>"></td>
+                        <?php
+                          }
+                        ?>
+          </tr>
+        </tbody>
+      </table>
         </div>
-
-        <nav class="listings-pagination listings-travel-trips-pagination d-flex justify-content-center">
-            <ul class="pagination">
-                <li class="page-item active"><a class="page-link" href="#">1</a></li>
-                <li class="page-item"><a class="page-link" href="#">2</a></li>
-                <li class="page-item"><a class="page-link" href="#">3</a></li>
-                <li class="page-item"><a class="page-link" href="#">4</a></li>
-                <li class="page-item"><a class="page-link" href="#">5</a></li>
-                <li class="page-item"><a class="page-link" href="#">...</a></li>
-                <li class="page-item"><a class="page-link" href="#">99</a></li>
-            </ul>
-        </nav>
+        <?php
+        }
+        ?>
     </div>
+  </div>
+  </div>
+  <?php
+  }
+  ?>
+
 </div>
+
+
+
+
 <?php include"share/footer.php";?>
 
 
@@ -463,9 +395,6 @@
 <script src="vendors/tether/js/tether.min.js"></script>
 <script src="vendors/bootstrap/js/bootstrap.min.js"></script>
 <script src="js/dropdown.animate.js"></script>
-
-
-
 <script>
     (function () {
         $(document).ready(function () {
@@ -493,9 +422,17 @@
         });
     })(jQuery);
 </script>
-
 <script src="vendors/select2/js/select2.min.js"></script>
 <script src="js/travel-trips.js"></script>
+
+<script>
+  document.addEventListener('DOMContentLoaded', function () {
+    $('#basic2').selectpicker({
+      liveSearch: true,
+      maxOptions: 1
+    });
+  });
+</script>
 
 
 </body>
