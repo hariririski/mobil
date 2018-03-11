@@ -145,7 +145,7 @@ if((empty($_SESSION['login']))){
                                       <td class="center"><?php echo $i;?></td>
                                       <td><?php echo $data['username'];?></td>
                                       <td><?php echo $data['nama'];?></td>
-                                      <td class="center"><a href="detail_rental.php?id=<?php echo $data['id_rental'];?>"><button type="button" class="btn btn-danger btn-xs">Detail</button></td>
+                                      <td class="center"><a href="detail_rental.php?id=<?php echo $data['id_rental'];?>"><button type="button" class="btn btn-danger btn-xs">Hapus</button></td>
                                   </tr>
                                   <?php  }?>
 
@@ -194,7 +194,7 @@ if((empty($_SESSION['login']))){
                                       <td><?php echo $data['nama_rental'];?></td>
                                       <td><?php echo $data['alamat'];?></td>
                                       <td><?php echo $data['nama_pemilik'];?></td>
-                                      <td class="center"><a href="detail_rental.php?id=<?php echo $data['id_rental'];?>"><button type="button" class="btn btn-danger btn-xs">Detail</button></td>
+                                      <td class="center"><a href="detail_rental.php?id=<?php echo $data['id_rental'];?>"><button type="button" class="btn btn-danger btn-xs">Hapus</button></td>
                                   </tr>
                                   <?php  }?>
 
