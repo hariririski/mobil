@@ -22,8 +22,8 @@
 
     <link rel="stylesheet" href="data/dist2/bootstrap2.css">
     <link rel="stylesheet" href="data/dist2/css/bootstrap-select.css">
-    <script src="https://code.jquery.com/jquery-3.2.1.slim.js" defer></script>
-    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.js" defer></script>
+    <script src="data/jquery-3.2.1.slim.js" defer></script>
+    <script src="data/bootstrap.js" defer></script>
     <script src="data/dist2/js/bootstrap-select.js" defer></script>
 
 
