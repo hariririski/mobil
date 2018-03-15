@@ -167,17 +167,7 @@ if((empty($_SESSION['rental']))){
                             </div>
                         </div>
 
-                        <div class="row">
-                            <div class="col-lg-12">
-                                <div class="form-group">
-
-                                    <label for="post-job__email">Foto Belakang</label>
-                                    <input type="file" name="foto_depan"  class="form-control" required placeholder="">
-
-                                </div>
-                            </div>
-                        </div>
-
+                        
                         <div class="row">
                             <div class="col-lg-12">
                                 <div class="form-group">

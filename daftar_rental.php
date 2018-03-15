@@ -63,7 +63,7 @@
                             <div class="col-lg-12">
                                 <div class="form-group">
                                     <label for="post-job__email">Nomor Hp Rental Mobil</label>
-                                    <input type="number"  name="no_hp_rental" class="form-control" placeholder="Nama Rental Anda">
+                                    <input type="number"  name="no_hp_rental" class="form-control" placeholder="No Hp Rental Anda">
                                 </div>
                             </div>
                         </div>
