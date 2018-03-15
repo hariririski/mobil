@@ -87,7 +87,7 @@
           }
           $total = mysqli_num_rows($sql);
           if($total==0&&$cari!="semua"){
-            echo $total;
+  
             echo'
             <div class="alert col-lg-12 alert-success" role="alert">
                 <button type="button" class="close" data-dismiss="alert" aria-label="Close">

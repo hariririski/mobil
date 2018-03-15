@@ -56,7 +56,7 @@
                 $cari1 = mysqli_query($con,"select * from mobil where no_pol='$no_polisi1' ");
                 while($data_cari = mysqli_fetch_array($cari1)){
               ?>
-              <option value="<?php echo $data_cari['no_pol']?>"><?php echo $data_cari['merek']?></option>
+              <option value="<?php echo $data_cari['no_pol']?>"><?php echo $data_cari['tipe']?></option>
               <?php
                 }
               }
@@ -73,7 +73,7 @@
                 $query2 = mysqli_query($con,"select * from mobil where id_rental='$id_rental' ");
                 while($data2 = mysqli_fetch_array($query2)){
                 ?>
-                <option value="<?php echo $data2['no_pol']?>"><?php echo $data2['merek'];?></option>
+                <option value="<?php echo $data2['no_pol']?>"><?php echo $data2['tipe'];?></option>
                 <?php
                   }
                 ?>
@@ -99,7 +99,7 @@
                 $cari2 = mysqli_query($con,"select * from mobil where no_pol='$no_polisi2' ");
                 while($data_cari2 = mysqli_fetch_array($cari2)){
               ?>
-              <option value="<?php echo $data_cari2['no_pol']?>"><?php echo $data_cari2['merek']?></option>
+              <option value="<?php echo $data_cari2['no_pol']?>"><?php echo $data_cari2['tipe']?></option>
               <?php
                 }
               }
@@ -116,7 +116,7 @@
                 $query2 = mysqli_query($con,"select * from mobil where id_rental='$id_rental' ");
                 while($data2 = mysqli_fetch_array($query2)){
                 ?>
-                <option value="<?php echo $data2['no_pol']?>"><?php echo $data2['merek'];?></option>
+                <option value="<?php echo $data2['no_pol']?>"><?php echo $data2['tipe'];?></option>
                 <?php
                   }
                 ?>
@@ -141,7 +141,7 @@
                 $cari3 = mysqli_query($con,"select * from mobil where no_pol='$no_polisi3' ");
                 while($data_cari3 = mysqli_fetch_array($cari3)){
               ?>
-              <option value="<?php echo $data_cari3['no_pol']?>"><?php echo $data_cari3['merek']?></option>
+              <option value="<?php echo $data_cari3['no_pol']?>"><?php echo $data_cari3['tipe']?></option>
               <?php
                 }
               }
@@ -158,7 +158,7 @@
                 $query2 = mysqli_query($con,"select * from mobil where id_rental='$id_rental' ");
                 while($data2 = mysqli_fetch_array($query2)){
                 ?>
-                <option value="<?php echo $data2['no_pol']?>"><?php echo $data2['merek'];?></option>
+                <option value="<?php echo $data2['no_pol']?>"><?php echo $data2['tipe'];?></option>
                 <?php
                   }
                 ?>
@@ -245,7 +245,7 @@
                           $bandingkan1 = mysqli_query($con,"select * from mobil left join rental on rental.id_rental=mobil.id_rental where mobil.no_pol='$nopol1' or mobil.no_pol='$nopol2' or mobil.no_pol='$nopol3' ");
                           while($data_bandingkan1= mysqli_fetch_array($bandingkan1)){
                         ?>
-                                    <td><?php echo $data_bandingkan1['merek']?></td>
+                                    <td><?php echo $data_bandingkan1['tipe']?></td>
                         <?php
                           }
                         ?>
