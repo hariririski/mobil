@@ -27,7 +27,7 @@ session_start(); // Memulai Session
 							echo '<script type="text/javascript">window.location = "../data_mobil.php"</script>';
 				}else{
 							echo "<script>alert('Tambah Mobil Gagal')</script>";
-							echo '<script type="text/javascript">window.location = "../daftar_rental.php"</script>';
+							echo '<script type="text/javascript">window.location = "../tambah_mobil.php"</script>';
 				}
 
 				function upload_depan(){
