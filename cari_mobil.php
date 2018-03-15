@@ -86,7 +86,7 @@
             $sql = mysqli_query($con,"select * from mobil left join rental on rental.id_rental=mobil.id_rental WHERE rental.status=1 and mobil.merek LIKE '%$cari%' or mobil.tipe LIKE '%$cari%' or mobil.jenis LIKE '%$cari%' or mobil.tahun_pembuatan LIKE '%$cari%' or mobil.bahan_bakar LIKE '%$cari%'");
           }
           $total = mysqli_num_rows($sql);
-          if($total==0||$cari=="semua"){
+          if($total==0||$cari!="semua"){
             echo'
             <div class="alert col-lg-12 alert-success" role="alert">
                 <button type="button" class="close" data-dismiss="alert" aria-label="Close">
