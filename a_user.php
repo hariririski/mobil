@@ -54,7 +54,7 @@ if((empty($_SESSION['login']))){
 <div class="container">
   <br>
   <div class="col-lg-12">
-    <form action="proses/tambah_admin.php" method="Post">
+    <form action="proses/tambah_user.php" method="Post">
       <div class="col-lg-12">
           <div class="card card-outline-primary mb-3">
               <div class="card-header bg-primary">
@@ -83,7 +83,7 @@ if((empty($_SESSION['login']))){
                     <div class="col-lg-12">
                         <div class="form-group">
                             <label for="post-job__email">Password</label>
-                            <input type="text" name="password"  required class="form-control" placeholder="Password">
+                            <input type="password" name="password"  required class="form-control" placeholder="Password">
                         </div>
                     </div>
                 </div>
@@ -91,7 +91,7 @@ if((empty($_SESSION['login']))){
                     <div class="col-lg-12">
                         <div class="form-group">
                             <label for="post-job__email">Ulangi Password</label>
-                            <input type="text" name="ulangi Password"  required class="form-control" placeholder="Ulangi Password">
+                            <input type="password" name="ulangi Password"  required class="form-control" placeholder="Ulangi Password">
                         </div>
                     </div>
                 </div>
@@ -194,7 +194,7 @@ if((empty($_SESSION['login']))){
                                       <td><?php echo $data['nama_rental'];?></td>
                                       <td><?php echo $data['alamat'];?></td>
                                       <td><?php echo $data['nama_pemilik'];?></td>
-                                      <td class="center"><a href="proses/hapus_rental.php?id=<?php echo $data['id_rental'];?>"><button type="button" class="btn btn-danger btn-xs">Hapus</button></td>
+                                      <td class="center"><a href="proses/hapus_rental.php?id=<?php echo $data['id_rental'];?>&&gambar=<?php echo $data['foto_rental'];?>"><button type="button" class="btn btn-danger btn-xs">Hapus</button></td>
                                   </tr>
                                   <?php  }?>
 
