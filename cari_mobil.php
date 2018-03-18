@@ -58,7 +58,7 @@
 
 
 
-            <button type="button" class="btn btn-primary hero-travel-trips__search-btn">Temukan</button>
+            <button type="sumbit" class="btn btn-primary hero-travel-trips__search-btn">Temukan</button>
         </form>
     </div>
 </div>
