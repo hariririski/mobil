@@ -41,7 +41,7 @@
 <div class="hero-travel-trips">
   <form action="banding_mobil.php" method="GET">
     <div class="container">
-        <h2 class="hero-travel-trips__heading">Bandingkan Mobil</h2>
+        <font color="black"><<h2  class="hero-travel-trips__heading">Bandingkan Mobil</h2></font>
 
           <div class="col-lg-3">
             <select id="basic" name="mobil1" class="selectpicker show-tick form-control" data-live-search="true">
@@ -177,7 +177,11 @@
     </div>
   </form>
 </div>
+<form class="filter-properties">
+    <div class="container">
 
+    </div>
+</form>
 
 <div class="container">
 <br>

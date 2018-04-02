@@ -29,6 +29,10 @@ session_start(); // Memulai Session
                 <div id="header-default-menu" class="collapse navbar-collapse">
                     <div class="header-default__menu-collapse">
                         <ul class="nav navbar-nav">
+                          <?php
+                          if(isset($_SESSION['login'])==0&&isset($_SESSION['rental'])==0){
+
+                          ?>
 
                             <li class="nav-item dropdown">
                                 <a class="nav-link "  href="index.php" role="button" aria-haspopup="true" aria-expanded="false">Home</a>
@@ -36,12 +40,12 @@ session_start(); // Memulai Session
 
                                 </div>
 
-                                <li class="nav-item dropdown">
+                                <!-- <li class="nav-item dropdown">
                                     <a class="nav-link "  href="rental.php?cari=semua" role="button" aria-haspopup="true" aria-expanded="false">Rental Mobil</a>
                                     <div class="dropdown-menu" data-dropdown-in="zoomIn" data-dropdown-out="zoomOut">
 
                                     </div>
-                                </li>
+                                </li> -->
 
                                 <li class="nav-item dropdown">
                                     <a class="nav-link "  href="cari_mobil.php?cari=semua" role="button" aria-haspopup="true" aria-expanded="false">Cari Mobil</a>
@@ -60,39 +64,84 @@ session_start(); // Memulai Session
                                     <div class="dropdown-menu" data-dropdown-in="zoomIn" data-dropdown-out="zoomOut">
 
                                     </div>
+                  <?php
+                }
+                  ?>
+                  <?php
+                  if(isset($_SESSION['costumer'])){
+                  ?>
+              
 
+                                <li class="nav-item dropdown">
+                                    <a class="nav-link dropdown-toggle" data-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false">Setting</a>
+                                    <div class="dropdown-menu" data-dropdown-in="zoomIn" data-dropdown-out="zoomOut">
+
+                                        <a class="dropdown-item" href="profil.php">Profile</a>
+                                        <a class="dropdown-item" href="data_pesanan.php">Data Pesanan</a>
+                                        <a class="dropdown-item" href="ubah_password.php">Ubah Password</a>
+
+
+                                    </div>
+                                </li>
+
+                  <?php
+                }
+                  ?>
               <?php
               if((isset($_SESSION['login']))||(isset($_SESSION['rental']))){
               ?>
-                            <li class="nav-item dropdown">
-                                <a class="nav-link dropdown-toggle" data-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false">Setting</a>
-                                <div class="dropdown-menu" data-dropdown-in="zoomIn" data-dropdown-out="zoomOut">
-                                  <?php
-                                  if(isset($_SESSION['rental'])){
-                                  ?>
-                                    <a class="dropdown-item" href="profil.php">Profile</a>
-                                    <a class="dropdown-item" href="data_mobil.php">Data Mobil</a>
-                                    <a class="dropdown-item" href="tambah_mobil.php">Tambah Mobil</a>
-                                    <a class="dropdown-item" href="ubah_password.php">Ubah Password</a>
-                                  <?php } ?>
-                                  <?php
-                                  if(isset($_SESSION['login'])){
-                                  ?>
-                                    <a class="dropdown-item" href="a_data_rental.php">Data Rental Mobil</a>
-                                    <a class="dropdown-item" href="a_verifikasi_rental.php">Verifikasi Rental Mobil</a>
-                                    <a class="dropdown-item" href="a_user.php">User</a>
-
-                                  <?php } ?>
-                                </div>
-                            </li>
-
               <?php
-            }
+              if(isset($_SESSION['rental'])){
               ?>
+              <li class="nav-item dropdown">
+                  <a class="nav-link "   href="profil.php"role="button" aria-haspopup="true" aria-expanded="false">Profile</a>
+                  <div class="dropdown-menu" data-dropdown-in="zoomIn" data-dropdown-out="zoomOut">
+              </div>
+              <li class="nav-item dropdown">
+                  <a class="nav-link "  href="data_mobil.php" role="button" aria-haspopup="true" aria-expanded="false">Data Mobil</a>
+                  <div class="dropdown-menu" data-dropdown-in="zoomIn" data-dropdown-out="zoomOut">
+              </div>
+              <li class="nav-item dropdown">
+                  <a class="nav-link "  href="pesanan_mobil.php" role="button" aria-haspopup="true" aria-expanded="false">Pemesanan Mobil</a>
+                  <div class="dropdown-menu" data-dropdown-in="zoomIn" data-dropdown-out="zoomOut">
+              </div>
+              <li class="nav-item dropdown">
+                  <a class="nav-link "  href="tambah_mobil.php" role="button" aria-haspopup="true" aria-expanded="false">Tambah Mobil</a>
+                  <div class="dropdown-menu" data-dropdown-in="zoomIn" data-dropdown-out="zoomOut">
+              </div>
+              <li class="nav-item dropdown">
+                  <a class="nav-link "  href="ubah_password.php" role="button" aria-haspopup="true" aria-expanded="false">Perbaharui Password</a>
+                  <div class="dropdown-menu" data-dropdown-in="zoomIn" data-dropdown-out="zoomOut">
+              </div>
+              <?php } ?>
+              <?php
+              if(isset($_SESSION['login'])){
+              ?>
+              <li class="nav-item dropdown">
+                  <a class="nav-link "  href="a_data_rental.php" role="button" aria-haspopup="true" aria-expanded="false">Data Rental Mobil</a>
+                  <div class="dropdown-menu" data-dropdown-in="zoomIn" data-dropdown-out="zoomOut">
+              </div>
+              <li class="nav-item dropdown">
+                  <a class="nav-link "  href="a_verifikasi_rental.php" role="button" aria-haspopup="true" aria-expanded="false">Verifikasi Rental Mobil</a>
+                  <div class="dropdown-menu" data-dropdown-in="zoomIn" data-dropdown-out="zoomOut">
+              </div>
+              <li class="nav-item dropdown">
+                  <a class="nav-link "  href="a_verifikasi_costumer.php" role="button" aria-haspopup="true" aria-expanded="false">Verifikasi Costumer</a>
+                  <div class="dropdown-menu" data-dropdown-in="zoomIn" data-dropdown-out="zoomOut">
+              </div>
+              <li class="nav-item dropdown">
+                  <a class="nav-link "  href="a_user.php" role="button" aria-haspopup="true" aria-expanded="false">User</a>
+                  <div class="dropdown-menu" data-dropdown-in="zoomIn" data-dropdown-out="zoomOut">
+              </div>
+              <?php } ?>
+              <?php } ?>
+
+
+
                 </ul>
 
                 <?php
-                if((isset($_SESSION['login']))||(isset($_SESSION['rental']))){
+                if((isset($_SESSION['login']))||(isset($_SESSION['rental']))||(isset($_SESSION['costumer']))){
                 ?>
                         <div class="header-default__menu-links">
                             <a href="proses/logout.php" class="btn btn-outline-primary">

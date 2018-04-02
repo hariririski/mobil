@@ -48,7 +48,7 @@
 
                         <div class="tab-content">
                             <div class="tab-pane active" id="page-auth__candiate-tab" role="tabpanel">
-                                <form action="proses/proses_login_costumer.php" method="post" class="page-auth__form form-controls-flat">
+                                <form action="proses/proses_login.php" method="post" class="page-auth__form form-controls-flat">
                                         <center><h3 >Login</h3></center>
 
                                     <div class="form-group">

@@ -35,15 +35,20 @@
 <?php include"share/menu.php";?>
 <div class="hero-travel-trips">
     <div class="container">
-        <h2 class="hero-travel-trips__heading">Cari Mobil</h2>
+        <font color="black"><h2 class="hero-travel-trips__heading">Cari Mobil</h2></font>
         <form action="#" class="hero-travel-trips__form">
-            <div class="form-control-inline-icon inline-icon-left hero-travel-trips__search-input">
-                <span class="icon iconfont-left iconfont-search-v2"></span>
+            <div class="row col-lg-12" >
+              <div class="col-lg-10">
+                <div class="alert alert-info" role="alert">
                 <?php
                 $cari=$_GET['cari'];
                 if($cari=='semua'){
                 ?>
-                    <input type="text" name="cari" class="form-control" placeholder="Cari Berdasarkan Merek, Tipe, Jenis Mobil, Tahun, Bahan Bakar">
+
+                  <input type="text" name="cari" class="form-control" placeholder="Cari Berdasarkan Merek, Tipe, Jenis Mobil, Tahun, Bahan Bakar">
+
+
+
                 <?php
                 }else if($cari!='semua'){
                 ?>
@@ -51,15 +56,23 @@
                 <?php
                 }
                 ?>
+              </div>
             </div>
+                <div class="col-lg-2">
+                  <br>
+                    <button type="sumbit" class="btn btn-primary hero-travel-trips__search-btn">Temukan</button>
+                </div>
 
 
 
 
 
 
-            <button type="sumbit" class="btn btn-primary hero-travel-trips__search-btn">Temukan</button>
+
+
+              </div>
         </form>
+
     </div>
 </div>
 
@@ -68,7 +81,11 @@
 
 
 
-
+<form class="filter-properties">
+    <div class="container">
+    
+    </div>
+</form>
 <div class="listing-travel-trips">
     <div class="container">
         <div class="row">
@@ -87,7 +104,7 @@
           }
           $total = mysqli_num_rows($sql);
           if($total==0&&$cari!="semua"){
-  
+
             echo'
             <div class="alert col-lg-12 alert-success" role="alert">
                 <button type="button" class="close" data-dismiss="alert" aria-label="Close">

@@ -18,41 +18,28 @@ $error=''; // Variabel untuk menyimpan pesan error
 		$password = stripslashes($password);
 		$username = mysqli_real_escape_string($con,$username);
 		$password = mysqli_real_escape_string($con,$password);
-		// Seleksi Database
 
-		// SQL query untuk memeriksa apakah karyawan terdapat di database?
-		$perintah="select * from admin where password='$password' AND username='$username'";
-		$query = mysqli_query($con,$perintah);
-		$rows = mysqli_num_rows($query);
-		$status=0;
-			if ($rows == 1) {
-				$_SESSION['login']=$username; // Membuat Sesi/session
-				header("location: ../index.php"); // Mengarahkan ke halaman profil
-				
-			} else {
-				$perintah="select * from rental where password='$password' AND username='$username'";
+
+				$perintah="select * from costumer where password='$password' AND username='$username'";
 				$query = mysqli_query($con,$perintah);
 
 				while($data = mysqli_fetch_array($query)){
-					$status=$data['status'];
+					$status=$data['verifikasi'];
 				}
 
 				$rows = mysqli_num_rows($query);
 
 						if ($rows == 1 && $status==1 ) {
-							$_SESSION['rental']=$username; // Membuat Sesi/session
+							$_SESSION['costumer']=$username; // Membuat Sesi/session
 							header("location: ../index.php"); // Mengarahkan ke halaman profil
 						} else if($rows == 1 && $status==0) {
-							$_SESSION['rental']=$username; // Membuat Sesi/session
+							$_SESSION['costumer']=$username; // Membuat Sesi/session
 						  echo "<script>alert('Warning, Akun Anda Belum Di Verifikasi Admin Silahkan Menghubungi admin')</script>";
-							echo '<script type="text/javascript">window.location = "../profil.php"</script>';
+							echo '<script type="text/javascript">window.location = "../profil_costumer.php"</script>';
 						} else if($rows == 0 && $status==0) {
 							echo "<script>alert('Maaf Data Tidak Cocok')</script>";
 							echo '<script type="text/javascript">window.location = "../login.php"</script>';
 						}
-			}
 
-
-	}
-
+}
 ?>
