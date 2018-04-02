@@ -110,6 +110,30 @@ if((empty($_SESSION['rental']))){
                                 </div>
                             </div>
                         </div>
+                        <div class="row">
+                            <div class="col-lg-12">
+                                <div class="form-group">
+                                    <label for="post-job__email">Nama Pemilik Rekening </label>
+                                    <input type="text" value="<?php echo $data['pemilik_rekening']?>" name="pemilik_rekening"  class="form-control" placeholder="Nama Pemilik Rekening">
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-lg-12">
+                                <div class="form-group">
+                                    <label for="post-job__email">Bank</label>
+                                    <input type="text" value="<?php echo $data['bank']?>" name="bank"  class="form-control" placeholder="Bank">
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-lg-12">
+                                <div class="form-group">
+                                    <label for="post-job__email">No Rekening</label>
+                                    <input type="number" value="<?php echo $data['rekening']?>" name="rekening"  class="form-control" placeholder="No Rekening">
+                                </div>
+                            </div>
+                        </div>
 
 
                         <div class="row">
@@ -118,6 +142,7 @@ if((empty($_SESSION['rental']))){
 
                                     <label for="post-job__email">Foto Rental</label>
                                     <input type="file" name="foto_rental"  class="form-control" placeholder="">
+                                    <br>
                                     <img src="rental/<?php echo $data['foto_rental']?>" width="30%">
                                 </div>
                             </div>

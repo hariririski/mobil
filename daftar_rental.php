@@ -94,6 +94,30 @@
                         <div class="row">
                             <div class="col-lg-12">
                                 <div class="form-group">
+                                    <label for="post-job__email">Nama Pemilik Rekening </label>
+                                    <input type="text"  name="pemilik_rekening"  class="form-control" placeholder="Nama Pemilik Rekening">
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-lg-12">
+                                <div class="form-group">
+                                    <label for="post-job__email">Bank</label>
+                                    <input type="text"  name="bank"  class="form-control" placeholder="Bank">
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-lg-12">
+                                <div class="form-group">
+                                    <label for="post-job__email">No Rekening</label>
+                                    <input type="number" name="rekening"  class="form-control" placeholder="No Rekening">
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-lg-12">
+                                <div class="form-group">
                                     <label for="post-job__email">Username</label>
                                     <input type="text" name="username"  class="form-control" placeholder="Username">
                                 </div>

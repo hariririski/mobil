@@ -28,7 +28,7 @@ $error=''; // Variabel untuk menyimpan pesan error
 			if ($rows == 1) {
 				$_SESSION['login']=$username; // Membuat Sesi/session
 				header("location: ../index.php"); // Mengarahkan ke halaman profil
-				
+
 			} else {
 				$perintah="select * from rental where password='$password' AND username='$username'";
 				$query = mysqli_query($con,$perintah);
@@ -48,7 +48,7 @@ $error=''; // Variabel untuk menyimpan pesan error
 							echo '<script type="text/javascript">window.location = "../profil.php"</script>';
 						} else if($rows == 0 && $status==0) {
 							echo "<script>alert('Maaf Data Tidak Cocok')</script>";
-							echo '<script type="text/javascript">window.location = "../login.php"</script>';
+							echo '<script type="text/javascript">window.location = "../admin.php"</script>';
 						}
 			}
 

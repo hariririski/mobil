@@ -7,13 +7,17 @@ session_start(); // Memulai Session
 		$no_hp_rental=$_POST['no_hp_rental'];
 		$no_hp_pemilik=$_POST['no_hp_pemilik'];
 		$nik=$_POST['nik'];
+		$pemilik_rekening=$_POST['pemilik_rekening'];
+		$rekening=$_POST['rekening'];
+		$bank=$_POST['bank'];
+
 		$nama_pemilik_rental=$_POST['nama_pemilik_rental'];
 		$username=$_POST['username'];
 		$password=md5($_POST['password']);
 		list($status, $name_file)=upload();
 		if($status){
-			$perintah="INSERT INTO `rental`(`nama_rental`, `alamat`, `nama_pemilik`, `no_hp_pemilik`, `no_hp_rental`,`username`, `password`, `foto_rental`, `nik`)
-								 VALUES 						 ('$nama_rental','$alamat','$nama_pemilik_rental','$no_hp_pemilik','$no_hp_rental','$username','$password','$name_file','$nik')";
+			$perintah="INSERT INTO `rental`(`nama_rental`, `alamat`, `nama_pemilik`, `no_hp_pemilik`, `no_hp_rental`,`username`, `password`, `foto_rental`, `nik`,`rekening`,`pemilik_rekening`,`bank`)
+								 VALUES 						 ('$nama_rental','$alamat','$nama_pemilik_rental','$no_hp_pemilik','$no_hp_rental','$username','$password','$name_file','$nik','$rekening','$pemilik_rekening','$bank')";
 			$query = mysqli_query($con,$perintah);
 				if ($query) {
 							echo "<script>alert('Perdaftaran Berhasil, Tungggu Di Verifikasi Admin atau Mengkonfirmasi Langsung Ke admin')</script>";

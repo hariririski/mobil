@@ -12,13 +12,16 @@ session_start(); // Memulai Session
 			$nik=$_POST['nik'];
 			$nama_pemilik_rental=$_POST['nama_pemilik_rental'];
 			$foto_rental=$_FILES["foto_rental"]["name"];
-			if($gambar!=$foto_rental){
+			$pemilik_rekening=$_POST['pemilik_rekening'];
+			$rekening=$_POST['rekening'];
+			$bank=$_POST['bank'];
+			if(!empty($foto_rental)){
 				chown("../rental/$gambar",465);
 				unlink("../rental/$gambar");
 				list($status, $name_file)=upload();
-				$perintah="UPDATE `rental` SET `nama_rental`='$nama_rental',`alamat`='$alamat',`nama_pemilik`='$nama_pemilik_rental',`no_hp_pemilik`='$no_hp_pemilik',`no_hp_rental`='$no_hp_rental',`foto_rental`='$name_file',`nik`='$nik' WHERE id_rental='$id'";
+				$perintah="UPDATE `rental` SET `nama_rental`='$nama_rental',`alamat`='$alamat',`nama_pemilik`='$nama_pemilik_rental',`no_hp_pemilik`='$no_hp_pemilik',`no_hp_rental`='$no_hp_rental',`foto_rental`='$name_file',`nik`='$nik',`rekening`='$rekening',`pemilik_rekening`='$pemilik_rekening',`bank`='$bank' WHERE id_rental='$id'";
 			}else{
-				$perintah="UPDATE `rental` SET `nama_rental`='$nama_rental',`alamat`='$alamat',`nama_pemilik`='$nama_pemilik_rental',`no_hp_pemilik`='$no_hp_pemilik',`no_hp_rental`='$no_hp_rental',`nik`='$nik' WHERE id_rental='$id'";
+				$perintah="UPDATE `rental` SET `nama_rental`='$nama_rental',`alamat`='$alamat',`nama_pemilik`='$nama_pemilik_rental',`no_hp_pemilik`='$no_hp_pemilik',`no_hp_rental`='$no_hp_rental',`nik`='$nik',`pemilik_rekening`='$pemilik_rekening',`bank`='$bank' WHERE id_rental='$id'";
 			}
 			$query = mysqli_query($con,$perintah);
 
