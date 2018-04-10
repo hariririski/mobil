@@ -53,7 +53,8 @@ while($data = mysqli_fetch_array($query)){
         <div class="col-xs-6">
           <address>
             <strong>Metode Pembayaran:</strong><br>
-            <?php echo $data['bank']?> - <?php echo $data['rekening']?><br>
+            Transfer Ke <br>
+            Bank <?php echo $data['bank']?> - <?php echo $data['rekening']?><br>
             An. <?php echo $data['pemilik_rekening']?>
           </address>
         </div>

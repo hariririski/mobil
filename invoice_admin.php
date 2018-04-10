@@ -79,7 +79,7 @@
         <div class="form-group row">
             <label for="example-text-input" class="col-5 col-form-label">Bukti Pembayaran</label>
             <div class="col-7">
-                <img src="bukti_pembayaran/value="<?php echo $data['bukti_pembayaran'];?>"">
+                <img src="bukti_pembayaran/<?php echo $data['bukti_pembayaran'];?>"">
 
             </div>
         </div>
@@ -88,20 +88,20 @@
     <div class="form-group row">
       <div class="col-lg-3">
         <div class="dropdown">
-            <button class="btn btn-danger btn-block " type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+            <a href="proses/pembayaran_tidak.php?invoice=<?php echo $data['invoice'];?>"><button class="btn btn-danger btn-block " type="submit" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                 Verifikasi Gagal
             </button>
-
+          </a>
 
         </div>
       </div>
         <div class="col-lg-3">
             <div class="dropdown">
-
-                <button class="btn btn-success btn-block " type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+              <a href="proses/pembayaran_ya.php?invoice=<?php echo $data['invoice'];?>">
+                <button class="btn btn-success btn-block " type="submit" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                     Verifikasi Berhasil
                 </button>
-
+              </a>
             </div>
         </div>
 

@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Host: 127.0.0.1
--- Generation Time: Apr 10, 2018 at 06:51 AM
+-- Generation Time: Apr 10, 2018 at 11:26 AM
 -- Server version: 10.1.19-MariaDB
 -- PHP Version: 5.5.38
 
@@ -120,7 +120,6 @@ CREATE TABLE `pesan` (
   `tanggal_mulai` date NOT NULL,
   `tanggal_selesai` date NOT NULL,
   `harga` int(10) NOT NULL,
-  `status` int(2) NOT NULL,
   `bank_pengirim` varchar(50) DEFAULT NULL,
   `rek_pengirim` varchar(100) DEFAULT NULL,
   `bukti_pembayaran` varchar(255) DEFAULT NULL,
@@ -132,9 +131,9 @@ CREATE TABLE `pesan` (
 -- Dumping data for table `pesan`
 --
 
-INSERT INTO `pesan` (`id_costumer`, `no_pol`, `invoice`, `tanggal_pesan`, `tanggal_mulai`, `tanggal_selesai`, `harga`, `status`, `bank_pengirim`, `rek_pengirim`, `bukti_pembayaran`, `nominal`, `verifikasi_pembayaran`) VALUES
-(1, 'BK 1696 WE', 1, '2018-04-09 14:41:48', '2018-04-16', '2018-04-17', 150000, 0, NULL, NULL, NULL, NULL, 0),
-(1, 'BK 1696 WE', 2, '2018-04-09 14:44:46', '2018-04-18', '2018-04-20', 150000, 0, NULL, NULL, NULL, NULL, 0);
+INSERT INTO `pesan` (`id_costumer`, `no_pol`, `invoice`, `tanggal_pesan`, `tanggal_mulai`, `tanggal_selesai`, `harga`, `bank_pengirim`, `rek_pengirim`, `bukti_pembayaran`, `nominal`, `verifikasi_pembayaran`) VALUES
+(1, 'BK 1696 WE', 1, '2018-04-10 09:24:38', '2018-04-16', '2018-04-17', 150000, 'BCA', '123456789', 'wGUntEOMWHqayF09xmsJcKfQ2RrTzi.jpg', 12345689, 2),
+(1, 'BK 1696 WE', 2, '2018-04-09 14:44:46', '2018-04-18', '2018-04-20', 150000, NULL, NULL, NULL, NULL, 0);
 
 -- --------------------------------------------------------
 

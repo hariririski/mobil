@@ -40,6 +40,7 @@
 <div class="container">
     <label >Konfirmasi Pembayaran</label>
     <div class="col-lg-7">
+      <form action="proses/upload_bukti_pembayaran.php?invoice=<?php echo$data['invoice'];?>" method="post"  enctype="multipart/form-data">
       <div class="form-group row">
           <label for="example-text-input-with-left-button" class="col-5 col-form-label">Status Pembayaran</label>
           <div class="col-7">
@@ -52,18 +53,18 @@
           </div>
 
       </div>
-
+        <?php if($data['verifikasi_pembayaran']!=2){?>
         <div class="form-group row">
             <label for="example-text-input" class="col-5 col-form-label">Bank Pengirim</label>
             <div class="col-7">
-                <input class="form-control" type="text"  id="example-text-input" >
+                <input class="form-control" required type="text" name="bank_pengirim" id="example-text-input" >
 
             </div>
         </div>
         <div class="form-group row">
             <label for="example-text-input" class="col-5 col-form-label">NO Rekening Pengirim</label>
             <div class="col-7">
-                <input class="form-control" type="text"  id="example-text-input" >
+                <input class="form-control" required  type="text"  name="rek_pengirim" id="example-text-input" >
 
             </div>
         </div>
@@ -71,7 +72,7 @@
         <div class="form-group row">
             <label for="example-text-input" class="col-5 col-form-label">Nominal</label>
             <div class="col-7">
-                <input class="form-control" type="text"  id="example-text-input" >
+                <input class="form-control" required  type="text" name="nominal" id="example-text-input" >
 
             </div>
         </div>
@@ -79,16 +80,18 @@
         <div class="form-group row">
             <label for="example-text-input" class="col-5 col-form-label">Upload Bukti Pembayaran</label>
             <div class="col-7">
-                <input class="form-control" type="file"  id="example-text-input" >
+                <input type="file" name="bukti_pembayaran"  class="form-control" placeholder="">
 
             </div>
         </div>
+          <?php }?>
     </div>
+      <?php if($data['verifikasi_pembayaran']!=2){?>
     <div class="form-group row">
         <label for="example-text-input-with-left-button" class="col-5 col-form-label"></label>
         <div class="col-2">
             <div class="dropdown">
-                <button class="btn btn-success btn-block " type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                <button class="btn btn-success btn-block " type="sumbit" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                     Simpan
                 </button>
 
@@ -96,7 +99,8 @@
         </div>
 
     </div>
-
+      <?php }?>
+  </form>
 </div>
 
 <?php }?>
