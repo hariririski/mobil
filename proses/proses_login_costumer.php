@@ -22,7 +22,7 @@ $error=''; // Variabel untuk menyimpan pesan error
 
 				$perintah="select * from costumer where password='$password' AND username='$username'";
 				$query = mysqli_query($con,$perintah);
-
+				$status=null;
 				while($data = mysqli_fetch_array($query)){
 					$status=$data['verifikasi'];
 				}

@@ -88,6 +88,8 @@ if((empty($_SESSION['rental']))){
                                       <th>Merek</th>
                                       <th>Jenis</th>
                                       <th>Tipe</th>
+                                      <th>Tanggal Mulai</th>
+                                      <th>Tanggal Selesai</th>
                                       <th>Detail</th>
                                   </tr>
                               </thead>
@@ -106,7 +108,9 @@ if((empty($_SESSION['rental']))){
                                       <td><?php echo $data['merek'];?></td>
                                       <td><?php echo $data['jenis'];?></td>
                                       <td><?php echo $data['tipe'];?></td>
-                                      <td class="center"><a href="detail_mobil.php?id=<?php echo $data['no_pol'];?>"><button type="button" class="btn btn-info btn-xs">Detail</button></td>
+                                      <td><?php echo $data['tanggal_mulai'];?></td>
+                                      <td><?php echo $data['tanggal_selesai'];?></td>
+                                      <td class="center"><a href="invoice_admin.php?id=<?php echo $data['invoice'];?>"><button type="button" class="btn btn-info btn-xs">Detail</button></td>
                                   </tr>
                                   <?php  }?>
 

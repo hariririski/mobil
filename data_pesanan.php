@@ -69,9 +69,8 @@ if((empty($_SESSION['costumer']))){
                                       <th>Tanggal Order</th>
                                       <th>Tanggal Sewa</th>
                                       <th>Mobil</th>
-                                      <th>Total</th>
                                       <th>Status</th>
-                                      <th>Upload Bukti Pembayaran</th>
+                                      <th>Detail</th>
                                   </tr>
                               </thead>
                               <tbody>
@@ -79,7 +78,7 @@ if((empty($_SESSION['costumer']))){
                                 include 'share/db.php';
                                 $i=0;
                                 $id_costumer=$_SESSION['costumer'];
-                                $query = mysqli_query($con,"select * from pesan left join costumer on costumer.id_costumer=pesan.id_costumer where costumer.username='$id_costumer' ");
+                                $query = mysqli_query($con,"SELECT * from pesan left JOIN mobil on pesan.no_pol=mobil.no_pol left join costumer on costumer.id_costumer=pesan.id_costumer left JOIN rental on rental.id_rental=mobil.id_rental WHERE costumer.username='$id_costumer' ");
                                 while($data = mysqli_fetch_array($query)){
                                   $i++;
 
@@ -90,9 +89,10 @@ if((empty($_SESSION['costumer']))){
                                       <td><?php echo $data['invoice'];?></td>
                                       <td><?php echo $data['tanggal_pesan'];?></td>
                                       <td><?php echo $data['tanggal_mulai'];?> - <?php echo $data['tanggal_selesai'];?></td>
-                                      <td><?php //$data['foto_depan'];?></td>
-                                      <td><?php echo    $data['tanggal_mulai']->diff( $data['tanggal_selesai']) * $data['harga'];?></td>
-                                      <td class="center"><a href="detail_rental.php?id=<?php echo $data['id_rental'];?>"><button type="button" class="btn btn-info btn-xs">Detail</button></td>
+                                      <td><?php echo $data['no_pol'];?></td>
+                                      <td>  <?php if($data['verifikasi_pembayaran']==0){echo"Belum Melakukan Pembayaran";}else if($data['verifikasi_pembayaran']==1){echo"Pembayaran Belum Di Verifikasi";}if($data['verifikasi_pembayaran']==2){echo"Pembayaran Berhasil";}if($data['verifikasi_pembayaran']==3){echo"Pembayaran Gagal";} ?></td>
+
+                                      <td class="center"><a href="invoice.php?id=<?php echo $data['invoice'];?>"><button type="button" class="btn btn-info btn-xs">Detail</button></td>
                                   </tr>
                                   <?php  }?>
 

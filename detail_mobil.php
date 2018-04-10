@@ -137,7 +137,7 @@
         </div>
     </div>
     <div class="apartment__owner-actions">
-        <a href="#" class="btn btn-primary btn-lg">Pesan Sekarang</a>
+        <a href="ketersediaan.php?id=<?php echo $data['no_pol'];?>" class="btn btn-primary btn-lg">Pesan Sekarang</a>
 
     </div>
 </div>

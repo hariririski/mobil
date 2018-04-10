@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Host: 127.0.0.1
--- Generation Time: Apr 02, 2018 at 04:12 PM
+-- Generation Time: Apr 10, 2018 at 06:51 AM
 -- Server version: 10.1.19-MariaDB
 -- PHP Version: 5.5.38
 
@@ -49,7 +49,7 @@ INSERT INTO `admin` (`id_admin`, `username`, `nama`, `password`) VALUES
 CREATE TABLE `costumer` (
   `id_costumer` int(255) NOT NULL,
   `nama` varchar(50) NOT NULL,
-  `alamat` varchar(100) NOT NULL,
+  `alamat` varchar(255) NOT NULL,
   `no_hp` varchar(15) NOT NULL,
   `email` varchar(50) NOT NULL,
   `username` varchar(50) NOT NULL,
@@ -64,7 +64,7 @@ CREATE TABLE `costumer` (
 --
 
 INSERT INTO `costumer` (`id_costumer`, `nama`, `alamat`, `no_hp`, `email`, `username`, `password`, `foto_ktp`, `foto_ktp_orang`, `verifikasi`) VALUES
-(1, 'aaaa', 'a', '11111', 'aa@gmail.com', 'cs', '95cc64dd2825f9df13ec4ad683ecf339', 'TRBh9SyerxpqbIMcvuYK7Fi2s0kXjl.jpg', 'aE6gfLOP0Tx4MR8miwnHZJeUsQ7uXA.jpg', 1);
+(1, 'Iskandar', 'Alamat Pengirim ditulis lengkap meliputi : Nama Jalan dan nomor jalan, RT, RW, Desa/Kelurahan, Kecamatan, Kota/Kabupaten, Provinsi, kode pos dan Negara (Apabila dikirim ke negera lain).Alamat penerima dibutuhkan apabila kiriman tersebut', '082237653721', 'iskandar@gmail.com', 'cs', '95cc64dd2825f9df13ec4ad683ecf339', 'TRBh9SyerxpqbIMcvuYK7Fi2s0kXjl.jpg', 'aE6gfLOP0Tx4MR8miwnHZJeUsQ7uXA.jpg', 1);
 
 -- --------------------------------------------------------
 
@@ -119,15 +119,22 @@ CREATE TABLE `pesan` (
   `tanggal_pesan` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
   `tanggal_mulai` date NOT NULL,
   `tanggal_selesai` date NOT NULL,
-  `harga` int(10) NOT NULL
+  `harga` int(10) NOT NULL,
+  `status` int(2) NOT NULL,
+  `bank_pengirim` varchar(50) DEFAULT NULL,
+  `rek_pengirim` varchar(100) DEFAULT NULL,
+  `bukti_pembayaran` varchar(255) DEFAULT NULL,
+  `nominal` int(11) DEFAULT NULL,
+  `verifikasi_pembayaran` int(11) DEFAULT '0'
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
 -- Dumping data for table `pesan`
 --
 
-INSERT INTO `pesan` (`id_costumer`, `no_pol`, `invoice`, `tanggal_pesan`, `tanggal_mulai`, `tanggal_selesai`, `harga`) VALUES
-(1, '0987654', 1, '2018-03-30 09:24:05', '2018-03-01', '2018-03-10', 150000);
+INSERT INTO `pesan` (`id_costumer`, `no_pol`, `invoice`, `tanggal_pesan`, `tanggal_mulai`, `tanggal_selesai`, `harga`, `status`, `bank_pengirim`, `rek_pengirim`, `bukti_pembayaran`, `nominal`, `verifikasi_pembayaran`) VALUES
+(1, 'BK 1696 WE', 1, '2018-04-09 14:41:48', '2018-04-16', '2018-04-17', 150000, 0, NULL, NULL, NULL, NULL, 0),
+(1, 'BK 1696 WE', 2, '2018-04-09 14:44:46', '2018-04-18', '2018-04-20', 150000, 0, NULL, NULL, NULL, NULL, 0);
 
 -- --------------------------------------------------------
 
@@ -148,17 +155,20 @@ CREATE TABLE `rental` (
   `password` varchar(255) NOT NULL,
   `foto_rental` varchar(255) NOT NULL,
   `nik` varchar(30) NOT NULL,
-  `tanggal_daftar` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP
+  `tanggal_daftar` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
+  `pemilik_rekening` varchar(100) NOT NULL,
+  `rekening` varchar(25) NOT NULL,
+  `bank` varchar(10) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
 -- Dumping data for table `rental`
 --
 
-INSERT INTO `rental` (`id_rental`, `nama_rental`, `alamat`, `nama_pemilik`, `no_hp_pemilik`, `no_hp_rental`, `status`, `id_admin`, `username`, `password`, `foto_rental`, `nik`, `tanggal_daftar`) VALUES
-(47, 'CV. Caecear', 'Jl. Pocut Baren Banda Aceh', 'Muhammad Reza', '085277898890', '0651788998', 1, 'admin', 'M_Reza', '21232f297a57a5a743894a0e4a801fc3', 'yJ9FqLEh28lGTcBHM0tinz6KS5umI7.jpg', '1171090804920002', '2018-03-15 04:21:46'),
-(48, 'cv. Cn Rental', 'Jln soekarno hatta belakang gedung wali nanggroe banda aceh', 'ILHAM', '085260878012', '0651878977', 1, 'admin', 'ilham', '21232f297a57a5a743894a0e4a801fc3', 'gjS41XuERkiHpvVhJ5eY9CWU76Z0NL.jpg', '11710901820001', '2018-03-15 05:39:00'),
-(49, 'CV. Plaza Atjeh', 'Jl. Prof. Ali Hasyimi, Lamteh, Ulee Kareng, Banda Aceh', 'Muhammad Rizal', '08126999151', '065134785', 1, 'admin', 'rizal', '21232f297a57a5a743894a0e4a801fc3', '0Tk9oDUFwdisAZKCVp6ELXQtNcr12J.jpg', '11810902810001', '2018-03-15 19:44:54');
+INSERT INTO `rental` (`id_rental`, `nama_rental`, `alamat`, `nama_pemilik`, `no_hp_pemilik`, `no_hp_rental`, `status`, `id_admin`, `username`, `password`, `foto_rental`, `nik`, `tanggal_daftar`, `pemilik_rekening`, `rekening`, `bank`) VALUES
+(47, 'CV. Caecear', 'Jl. Pocut Baren Banda Aceh', 'Muhammad Reza', '085277898890', '0651788998', 1, 'admin', 'M_Reza', '21232f297a57a5a743894a0e4a801fc3', 'O8uCWXKEyqgHmLUi5fwrd21TpBhV0M.jpg', '1171090804920002', '2018-04-02 14:42:51', 'Rizal', '09876543212345678', 'Aceh'),
+(48, 'cv. Cn Rental', 'Jln soekarno hatta belakang gedung wali nanggroe banda aceh', 'ILHAM', '085260878012', '0651878977', 1, 'admin', 'ilham', '21232f297a57a5a743894a0e4a801fc3', 'gjS41XuERkiHpvVhJ5eY9CWU76Z0NL.jpg', '11710901820001', '2018-03-15 05:39:00', '', '', ''),
+(49, 'CV. Plaza Atjeh', 'Jl. Prof. Ali Hasyimi, Lamteh, Ulee Kareng, Banda Aceh', 'Muhammad Rizal', '08126999151', '065134785', 1, 'admin', 'rizal', '21232f297a57a5a743894a0e4a801fc3', '0Tk9oDUFwdisAZKCVp6ELXQtNcr12J.jpg', '11810902810001', '2018-03-15 19:44:54', '', '', '');
 
 --
 -- Indexes for dumped tables
@@ -210,7 +220,7 @@ ALTER TABLE `costumer`
 -- AUTO_INCREMENT for table `pesan`
 --
 ALTER TABLE `pesan`
-  MODIFY `invoice` int(255) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  MODIFY `invoice` int(255) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 --
 -- AUTO_INCREMENT for table `rental`
 --

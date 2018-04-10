@@ -1,10 +1,9 @@
-
 <!DOCTYPE html>
 <html lang="en">
 <!-- BEGIN HEAD -->
 <head>
     <meta charset="UTF-8">
-    <title>Profil Costumer</title>
+    <title>Cek Ketersediaan</title>
 
     <meta http-equiv="X-UA-Compatible" content="IE=edge"/>
     <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -18,217 +17,377 @@
     <link rel="stylesheet" type="text/css" href="fonts/iconfont/styles.css">
     <!-- END GLOBAL MANDATORY STYLES -->
 
-
-
-<link rel="stylesheet" type="text/css" href="vendors/select2/css/select2.min.css">
-<link rel="stylesheet" type="text/css" href="css/vendors/select2/select2.min.css">
-
-
     <!-- BEGIN THEME STYLES -->
     <link rel="stylesheet" type="text/css" href="css/style.min.css">
     <!-- END THEME STYLES -->
+	<link href='vendors/fullcalendar.min.css' rel='stylesheet' />
+	<link href='vendors/fullcalendar.print.min.css' rel='stylesheet' media='print' />
+	<script src='vendors/lib/moment.min.js'></script>
+	<script src='vendors/lib/jquery.min.js'></script>
+	<script src='vendors/fullcalendar.min.js'></script>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datetimepicker/3.1.3/css/bootstrap-datetimepicker.min.css">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/css/bootstrap.min.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/jquery.bootstrapvalidator/0.5.3/css/bootstrapValidator.min.css">
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/js/bootstrap.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.bootstrapvalidator/0.5.3/js/bootstrapValidator.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.10.2/moment.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datetimepicker/3.1.3/js/bootstrap-datetimepicker.min.js"></script>
 
-    <style type="text/css">
-    .card-block {
-    padding: 2px 2px;
-    font-size: 12px;
-}
-  div{
-  -moz-border-radius-topleft: 4px; -webkit-border-top-left-radius: 4px; -khtml-border-top-left-radius: 4px; border-top-left-radius: 4px;
-  -moz-border-radius-topright: 4px; -webkit-border-top-right-radius: 4px; -khtml-border-top-right-radius: 4px; border-top-right-radius: 4px;
-  -moz-border-radius-bottomleft: 4px; -webkit-border-bottom-left-radius: 4px; -khtml-border-bottom-left-radius: 4px; border-bottom-left-radius: 4px;
-  -moz-border-radius-bottomright: 4px; -webkit-border-bottom-right-radius: 4px; -khtml-border-bottom-right-radius: 4px; border-bottom-right-radius: 4px;
-  }
-  body{
-  font-family:Arial, Helvetica, sans-serif;
-  font-size:11px;
-  }
-  .hari{
-  float:left;
-  padding:7px;
-  width:65px;
-  text-align:center;
-  margin:2px;
-  background:#0CF;
-  background-image:-webkit-linear-gradient(top,#ffffff 0%,#3e9ad2 100%);
-  background-image:-moz-linear-gradient(top,#ffffff 0%,#3e9ad2 100%);
-  background-image:-o-linear-gradient(top,#ffffff 0%,#3e9ad2 100%);
-  background-image:-ms-linear-gradient(top,#ffffff 0%,#3e9ad2 100%);
-  background-image:linear-gradient(top,#ffffff 0%,#3e9ad2 100%);
-}
-  .tgl{
-  float:left;
-  padding:7px;
-  width:65px;
-  text-align:center;
-  margin:2px;
-  background:#CCC;
-  background-image: -webkit-gradient(linear, 0 0, 0 100%, from(#ffffff), color-stop(27%, #ffffff), to(#e6e6e6));
-  background-image: -webkit-linear-gradient(#ffffff, #ffffff 27%, #e6e6e6);
-  background-image: -moz-linear-gradient(top, #ffffff, #ffffff 27%, #e6e6e6);
-  background-image: -ms-linear-gradient(#ffffff, #ffffff 27%, #e6e6e6);
-  background-image: -o-linear-gradient(#ffffff, #ffffff 27%, #e6e6e6);
-  background-image: linear-gradient(#ffffff, #ffffff 27%, #e6e6e6);
-  }
-  .tgl:hover{
-  background-image: -khtml-gradient(linear, left top, left bottom, from(#049cdb), to(#0064cd));
-  background-image: -moz-linear-gradient(top, #049cdb, #0064cd);
-  background-image: -ms-linear-gradient(top, #049cdb, #0064cd);
-  background-image: -webkit-gradient(linear, left top, left bottom, color-stop(0%, #049cdb), color-stop(100%, #0064cd));
-  background-image: -webkit-linear-gradient(top, #049cdb, #0064cd);
-  background-image: -o-linear-gradient(top, #049cdb, #0064cd);
-  background-image: linear-gradient(top, #049cdb, #0064cd);
-  color:#FFF;
-  }
-  .float_habis{
-  padding:1px;
-  text-align:center;
-  }
-  .tgl_blank{
-  float:left;
-  padding:7px;
-  width:65px;
-  text-align:center;
-  margin:2px;
-  background:#F8F8F8;
-  color:#CCC;
+    <script>
+
+  $(document).ready(function() {
+
+    $('#calendar').fullCalendar({
+      header: {
+        left: 'prev,next today',
+        center: 'title',
+        right: 'month,agendaWeek,agendaDay,listMonth'
+      },
+      defaultDate: '<?php echo date("Y-m-d")?>',
+      navLinks: true, // can click day/week names to navigate views
+      businessHours: true, // display business hours
+      editable: true,
+      events: [
+
+        <?php
+        $id=$_GET['id'];
+        include 'share/db.php';
+        $sql="select * from pesan where no_pol='$id' and tanggal_mulai>='".date('Y-m-d')."'";
+        $query = mysqli_query($con,$sql);
+        while($data = mysqli_fetch_array($query)){
+          $tanggal_selesai=date('Y-m-d', strtotime('+1 days', strtotime($data['tanggal_selesai'])));
+        ?>
+        {
+
+          start: '<?php echo $data['tanggal_mulai']?>',
+          end: '<?php echo $tanggal_selesai?>',
+          overlap: true,
+          rendering: 'background',
+          color: '#ff0000'
+        },
+        <?php } ?>
+        {
+
+        }
+      ]
+    });
+
+  });
+
+</script>
+<style>
+
+
+
+  #calendar {
+    max-width: 900px;
+    margin: 0 auto;
+    padding: 30px;
   }
 
-  .tgl_skrng{
-  float:left;
-  padding:7px;
-  width:65px;
-  text-align:center;
-  margin:2px;
-  background:#FC0;
-  }
-
-  .sedang{
-  float:left;
-  padding:7px;
-  width:65px;
-  text-align:center;
-  margin:2px;
-  background:#ff0505;
-  }
-
-  .blokbaris{
-  padding:7px;
-  text-align:center;
-  margin:2px;
-  }
 </style>
+
+
+<script>
+var bindDateRangeValidation = function (f, s, e) {
+    if(!(f instanceof jQuery)){
+			console.log("Not passing a jQuery object");
+    }
+
+    var jqForm = f,
+        startDateId = s,
+        endDateId = e;
+
+    var checkDateRange = function (startDate, endDate) {
+        var isValid = (startDate != "" && endDate != "") ? startDate <= endDate : true;
+        return isValid;
+    }
+
+    var bindValidator = function () {
+        var bstpValidate = jqForm.data('bootstrapValidator');
+        var validateFields = {
+            startDate: {
+                validators: {
+                    notEmpty: { message: 'This field is required.' },
+                    callback: {
+                        message: 'Start Date must less than or equal to End Date.',
+                        callback: function (startDate, validator, $field) {
+                            return checkDateRange(startDate, $('#' + endDateId).val())
+                        }
+                    }
+                }
+            },
+            endDate: {
+                validators: {
+                    notEmpty: { message: 'This field is required.' },
+                    callback: {
+                        message: 'End Date must greater than or equal to Start Date.',
+                        callback: function (endDate, validator, $field) {
+                            return checkDateRange($('#' + startDateId).val(), endDate);
+                        }
+                    }
+                }
+            },
+          	customize: {
+                validators: {
+                    customize: { message: 'customize.' }
+                }
+            }
+        }
+        if (!bstpValidate) {
+            jqForm.bootstrapValidator({
+                excluded: [':disabled'],
+            })
+        }
+
+        jqForm.bootstrapValidator('addField', startDateId, validateFields.startDate);
+        jqForm.bootstrapValidator('addField', endDateId, validateFields.endDate);
+
+    };
+
+    var hookValidatorEvt = function () {
+        var dateBlur = function (e, bundleDateId, action) {
+            jqForm.bootstrapValidator('revalidateField', e.target.id);
+        }
+
+        $('#' + startDateId).on("dp.change dp.update blur", function (e) {
+            $('#' + endDateId).data("DateTimePicker").setMinDate(e.date);
+            dateBlur(e, endDateId);
+        });
+
+        $('#' + endDateId).on("dp.change dp.update blur", function (e) {
+            $('#' + startDateId).data("DateTimePicker").setMaxDate(e.date);
+            dateBlur(e, startDateId);
+        });
+    }
+
+    bindValidator();
+    hookValidatorEvt();
+};
+
+
+$(function () {
+    var sd = new Date(), ed = new Date();
+
+    $('#startDate').datetimepicker({
+      pickTime: false,
+      format: "YYYY/MM/DD",
+      defaultDate: sd,
+      maxDate: ed
+    });
+
+    $('#endDate').datetimepicker({
+      pickTime: false,
+      format: "YYYY/MM/DD",
+      defaultDate: ed,
+      minDate: sd
+    });
+
+    //passing 1.jquery form object, 2.start date dom Id, 3.end date dom Id
+    bindDateRangeValidation($("#form"), 'startDate', 'endDate');
+});
+</script>
+
 </head>
 <!-- BEGIN HEAD -->
-<body class="">
-  <?php include"share/menu.php";?>
-
+<body >
   <?php
-  kalender(4,2018);
-  kalender(5,2018);
+  error_reporting(E_ALL ^ (E_NOTICE | E_WARNING|E_ALL));
+  include"share/menu.php";?>
+  <div class="apartment__full-description">
+    <div class="container">
+        <p>
+        Jadwal Ketersediaan Mobil</p>
 
-function kalender($bulan,$tahun){
-          $sewa[0]="4-4-2018";
-          $sewa[1]="2-4-2018";
-          $sewa[2]="11-4-2018";
-          $sewa[3]="24-4-2018";
-          $sewa[4]="10-4-2018";
+    </div>
+</div>
+<div class="container">
+<div class="row">
+<br>
+<br>
+   <div id='calendar'></div>
+<div class="row ">
+<div class="container">
+  <br>
+  <?php
+  $harga_sewa=0;
+  $query = mysqli_query($con,"select * from mobil where no_pol='$id'");
+  while($data = mysqli_fetch_array($query)){
+  $harga_sewa=$data['harga_sewa'];
 
-          $nama_bulan[1]="Januari";
-          $nama_bulan[2]="February";
-          $nama_bulan[3]="Maret";
-          $nama_bulan[4]="April";
-          $nama_bulan[5]="Mei";
-          $nama_bulan[6]="Juni";
-          $nama_bulan[7]="Juli";
-          $nama_bulan[8]="Agustus";
-          $nama_bulan[9]="September";
-          $nama_bulan[10]="Oktober";
-          $nama_bulan[11]="November";
-          $nama_bulan[12]="Desember";
+  ?>
 
-          $now = getdate(time());
+    <div class="col-xl-3 col-lg-4 col-md-6">
+        <div class="listing-travel-trips__item">
+            <div class="listing-travel-trips__item-image" >
+                <center><img height="160px"  width="255px" src="mobil/<?php echo $data['foto_samping'];?>" alt="" ></center>
+                <div class="listing-travel-trips__item-title">
+                    <span><?php echo $data['merek'];?></span>
+                </div>
+            </div>
+            <div class="listing-travel-trips__item-info">
+                <div class="listing-travel-trips__item-description">
+                  <table width="100%" border="0">
+                    <tr>
+                      <td width="40%">
+                        Nama Rental
+                      </td>
+                      <td width="5%">
+                        :
+                      </td>
+                      <td>
+                      <?php echo $data['nama_rental'];?>
+                      </td>
+                    </tr>
+                    <tr>
+                      <td>
+                        Merek
+                      </td>
+                      <td>
+                        :
+                      </td>
+                      <td>
+                        <?php echo $data['merek'];?>
+                      </td>
+                    </tr>
+                    <tr>
+                      <td>
+                        Jenis
+                      </td>
+                      <td>
+                        :
+                      </td>
+                      <td>
+                        <?php echo $data['jenis'];?>
+                      </td>
+                    </tr>
+                    <tr>
+                      <td>
+                        Tipe
+                      </td>
+                      <td>
+                        :
+                      </td>
+                      <td>
+                        <?php echo $data['tipe'];?>
+                      </td>
+                    </tr>
+                    <tr>
+                      <td>
+                        Bahan Bakar
+                      </td>
+                      <td>
+                        :
+                      </td>
+                      <td>
+                        <?php echo $data['bahan_bakar'];?>
+                      </td>
+                    </tr>
+                    <tr>
+                      <td>
+                        Jenis
+                      </td>
+                      <td>
+                        :
+                      </td>
+                      <td>
+                        <?php echo $data['jenis'];?>
+                      </td>
+                    </tr>
 
-          $time = mktime(0,0,0, $bulan, 1, $tahun);
-          $date = getdate($time);
-          $dayTotal = cal_days_in_month(0, $bulan, $tahun);
-          //Print the calendar header with the month name.
-          print'
-          <div class="col-lg-12">
+                  </table>
+
+
+
+                </div>
+                <div class="listing-travel-trips__item-details">
+                    <div class="listing-travel-trips__item-details-price">
+                        <span class="heading">Harga Sewa</span>
+                        <span class="value">Rp.<?php echo $data['harga_sewa'];?> </span>
+                    </div>
+                    <div class="listing-travel-trips__item-details-price">
+                        <span class="heading">Waktu</span>
+                        <span class="value">1 Hari</span>
+                    </div>
+
+
+                </div>
+            </div>
+        </div>
+    </div>
+ <?php } ?>
+
+  <form id="form" action="proses_pesan.php"name="form" class="form-inline">
+
           <div class="col-lg-5">
-          <div class="card card-outline-info mb-3 ">
-            <div class="card-header bg-info">' . $nama_bulan[$bulan] . '</div>
-          <div class="card-block">';
-          print '<div class=blokbaris>';
-          $hari=array('Minggu','Senin','Selasa','Rabu','Kamis','Jumat','Sabtu');
-          for ($i = 0; $i < 7; $i++) {
-          print "<div class='hari'>$hari[$i]</div>";
-          }
-          print '<div class=float_habis>&nbsp;</div></div>';
-
-          for ($i = 0; $i < 6; $i++) {
-              print '<div class=blokbaris>';
-              for ($j = 1; $j <= 7; $j++) {
-                  $dayNum = $j + $i*7 - $date['wday'];
-                  //Print a cell with the day number in it.  If it is today, highlight it.
-                  print '<div';
-                        $ya=0;
-                        for($a=0;$a<count($sewa);$a++){
-                          $tanggal=$dayNum."-".$bulan."-".$tahun;
-                          if($tanggal == $sewa[$a]){
-                          echo' class=sedang>';
-                          $ya=1;
-                          break;
-                          }
-                        }
-                  if($ya==0){
-                      echo ' class=tgl>';
-                  }
-                  if($dayNum<=0){
-                      print "&nbsp;";
-                  }else{
-                     print "$dayNum";
-                  }
-
-                  print '</div>';
-              }
-              print '<div class=float_habis>&nbsp;</div></div>';
-              if ($dayNum >= $dayTotal && $i != 6)
-              break;
-          }
-          print'</div>';
-          print'
+            <div class="col-lg-6">
+                <label for="startDate"><h4>Tanggal Mulai</h4></label>
+            </div>
+            <div class="col-lg-6">
+                <input  class="form-control"id="startDate" name="startDate" type="text" class="form-control" />
+            </div>
           </div>
-      </div>
-      </div>
-          ';
-          echo "<br>";
-  }
-  ?>
+          <div class="col-lg-5">
+            <div class="col-lg-4">
+                <label for="endDate"><h4>Sampai </h4></label>
+            </div>
+            <div class="col-lg-6">
+                <input class="form-control" id="endDate" name="endDate" type="text" class="form-control" />
+            </div>
+          </div>
+          <div class="col-lg-2">
+          <button type="submit" class="btn btn-warning btn-lg">Cek</button>
+          </div>
 
-<?php
-// if((empty($_SESSION['coustumer']))){
-//   echo '<script type="text/javascript">window.location = "index.php"</script>';
-// }
-?>
-  <?php
-  // include 'share/db.php';
-  // $id=$_SESSION['costumer'];
-  // $query = mysqli_query($con,"select * from costumer where username='$id'");
-  // while($data = mysqli_fetch_array($query)){
+  </form>
 
+  <br>
+  <br>
+  <br>
+  <div id="form" action="proses_pesan.php"name="form" class="form-inline">
+          <div class="col-lg-5">
+            <div class="col-lg-6">
+                <label for="startDate"><h4>Jumlah Hari</h4></label>
+            </div>
+            <div class="col-lg-6">
+                <input  class="form-control" readonly name="startDate" type="text" class="form-control" />
+            </div>
+          </div>
+          <div class="col-lg-5">
+            <div class="col-lg-4">
+                <label for="endDate"><h4>Harga </h4></label>
+            </div>
+            <div class="col-lg-6">
+                <input class="form-control" readonly value="<?php echo $harga_sewa;?>" name="endDate" type="text" class="form-control" />
+            </div>
+          </div>
+          <div class="col-lg-5">
+            <div class="col-lg-6">
+                <label for="endDate"><h4> Total Harga </h4></label>
+            </div>
+            <div class="col-lg-6">
+                <input class="form-control" readonly name="endDate" type="text" class="form-control" />
+            </div>
+          </div>
 
-  ?>
-
-
-<?php  //}?>
-
-
-
+  </div>
+  <br>
+  <br>
+  <center>
+    <button type="submit" class="btn btn-success btn-lg">Pesan</button>
+    <button type="submit" class="btn btn-warning btn-lg">Batal</button>
+  </center>
+  <br>
+  <br>
+  <br>
+</div>
+</div>
+</div>
+</div>
 <?php include"share/footer.php";?>
 
 
-<script src="vendors/jquery/jquery.min.js"></script>
+<!-- <script src="vendors/jquery/jquery.min.js"></script> -->
 <script src="vendors/tether/js/tether.min.js"></script>
 <script src="vendors/bootstrap/js/bootstrap.min.js"></script>
 <script src="js/dropdown.animate.js"></script>
