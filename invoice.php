@@ -44,7 +44,7 @@
           <label for="example-text-input-with-left-button" class="col-5 col-form-label">Status Pembayaran</label>
           <div class="col-7">
               <div class="dropdown">
-                  <button class="btn btn-<?php if($data['verifikasi_pembayaran']==0){echo"warning";}else if($data['verifikasi_pembayara']==1){echo"info";}if($data['verifikasi_pembayaran']==2){echo"success";}if($data['verifikasi_pembayaran']==3){echo"danger";} ?> btn-block " type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                  <button class="btn btn-<?php if($data['verifikasi_pembayaran']==0){echo"warning";}else if($data['verifikasi_pembayaran']==1){echo"info";}if($data['verifikasi_pembayaran']==2){echo"success";}if($data['verifikasi_pembayaran']==3){echo"danger";} ?> btn-block " type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                       <?php if($data['verifikasi_pembayaran']==0){echo"Belum Melakukan Pembayaran";}else if($data['verifikasi_pembayaran']==1){echo"Pembayaran Belum Di Verifikasi";}if($data['verifikasi_pembayaran']==2){echo"Pembayaran Berhasil";}if($data['verifikasi_pembayaran']==3){echo"Pembayaran Gagal";} ?>
                   </button>
 

@@ -44,7 +44,7 @@
           <label for="example-text-input-with-left-button" class="col-5 col-form-label">Status Pembayaran</label>
           <div class="col-7">
               <div class="dropdown">
-                  <button class="btn btn-<?php if($data['verifikasi_pembayaran']==0){echo"warning";}else if($data['verifikasi_pembayara']==1){echo"info";}if($data['verifikasi_pembayaran']==2){echo"success";}if($data['verifikasi_pembayaran']==3){echo"danger";} ?> btn-block " type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                  <button class="btn btn-<?php if($data['verifikasi_pembayaran']==0){echo"warning";}else if($data['verifikasi_pembayaran']==1){echo"info";}if($data['verifikasi_pembayaran']==2){echo"success";}if($data['verifikasi_pembayaran']==3){echo"danger";} ?> btn-block " type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                       <?php if($data['verifikasi_pembayaran']==0){echo"Belum Melakukan Pembayaran";}else if($data['verifikasi_pembayaran']==1){echo"Pembayaran Belum Di Verifikasi";}if($data['verifikasi_pembayaran']==2){echo"Pembayaran Berhasil";}if($data['verifikasi_pembayaran']==3){echo"Pembayaran Gagal";} ?>
                   </button>
 
@@ -56,14 +56,14 @@
         <div class="form-group row">
             <label for="example-text-input" class="col-5 col-form-label">Bank Pengirim</label>
             <div class="col-7">
-                <input class="form-control" type="text"  id="example-text-input" >
+                <input class="form-control" value="<?php echo $data['bank_pengirim'];?>" type="text"  id="example-text-input" >
 
             </div>
         </div>
         <div class="form-group row">
             <label for="example-text-input" class="col-5 col-form-label">NO Rekening Pengirim</label>
             <div class="col-7">
-                <input class="form-control" type="text"  id="example-text-input" >
+                <input class="form-control" type="text" value="<?php echo $data['rek_pengirim'];?>"  id="example-text-input" >
 
             </div>
         </div>
@@ -71,31 +71,42 @@
         <div class="form-group row">
             <label for="example-text-input" class="col-5 col-form-label">Nominal</label>
             <div class="col-7">
-                <input class="form-control" type="text"  id="example-text-input" >
+                <input class="form-control" type="text" value="<?php echo $data['nominal'];?>"  id="example-text-input" >
 
             </div>
         </div>
 
         <div class="form-group row">
-            <label for="example-text-input" class="col-5 col-form-label">Upload Bukti Pembayaran</label>
+            <label for="example-text-input" class="col-5 col-form-label">Bukti Pembayaran</label>
             <div class="col-7">
-                <input class="form-control" type="file"  id="example-text-input" >
+                <img src="bukti_pembayaran/value="<?php echo $data['bukti_pembayaran'];?>"">
 
             </div>
         </div>
     </div>
+      <?php if($data['verifikasi_pembayaran']!=2){?>
     <div class="form-group row">
-        <label for="example-text-input-with-left-button" class="col-5 col-form-label"></label>
-        <div class="col-2">
+      <div class="col-lg-3">
+        <div class="dropdown">
+            <button class="btn btn-danger btn-block " type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                Verifikasi Gagal
+            </button>
+
+
+        </div>
+      </div>
+        <div class="col-lg-3">
             <div class="dropdown">
+
                 <button class="btn btn-success btn-block " type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                    Simpan
+                    Verifikasi Berhasil
                 </button>
 
             </div>
         </div>
 
     </div>
+  <?php }?>
 
 </div>
 
