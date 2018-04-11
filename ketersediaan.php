@@ -33,6 +33,7 @@
   <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.10.2/moment.min.js"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datetimepicker/3.1.3/js/bootstrap-datetimepicker.min.js"></script>
 
+
     <script>
 
   $(document).ready(function() {
@@ -173,13 +174,13 @@ $(function () {
       pickTime: false,
       format: "YYYY/MM/DD",
       defaultDate: sd,
-      maxDate: ed
+
     });
 
     $('#endDate').datetimepicker({
       pickTime: false,
       format: "YYYY/MM/DD",
-      defaultDate: ed,
+      defaultDate: sd,
       minDate: sd
     });
 
@@ -315,16 +316,17 @@ $(function () {
             </div>
         </div>
     </div>
- <?php } ?>
 
-  <form id="form" action="proses_pesan.php"name="form" class="form-inline">
+
+  <form action="ketersediaan.php?id=<?php echo $data['no_pol'];?>" method="GET" class="form-inline">
 
           <div class="col-lg-5">
             <div class="col-lg-6">
                 <label for="startDate"><h4>Tanggal Mulai</h4></label>
             </div>
             <div class="col-lg-6">
-                <input  class="form-control"id="startDate" name="startDate" type="text" class="form-control" />
+                <input  class="form-control" hidden required  name="id" value="<?php echo $data['no_pol'];?>" type="text" class="form-control" />
+                <input  class="form-control"id="startDate" <?php if(isset($_GET['start'])){echo "value='".$_GET['start']."'";}?>required name="start" type="text" class="form-control" />
             </div>
           </div>
           <div class="col-lg-5">
@@ -332,25 +334,47 @@ $(function () {
                 <label for="endDate"><h4>Sampai </h4></label>
             </div>
             <div class="col-lg-6">
-                <input class="form-control" id="endDate" name="endDate" type="text" class="form-control" />
+                <input class="form-control" id="endDate" <?php if(isset($_GET['end'])){echo "value='".$_GET['end']."'";}?> required name="end" type="text" class="form-control" />
             </div>
           </div>
           <div class="col-lg-2">
-          <button type="submit" class="btn btn-warning btn-lg">Cek</button>
+          <button type="submit" name="cek" value='1' class="btn btn-warning btn-lg">Cek</button>
           </div>
 
   </form>
+<?php } ?>
 
   <br>
   <br>
   <br>
-  <div id="form" action="proses_pesan.php"name="form" class="form-inline">
+  <?php if($_GET["cek"]==1){  ?>
+    <?php
+    $start=$_GET['start'];
+    $end=$_GET['end'];
+    $id=$_GET['id'];
+    $query = mysqli_query($con,"select * from pesan where (pesan.tanggal_mulai BETWEEN '$start' and '$start') or (pesan.tanggal_selesai BETWEEN '$end' and '$end') and no_pol='$id'");
+    $rows = mysqli_num_rows($query);
+    if($rows==0){
+
+      $date1=date_create($start);
+      $date2=date_create($end);
+      if($date2<$date1){
+        echo "<script>alert('Maaf Tanggal Salah')</script>";
+        echo '<script type="text/javascript">window.location = "ketersediaan.php?id='.$id.'"</script>';
+
+
+      }
+      $perbedaan=date_diff($date1,$date2);
+      $perbedaan=$perbedaan->format("%R%a");
+      $perbedaan++;
+    ?>
+  <div class="form-inline">
           <div class="col-lg-5">
             <div class="col-lg-6">
                 <label for="startDate"><h4>Jumlah Hari</h4></label>
             </div>
             <div class="col-lg-6">
-                <input  class="form-control" readonly name="startDate" type="text" class="form-control" />
+                <input  class="form-control" readonly value="<?php echo $perbedaan;?> Hari" name="startDate" type="text" class="form-control" />
             </div>
           </div>
           <div class="col-lg-5">
@@ -358,7 +382,7 @@ $(function () {
                 <label for="endDate"><h4>Harga </h4></label>
             </div>
             <div class="col-lg-6">
-                <input class="form-control" readonly value="<?php echo $harga_sewa;?>" name="endDate" type="text" class="form-control" />
+                <input class="form-control" readonly value="Rp.<?php echo $harga_sewa;?>" name="endDate" type="text" class="form-control" />
             </div>
           </div>
           <div class="col-lg-5">
@@ -366,7 +390,7 @@ $(function () {
                 <label for="endDate"><h4> Total Harga </h4></label>
             </div>
             <div class="col-lg-6">
-                <input class="form-control" readonly name="endDate" type="text" class="form-control" />
+                <input class="form-control" readonly name="endDate" value="Rp.<?php echo $harga_sewa*$perbedaan;?>" type="text" class="form-control" />
             </div>
           </div>
 
@@ -374,9 +398,15 @@ $(function () {
   <br>
   <br>
   <center>
-    <button type="submit" class="btn btn-success btn-lg">Pesan</button>
-    <button type="submit" class="btn btn-warning btn-lg">Batal</button>
+    <a href="proses/pesan.php?id=<?php echo $id;?>&start=<?php echo $start;?>&end=<?php echo $end;?>&harga=<?php echo $harga_sewa;?>"><button type="submit" class="btn btn-success btn-lg">Pesan</button></a>
+
   </center>
+<?php
+  }else{
+  echo "<script>alert('Mobil Sudah Dipesan Pada Tanggal Tersebut')</script>";
+  echo '<script type="text/javascript">window.location = "../ketersediaan.php?id=$id</script>';
+}?>
+<?php }?>
   <br>
   <br>
   <br>
