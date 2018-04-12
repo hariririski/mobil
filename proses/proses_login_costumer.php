@@ -36,6 +36,7 @@ $error=''; // Variabel untuk menyimpan pesan error
 							header("location: ../index.php"); // Mengarahkan ke halaman profil
 						} else if($rows == 1 && $status==0) {
 							$_SESSION['costumer']=$username; // Membuat Sesi/session
+							$_SESSION['costumer_id']=$id_costumer; // Membuat Sesi/session
 
 						  echo "<script>alert('Warning, Akun Anda Belum Di Verifikasi Admin Silahkan Menghubungi admin')</script>";
 							echo '<script type="text/javascript">window.location = "../profil_costumer.php"</script>';

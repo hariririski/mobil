@@ -35,15 +35,18 @@ $error=''; // Variabel untuk menyimpan pesan error
 
 				while($data = mysqli_fetch_array($query)){
 					$status=$data['status'];
+					$id_rental=$data['id_rental'];
 				}
 
 				$rows = mysqli_num_rows($query);
 
 						if ($rows == 1 && $status==1 ) {
 							$_SESSION['rental']=$username; // Membuat Sesi/session
+							$_SESSION['id_rental']=$id_rental; // Membuat Sesi/session
 							header("location: ../index.php"); // Mengarahkan ke halaman profil
 						} else if($rows == 1 && $status==0) {
 							$_SESSION['rental']=$username; // Membuat Sesi/session
+							$_SESSION['id_rental']=$id_rental; // Membuat Sesi/session
 						  echo "<script>alert('Warning, Akun Anda Belum Di Verifikasi Admin Silahkan Menghubungi admin')</script>";
 							echo '<script type="text/javascript">window.location = "../profil.php"</script>';
 						} else if($rows == 0 && $status==0) {
