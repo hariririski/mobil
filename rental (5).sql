@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Host: 127.0.0.1
--- Generation Time: Apr 10, 2018 at 11:26 AM
+-- Generation Time: Apr 12, 2018 at 11:33 AM
 -- Server version: 10.1.19-MariaDB
 -- PHP Version: 5.5.38
 
@@ -113,9 +113,8 @@ INSERT INTO `mobil` (`no_pol`, `merek`, `jenis`, `tipe`, `tahun_pembuatan`, `har
 --
 
 CREATE TABLE `pesan` (
-  `id_costumer` int(11) NOT NULL,
   `no_pol` varchar(10) NOT NULL,
-  `invoice` int(255) NOT NULL,
+  `invoice` varchar(255) NOT NULL,
   `tanggal_pesan` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
   `tanggal_mulai` date NOT NULL,
   `tanggal_selesai` date NOT NULL,
@@ -124,16 +123,19 @@ CREATE TABLE `pesan` (
   `rek_pengirim` varchar(100) DEFAULT NULL,
   `bukti_pembayaran` varchar(255) DEFAULT NULL,
   `nominal` int(11) DEFAULT NULL,
-  `verifikasi_pembayaran` int(11) DEFAULT '0'
+  `verifikasi_pembayaran` int(11) DEFAULT '0',
+  `id_costumer` int(255) NOT NULL,
+  `read` int(2) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
 -- Dumping data for table `pesan`
 --
 
-INSERT INTO `pesan` (`id_costumer`, `no_pol`, `invoice`, `tanggal_pesan`, `tanggal_mulai`, `tanggal_selesai`, `harga`, `bank_pengirim`, `rek_pengirim`, `bukti_pembayaran`, `nominal`, `verifikasi_pembayaran`) VALUES
-(1, 'BK 1696 WE', 1, '2018-04-10 09:24:38', '2018-04-16', '2018-04-17', 150000, 'BCA', '123456789', 'wGUntEOMWHqayF09xmsJcKfQ2RrTzi.jpg', 12345689, 2),
-(1, 'BK 1696 WE', 2, '2018-04-09 14:44:46', '2018-04-18', '2018-04-20', 150000, NULL, NULL, NULL, NULL, 0);
+INSERT INTO `pesan` (`no_pol`, `invoice`, `tanggal_pesan`, `tanggal_mulai`, `tanggal_selesai`, `harga`, `bank_pengirim`, `rek_pengirim`, `bukti_pembayaran`, `nominal`, `verifikasi_pembayaran`, `id_costumer`, `read`) VALUES
+('BK 1696 WE', '1', '2018-04-12 08:45:07', '2018-04-16', '2018-04-17', 150000, 'BCA', '123456789', 'wGUntEOMWHqayF09xmsJcKfQ2RrTzi.jpg', 12345689, 2, 1, 1),
+('BK 1696 WE', '2', '2018-04-12 08:45:07', '2018-04-18', '2018-04-20', 150000, NULL, NULL, NULL, NULL, 0, 1, 1),
+('BK 1696 WE', 'wHK9qTXjCe', '2018-04-12 08:45:07', '2018-04-23', '2018-04-26', 250000, NULL, NULL, NULL, NULL, 0, 1, 1);
 
 -- --------------------------------------------------------
 
@@ -215,11 +217,6 @@ ALTER TABLE `rental`
 --
 ALTER TABLE `costumer`
   MODIFY `id_costumer` int(255) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
---
--- AUTO_INCREMENT for table `pesan`
---
-ALTER TABLE `pesan`
-  MODIFY `invoice` int(255) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 --
 -- AUTO_INCREMENT for table `rental`
 --
