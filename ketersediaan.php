@@ -194,7 +194,9 @@ $(function () {
 <body >
   <?php
   error_reporting(E_ALL ^ (E_NOTICE | E_WARNING|E_ALL));
-  include"share/menu.php";?>
+  include"share/menu.php";
+  ?>
+
   <div class="apartment__full-description">
     <div class="container">
         <p>
@@ -212,7 +214,7 @@ $(function () {
   <br>
   <?php
   $harga_sewa=0;
-  $query = mysqli_query($con,"select * from mobil where no_pol='$id'");
+  $query = mysqli_query($con,"select * from mobil Left join rental on rental.id_rental=mobil.id_rental where  no_pol='$id'");
   while($data = mysqli_fetch_array($query)){
   $harga_sewa=$data['harga_sewa'];
 
@@ -347,7 +349,7 @@ $(function () {
   <br>
   <br>
   <br>
-  <?php if($_GET["cek"]==1){  ?>
+  <?php if(isset($_GET["cek"])& $_GET["cek"]=1){  ?>
     <?php
     $start=$_GET['start'];
     $end=$_GET['end'];

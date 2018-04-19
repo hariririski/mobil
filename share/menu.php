@@ -1,7 +1,7 @@
 <?php
 session_start(); // Memulai Session
 ?>
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.0/jquery.min.js"></script>
+<!-- <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.0/jquery.min.js"></script> -->
 <div class="header-default">
     <div class="header-topbar">
         <div class="container">
