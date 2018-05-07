@@ -52,7 +52,7 @@
           </div>
 
       </div>
-
+        <?php if($data['verifikasi_pembayaran']==1 || $data['verifikasi_pembayaran']==2){ ?>
         <div class="form-group row">
             <label for="example-text-input" class="col-5 col-form-label">Bank Pengirim</label>
             <div class="col-7">
@@ -79,16 +79,19 @@
         <div class="form-group row">
             <label for="example-text-input" class="col-5 col-form-label">Bukti Pembayaran</label>
             <div class="col-7">
-                <img src="bukti_pembayaran/<?php echo $data['bukti_pembayaran'];?>"">
+                <img src="bukti_pembayaran/<?php echo $data['bukti_pembayaran'];?>">
 
             </div>
         </div>
+          <?php } ?>
     </div>
+
       <?php if($data['verifikasi_pembayaran']!=2){?>
     <div class="form-group row">
       <div class="col-lg-3">
-        <div class="dropdown">
-            <a href="proses/pembayaran_tidak.php?invoice=<?php echo $data['invoice'];?>"><button class="btn btn-danger btn-block " type="submit" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+        <div >
+            <a href="proses/pembayaran_tidak.php?invoice=<?php echo $data['invoice'];?>">
+            <button class="btn btn-danger  " type="submit" id="dropdownMenuButton" >
                 Verifikasi Gagal
             </button>
           </a>
@@ -98,7 +101,7 @@
         <div class="col-lg-3">
             <div class="dropdown">
               <a href="proses/pembayaran_ya.php?invoice=<?php echo $data['invoice'];?>">
-                <button class="btn btn-success btn-block " type="submit" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                <button class="btn btn-success " type="submit" id="dropdownMenuButton" >
                     Verifikasi Berhasil
                 </button>
               </a>
