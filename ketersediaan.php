@@ -433,7 +433,7 @@ $(function () {
   <br>
   <br>
   <center>
-    <a href="proses/pesan.php?id=<?php echo $id;?>&start=<?php echo $start;?>&end=<?php echo $end;?>&harga=<?php echo $harga_sewa;?>"><button type="submit" class="btn btn-success btn-lg">Pesan</button></a>
+    <a href="proses/pesan.php?id=<?php echo $id;?>&start=<?php echo $start1;?>&end=<?php echo $end1;?>&harga=<?php echo $harga_sewa;?>"><button type="submit" class="btn btn-success btn-lg">Pesan</button></a>
 
   </center>
 <?php
