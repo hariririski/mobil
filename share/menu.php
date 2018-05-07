@@ -1,7 +1,12 @@
 <?php
 session_start(); // Memulai Session
 ?>
-<!-- <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.0/jquery.min.js"></script> -->
+<?php
+if(isset($_SESSION['rental'])){
+?><script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.0/jquery.min.js"></script>
+<?php
+}
+?>
 <div class="header-default">
     <div class="header-topbar">
         <div class="container">
@@ -164,11 +169,16 @@ session_start(); // Memulai Session
 
 
                 </ul>
-                <div class="header-default__dropdowns">
+                <?php
+                if(isset($_SESSION['rental'])){
+                ?>
 
+                <div class="header-default__dropdowns">
+                  <font color="red"><h6 class="count"></h6></font>
                         <div class="nav-item dropdown header-default__langs">
+
                             <a class="nav-link dropdown-toggle" data-toggle="dropdown" href="#" aria-expanded="true">
-                                <span><img src="data/notif.png" width="100%"alt=""></span>
+                                <span><img src="data/notif.png" width="50%"alt="">  </span>
                             </a>
                             <div class="dropdown-menu dropdown-menu-right" data-dropdown-in="zoomIn" data-dropdown-out="zoomOut" style="">
                                 <div class="header-default__langs-block">
@@ -185,7 +195,9 @@ session_start(); // Memulai Session
                             </div>
                         </div>
                         </div>
-
+                        <?php
+                      }
+                        ?>
 
 
 
@@ -216,7 +228,9 @@ session_start(); // Memulai Session
         </div>
     </div>
 </div>
-
+<?php
+if(isset($_SESSION['rental'])){
+?>
 <script>
 $(document).ready(function(){
 
@@ -253,3 +267,6 @@ $(document).ready(function(){
 
 });
 </script>
+<?php
+}
+?>

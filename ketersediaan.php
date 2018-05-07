@@ -28,7 +28,6 @@
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datetimepicker/3.1.3/css/bootstrap-datetimepicker.min.css">
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/css/bootstrap.min.css">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/jquery.bootstrapvalidator/0.5.3/css/bootstrapValidator.min.css">
-  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/js/bootstrap.min.js"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.bootstrapvalidator/0.5.3/js/bootstrapValidator.min.js"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.10.2/moment.min.js"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datetimepicker/3.1.3/js/bootstrap-datetimepicker.min.js"></script>
@@ -53,14 +52,14 @@
         <?php
         $id=$_GET['id'];
         include 'share/db.php';
-        $sql="select * from pesan where no_pol='$id' and tanggal_mulai>='".date('Y-m-d')."'";
-        $query = mysqli_query($con,$sql);
-        while($data = mysqli_fetch_array($query)){
-          $tanggal_selesai=date('Y-m-d', strtotime('+1 days', strtotime($data['tanggal_selesai'])));
+        $sql0="select * from pesan where no_pol='$id' and tanggal_selesai>='".date('m-d')."'";
+        $query0 = mysqli_query($con,$sql0);
+        while($data0 = mysqli_fetch_array($query0)){
+          $tanggal_selesai=date('Y-m-d', strtotime('+1 days', strtotime($data0['tanggal_selesai'])));
         ?>
         {
 
-          start: '<?php echo $data['tanggal_mulai']?>',
+          start: '<?php echo $data0['tanggal_mulai']?>',
           end: '<?php echo $tanggal_selesai?>',
           overlap: true,
           rendering: 'background',
@@ -174,14 +173,16 @@ $(function () {
       pickTime: false,
       format: "YYYY/MM/DD",
       defaultDate: sd,
+      minDate:'#startDate',
 
     });
+
 
     $('#endDate').datetimepicker({
       pickTime: false,
       format: "YYYY/MM/DD",
-      defaultDate: sd,
-      minDate: sd
+      defaultDate: '#startDate',
+      minDate: '#startDate',
     });
 
     //passing 1.jquery form object, 2.start date dom Id, 3.end date dom Id
@@ -352,17 +353,49 @@ $(function () {
   <?php if(isset($_GET["cek"])& $_GET["cek"]=1){  ?>
     <?php
     $start=$_GET['start'];
-    $end=$_GET['end'];
-    $id=$_GET['id'];
-    $query = mysqli_query($con,"select * from pesan where (pesan.tanggal_mulai BETWEEN '$start' and '$start') or (pesan.tanggal_selesai BETWEEN '$end' and '$end') and no_pol='$id'");
-    $rows = mysqli_num_rows($query);
-    if($rows==0){
 
-      $date1=date_create($start);
-      $date2=date_create($end);
+    $start = explode('/',$start);
+    $start1=$start[0]."-".$start[1]."-".$start[2];
+    $end=$_GET['end'];
+
+    $end= explode('/',$end);
+    $end1=$end[0]."-".$end[1]."-".$end[2];
+    $id=$_GET['id'];
+    $i=0;
+    $cek="select * from pesan where month(tanggal_mulai)='$start[1]' or month(tanggal_mulai)='$end[1]' or year(tanggal_mulai)='$end[0]' or year(tanggal_selesai)='$end[0]' and  no_pol='$id'";
+    $query1 = mysqli_query($con,$cek);
+    $query2 = mysqli_query($con,$cek);
+    $rows = mysqli_num_rows($query1);
+    $semua;
+    while($data1 = mysqli_fetch_array($query1)){
+
+    for($data1['tanggal_mulai'];$data1['tanggal_mulai']<=$data1['tanggal_selesai'];){
+      $i++;
+    $semua[$i]=$data1['tanggal_mulai']; //print tanggal
+    $data1['tanggal_mulai'] = date('Y-m-d', strtotime('+1 days', strtotime($data1['tanggal_mulai']))); //operasi penjumlahan tanggal sebanyak 6 hari
+
+
+  }
+
+    }
+    //print_r($semua);
+    $a=0;
+    $start2=$start1;
+    for($start2;$start2<=$end1;){
+      $hasil=array_search($start2, $semua);
+      $start2= date('Y-m-d', strtotime('+1 days', strtotime($start2)));
+      if($hasil!=0){
+      $a++;
+      }
+    }
+   $a;
+    if($a==0){
+
+      $date1=date_create($start1);
+       $date2=date_create($end1);
       if($date2<$date1){
         echo "<script>alert('Maaf Tanggal Salah')</script>";
-        echo '<script type="text/javascript">window.location = "ketersediaan.php?id='.$id.'"</script>';
+       echo '<script type="text/javascript">window.location = "ketersediaan.php?id='.$id.'"</script>';
 
 
       }
