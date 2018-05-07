@@ -52,7 +52,7 @@
         <?php
         $id=$_GET['id'];
         include 'share/db.php';
-        $sql0="select * from pesan where no_pol='$id' and tanggal_selesai>='".date('m-d')."'";
+        $sql0="select * from pesan where no_pol='$id' and tanggal_selesai>='".date('m-d')."' and verifikasi_pembayaran<'3'";
         $query0 = mysqli_query($con,$sql0);
         while($data0 = mysqli_fetch_array($query0)){
           $tanggal_selesai=date('Y-m-d', strtotime('+1 days', strtotime($data0['tanggal_selesai'])));
