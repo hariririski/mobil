@@ -362,7 +362,7 @@ $(function () {
     $end1=$end[0]."-".$end[1]."-".$end[2];
     $id=$_GET['id'];
     $i=0;
-    $cek="select * from pesan where month(tanggal_mulai)='$start[1]' or month(tanggal_mulai)='$end[1]' or year(tanggal_mulai)='$end[0]' or year(tanggal_selesai)='$end[0]' and  no_pol='$id'";
+    $cek="select * from pesan where (month(tanggal_mulai)='$start[1]' or month(tanggal_mulai)='$end[1]' or year(tanggal_mulai)='$end[0]' or year(tanggal_selesai)='$end[0]') and  no_pol='$id'";
     $query1 = mysqli_query($con,$cek);
     $query2 = mysqli_query($con,$cek);
     $rows = mysqli_num_rows($query1);
@@ -382,7 +382,7 @@ $(function () {
     $a=0;
     $start2=$start1;
     for($start2;$start2<=$end1;){
-      $hasil=array_search($start2, $semua);
+      echo $hasil=array_search($start2, $semua);
       $start2= date('Y-m-d', strtotime('+1 days', strtotime($start2)));
       if($hasil!=0){
       $a++;
