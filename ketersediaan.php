@@ -19,176 +19,115 @@
 
     <!-- BEGIN THEME STYLES -->
     <link rel="stylesheet" type="text/css" href="css/style.min.css">
-    <!-- END THEME STYLES -->
-	<link href='vendors/fullcalendar.min.css' rel='stylesheet' />
-	<link href='vendors/fullcalendar.print.min.css' rel='stylesheet' media='print' />
-	<script src='vendors/lib/moment.min.js'></script>
-	<script src='vendors/lib/jquery.min.js'></script>
-	<script src='vendors/fullcalendar.min.js'></script>
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datetimepicker/3.1.3/css/bootstrap-datetimepicker.min.css">
-  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/css/bootstrap.min.css">
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/jquery.bootstrapvalidator/0.5.3/css/bootstrapValidator.min.css">
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.bootstrapvalidator/0.5.3/js/bootstrapValidator.min.js"></script>
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.10.2/moment.min.js"></script>
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datetimepicker/3.1.3/js/bootstrap-datetimepicker.min.js"></script>
-
-
+    <script src='vendors/lib/jquery.min.js'></script>
+    <link rel="stylesheet" href="data/bootstrap-datetimepicker.min.css">
+    <!-- <link rel="stylesheet" href="data/bootstrap.min.css"> -->
+    <link rel="stylesheet" href="data/bootstrapValidator.min.css">
+    <script src="data/bootstrapValidator.min.js"></script>
+    <script src="data/moment.min.js"></script>
+    <script src="data/bootstrap-datetimepicker.min.js"></script>
     <script>
-
-  $(document).ready(function() {
-
-    $('#calendar').fullCalendar({
-      header: {
-        left: 'prev,next today',
-        center: 'title',
-        right: 'month,agendaWeek,agendaDay,listMonth'
-      },
-      defaultDate: '<?php echo date("Y-m-d")?>',
-      navLinks: true, // can click day/week names to navigate views
-      businessHours: true, // display business hours
-      editable: true,
-      events: [
-
-        <?php
-        $id=$_GET['id'];
-        include 'share/db.php';
-        $sql0="select * from pesan where no_pol='$id' and tanggal_selesai>='".date('m-d')."' and verifikasi_pembayaran<'3'";
-        $query0 = mysqli_query($con,$sql0);
-        while($data0 = mysqli_fetch_array($query0)){
-          $tanggal_selesai=date('Y-m-d', strtotime('+1 days', strtotime($data0['tanggal_selesai'])));
-        ?>
-        {
-
-          start: '<?php echo $data0['tanggal_mulai']?>',
-          end: '<?php echo $tanggal_selesai?>',
-          overlap: true,
-          rendering: 'background',
-          color: '#ff0000'
-        },
-        <?php } ?>
-        {
-
+    var bindDateRangeValidation = function (f, s, e) {
+        if(!(f instanceof jQuery)){
+    			console.log("Not passing a jQuery object");
         }
-      ]
-    });
 
-  });
+        var jqForm = f,
+            startDateId = s,
+            endDateId = e;
 
-</script>
-<style>
+        var checkDateRange = function (startDate, endDate) {
+            var isValid = (startDate != "" && endDate != "") ? startDate <= endDate : true;
+            return isValid;
+        }
 
-
-
-  #calendar {
-    max-width: 900px;
-    margin: 0 auto;
-    padding: 30px;
-  }
-
-</style>
-
-
-<script>
-var bindDateRangeValidation = function (f, s, e) {
-    if(!(f instanceof jQuery)){
-			console.log("Not passing a jQuery object");
-    }
-
-    var jqForm = f,
-        startDateId = s,
-        endDateId = e;
-
-    var checkDateRange = function (startDate, endDate) {
-        var isValid = (startDate != "" && endDate != "") ? startDate <= endDate : true;
-        return isValid;
-    }
-
-    var bindValidator = function () {
-        var bstpValidate = jqForm.data('bootstrapValidator');
-        var validateFields = {
-            startDate: {
-                validators: {
-                    notEmpty: { message: 'This field is required.' },
-                    callback: {
-                        message: 'Start Date must less than or equal to End Date.',
-                        callback: function (startDate, validator, $field) {
-                            return checkDateRange(startDate, $('#' + endDateId).val())
+        var bindValidator = function () {
+            var bstpValidate = jqForm.data('bootstrapValidator');
+            var validateFields = {
+                startDate: {
+                    validators: {
+                        notEmpty: { message: 'This field is required.' },
+                        callback: {
+                            message: 'Start Date must less than or equal to End Date.',
+                            callback: function (startDate, validator, $field) {
+                                return checkDateRange(startDate, $('#' + endDateId).val())
+                            }
                         }
                     }
-                }
-            },
-            endDate: {
-                validators: {
-                    notEmpty: { message: 'This field is required.' },
-                    callback: {
-                        message: 'End Date must greater than or equal to Start Date.',
-                        callback: function (endDate, validator, $field) {
-                            return checkDateRange($('#' + startDateId).val(), endDate);
+                },
+                endDate: {
+                    validators: {
+                        notEmpty: { message: 'This field is required.' },
+                        callback: {
+                            message: 'End Date must greater than or equal to Start Date.',
+                            callback: function (endDate, validator, $field) {
+                                return checkDateRange($('#' + startDateId).val(), endDate);
+                            }
                         }
                     }
-                }
-            },
-          	customize: {
-                validators: {
-                    customize: { message: 'customize.' }
+                },
+              	customize: {
+                    validators: {
+                        customize: { message: 'customize.' }
+                    }
                 }
             }
-        }
-        if (!bstpValidate) {
-            jqForm.bootstrapValidator({
-                excluded: [':disabled'],
-            })
+            if (!bstpValidate) {
+                jqForm.bootstrapValidator({
+                    excluded: [':disabled'],
+                })
+            }
+
+            jqForm.bootstrapValidator('addField', startDateId, validateFields.startDate);
+            jqForm.bootstrapValidator('addField', endDateId, validateFields.endDate);
+
+        };
+
+        var hookValidatorEvt = function () {
+            var dateBlur = function (e, bundleDateId, action) {
+                jqForm.bootstrapValidator('revalidateField', e.target.id);
+            }
+
+            $('#' + startDateId).on("dp.change dp.update blur", function (e) {
+                $('#' + endDateId).data("DateTimePicker").setMinDate(e.date);
+                dateBlur(e, endDateId);
+            });
+
+            $('#' + endDateId).on("dp.change dp.update blur", function (e) {
+                $('#' + startDateId).data("DateTimePicker").setMaxDate(e.date);
+                dateBlur(e, startDateId);
+            });
         }
 
-        jqForm.bootstrapValidator('addField', startDateId, validateFields.startDate);
-        jqForm.bootstrapValidator('addField', endDateId, validateFields.endDate);
-
+        bindValidator();
+        hookValidatorEvt();
     };
 
-    var hookValidatorEvt = function () {
-        var dateBlur = function (e, bundleDateId, action) {
-            jqForm.bootstrapValidator('revalidateField', e.target.id);
-        }
 
-        $('#' + startDateId).on("dp.change dp.update blur", function (e) {
-            $('#' + endDateId).data("DateTimePicker").setMinDate(e.date);
-            dateBlur(e, endDateId);
+    $(function () {
+        var sd = new Date(), ed = new Date();
+
+        $('#startDate').datetimepicker({
+          pickTime: false,
+          format: "YYYY/MM/DD",
+          defaultDate: sd,
+          minDate:'#startDate',
+
         });
 
-        $('#' + endDateId).on("dp.change dp.update blur", function (e) {
-            $('#' + startDateId).data("DateTimePicker").setMaxDate(e.date);
-            dateBlur(e, startDateId);
+
+        $('#endDate').datetimepicker({
+          pickTime: false,
+          format: "YYYY/MM/DD",
+          defaultDate: '#startDate',
+          minDate: '#startDate',
         });
-    }
 
-    bindValidator();
-    hookValidatorEvt();
-};
-
-
-$(function () {
-    var sd = new Date(), ed = new Date();
-
-    $('#startDate').datetimepicker({
-      pickTime: false,
-      format: "YYYY/MM/DD",
-      defaultDate: sd,
-      minDate:'#startDate',
-
+        //passing 1.jquery form object, 2.start date dom Id, 3.end date dom Id
+        bindDateRangeValidation($("#form"), 'startDate', 'endDate');
     });
+    </script>
 
-
-    $('#endDate').datetimepicker({
-      pickTime: false,
-      format: "YYYY/MM/DD",
-      defaultDate: '#startDate',
-      minDate: '#startDate',
-    });
-
-    //passing 1.jquery form object, 2.start date dom Id, 3.end date dom Id
-    bindDateRangeValidation($("#form"), 'startDate', 'endDate');
-});
-</script>
 
 </head>
 <!-- BEGIN HEAD -->
@@ -198,257 +137,185 @@ $(function () {
   include"share/menu.php";
   ?>
 
-  <div class="apartment__full-description">
-    <div class="container">
-        <p>
-        Jadwal Ketersediaan Mobil</p>
+  <div class="container">
+          <div class="row">
+              <div class="col-lg-8">
+                  <div class="job-overview__body">
+                      <div class="job-overview__body-figure">
+                        <iframe class="animated fadeInDown wow" src="kalender.php?id=<?php echo $_GET['id']?>" width="100%" height="615px" scrolling="no" frameborder="0"></iframe>
 
-    </div>
-</div>
-<div class="container">
-<div class="row">
-<br>
-<br>
-   <div id='calendar'></div>
-<div class="row ">
-<div class="container">
-  <br>
-  <?php
-  $harga_sewa=0;
-  $query = mysqli_query($con,"select * from mobil Left join rental on rental.id_rental=mobil.id_rental where  no_pol='$id'");
-  while($data = mysqli_fetch_array($query)){
-  $harga_sewa=$data['harga_sewa'];
+                      </div>
 
-  ?>
+                  </div>
+              </div>
+              <div class="col-lg-4">
+                <?php
+                $harga_sewa=0;
+                $id=$_GET['id'];
+                include 'share/db.php';
+              $perintah="select * from mobil Left join rental on rental.id_rental=mobil.id_rental where  no_pol='$id'";
+                $query = mysqli_query($con,$perintah);
+                while($data = mysqli_fetch_array($query)){
+                $harga_sewa=$data['harga_sewa'];
 
-    <div class="col-xl-3 col-lg-4 col-md-6">
-        <div class="listing-travel-trips__item">
-            <div class="listing-travel-trips__item-image" >
-                <center><img height="160px"  width="255px" src="mobil/<?php echo $data['foto_samping'];?>" alt="" ></center>
-                <div class="listing-travel-trips__item-title">
-                    <span><?php echo $data['merek'];?></span>
-                </div>
-            </div>
-            <div class="listing-travel-trips__item-info">
-                <div class="listing-travel-trips__item-description">
-                  <table width="100%" border="0">
-                    <tr>
-                      <td width="40%">
-                        Nama Rental
-                      </td>
-                      <td width="5%">
-                        :
-                      </td>
-                      <td>
-                      <?php echo $data['nama_rental'];?>
-                      </td>
-                    </tr>
-                    <tr>
-                      <td>
-                        Merek
-                      </td>
-                      <td>
-                        :
-                      </td>
-                      <td>
+                ?>
+                  <div class="job-overview__company">
+                      <a href="detail_mobil.php?id=<?php echo $data['no_pol'];?>" class="job-overview__company-name">
+                      <img src="mobil/<?php echo $data['foto_samping'];?>" alt="" class="job-overview__company-logo">
+                      <div class="job-overview__company-info">
                         <?php echo $data['merek'];?>
-                      </td>
-                    </tr>
-                    <tr>
-                      <td>
-                        Jenis
-                      </td>
-                      <td>
-                        :
-                      </td>
-                      <td>
-                        <?php echo $data['jenis'];?>
-                      </td>
-                    </tr>
-                    <tr>
-                      <td>
-                        Tipe
-                      </td>
-                      <td>
-                        :
-                      </td>
-                      <td>
-                        <?php echo $data['tipe'];?>
-                      </td>
-                    </tr>
-                    <tr>
-                      <td>
-                        Bahan Bakar
-                      </td>
-                      <td>
-                        :
-                      </td>
-                      <td>
-                        <?php echo $data['bahan_bakar'];?>
-                      </td>
-                    </tr>
-                    <tr>
-                      <td>
-                        Jenis
-                      </td>
-                      <td>
-                        :
-                      </td>
-                      <td>
-                        <?php echo $data['jenis'];?>
-                      </td>
-                    </tr>
+                          <!-- <a href="#" class="job-overview__company-name"><?php echo $data['jenis'];?></a> -->
+                      </a>
+                      </div>
+                  </div>
 
-                  </table>
+                  <div class="job-overview__details">
+                      <ul class="job-overview__details-body list-unstyled">
+                      <form action="ketersediaan.php?id=<?php echo $data['no_pol'];?>" method="GET">
+                          <li class="job-overview__details-body-item">
+                              <span class="icon iconfont-calendar-solid job-overview__details-body-item-icon"></span>
+                              <span class="job-overview__details-body-item-type">Mulai:</span>
+                              <input  class="form-control" hidden required  name="id" value="<?php echo $data['no_pol'];?>" type="text" class="form-control" />
+                              <input  class="form-control" required id="startDate" <?php if(isset($_GET['start'])){echo "value='".$_GET['start']."'";}?>required name="start" type="text" class="form-control" />
+
+                          </li>
+                          <li class="job-overview__details-body-item">
+                              <span class="icon iconfont-map-point job-overview__details-body-item-icon"></span>
+                              <span class="job-overview__details-body-item-type">Sampai:</span>
+                              <input class="form-control" required id="endDate" <?php if(isset($_GET['end'])){echo "value='".$_GET['end']."'";}?> required name="end" type="text" class="form-control" />
+                          </li>
+
+                          <li class="job-overview__details-body-item">
+
+                              <button type="submit" name="cek" value='1' class="btn btn-warning btn-xm">Cek</button>
+
+                          </li>
+                      </form>
+                      <?php }?>
+                          <?php if(isset($_GET["cek"])& $_GET["cek"]=1){  ?>
+                            <?php
+                            $start=$_GET['start'];
+
+                            $start = explode('/',$start);
+                            $start1=$start[0]."-".$start[1]."-".$start[2];
+                            $end=$_GET['end'];
+
+                            $end= explode('/',$end);
+                            $end1=$end[0]."-".$end[1]."-".$end[2];
+                            $id=$_GET['id'];
+                            $i=0;
+                            $cek="select * from pesan where (month(tanggal_mulai)='$start[1]' or month(tanggal_mulai)='$end[1]' or year(tanggal_mulai)='$end[0]' or year(tanggal_selesai)='$end[0]') and  no_pol='$id'";
+                            $query1 = mysqli_query($con,$cek);
+                            $query2 = mysqli_query($con,$cek);
+                            $rows = mysqli_num_rows($query1);
+                            $semua;
+                            while($data1 = mysqli_fetch_array($query1)){
+
+                            for($data1['tanggal_mulai'];$data1['tanggal_mulai']<=$data1['tanggal_selesai'];){
+                              $i++;
+                            $semua[$i]=$data1['tanggal_mulai']; //print tanggal
+                            $data1['tanggal_mulai'] = date('Y-m-d', strtotime('+1 days', strtotime($data1['tanggal_mulai']))); //operasi penjumlahan tanggal sebanyak 6 hari
 
 
+                          }
 
-                </div>
-                <div class="listing-travel-trips__item-details">
-                    <div class="listing-travel-trips__item-details-price">
-                        <span class="heading">Harga Sewa</span>
-                        <span class="value">Rp.<?php echo $data['harga_sewa'];?> </span>
+                            }
+                            //print_r($semua);
+                            $a=0;
+                            $start2=$start1;
+                            for($start2;$start2<=$end1;){
+                            $hasil=array_search($start2, $semua);
+                              $start2= date('Y-m-d', strtotime('+1 days', strtotime($start2)));
+                              if($hasil!=0){
+                              $a++;
+                              }
+                            }
+                           $a;
+                            if($a==0){
+
+                              $date1=date_create($start1);
+                               $date2=date_create($end1);
+                              if($date2<$date1){
+                                echo "<script>alert('Maaf Tanggal Salah')</script>";
+                               echo '<script type="text/javascript">window.location = "ketersediaan.php?id='.$id.'"</script>';
+
+
+                              }
+                              $perbedaan=date_diff($date1,$date2);
+                              $perbedaan=$perbedaan->format("%R%a");
+                              $perbedaan++;
+                            ?>
+
+                            <li class="job-overview__details-body-item">
+                                <span class="icon iconfont-calendar-solid job-overview__details-body-item-icon"></span>
+                                <span class="job-overview__details-body-item-type">Jumlah Hari:</span>
+                                <span class="job-overview__details-body-item-type"><?php echo $perbedaan;?> / Hari</span>
+
+                            </li>
+                            <li class="job-overview__details-body-item">
+                                <span class="icon iconfont-calendar-solid job-overview__details-body-item-icon"></span>
+                                <span class="job-overview__details-body-item-type">Harga/Hari:</span>
+                                <span class="job-overview__details-body-item-type">Rp.<?php echo $harga_sewa;?></span>
+
+                            </li>
+                            <li class="job-overview__details-body-item">
+                                <span class="icon iconfont-map-point job-overview__details-body-item-icon"></span>
+                                <span class="job-overview__details-body-item-type">Total Harga:</span>
+                                <span class="job-overview__details-body-item-type">Rp.<?php echo $harga_sewa*$perbedaan;?></span>
+
+                            </li>
+
+                    <?php
+                      if(isset($_SESSION['costumer'])){
+                    ?>
+                          <center>
+                            <a href="proses/pesan.php?id=<?php echo $id;?>&start=<?php echo $start1;?>&end=<?php echo $end1;?>&harga=<?php echo $harga_sewa;?>">
+                              <button type="submit" class="btn btn-success btn-lg">Pesan</button>
+                            </a>
+                          </center>
+                    <?php
+                      }else{
+                    ?>
+                    <div class="alert alert-warning" role="alert">
+                        <strong>Warning!</strong> Silahkan Login Dahulu
                     </div>
-                    <div class="listing-travel-trips__item-details-price">
-                        <span class="heading">Waktu</span>
-                        <span class="value">1 Hari</span>
-                    </div>
+                    <?php
+                      }
+                    ?>
 
+                        <?php
+                          }else{
+                          echo "<script>alert('Mobil Sudah Dipesan Pada Tanggal Tersebut')</script>";
+                          echo "<script>window.location ='ketersediaan.php?id=$id'</script>";
+                        }?>
+                        <?php }?>
 
-                </div>
-            </div>
-        </div>
-    </div>
-
-
-  <form action="ketersediaan.php?id=<?php echo $data['no_pol'];?>" method="GET" class="form-inline">
-
-          <div class="col-lg-5">
-            <div class="col-lg-6">
-                <label for="startDate"><h4>Tanggal Mulai</h4></label>
-            </div>
-            <div class="col-lg-6">
-                <input  class="form-control" hidden required  name="id" value="<?php echo $data['no_pol'];?>" type="text" class="form-control" />
-                <input  class="form-control"id="startDate" <?php if(isset($_GET['start'])){echo "value='".$_GET['start']."'";}?>required name="start" type="text" class="form-control" />
-            </div>
+                      </ul>
+                  </div>
+              </div>
           </div>
-          <div class="col-lg-5">
-            <div class="col-lg-4">
-                <label for="endDate"><h4>Sampai </h4></label>
-            </div>
-            <div class="col-lg-6">
-                <input class="form-control" id="endDate" <?php if(isset($_GET['end'])){echo "value='".$_GET['end']."'";}?> required name="end" type="text" class="form-control" />
-            </div>
-          </div>
-          <div class="col-lg-2">
-          <button type="submit" name="cek" value='1' class="btn btn-warning btn-lg">Cek</button>
-          </div>
-
-  </form>
-<?php } ?>
-
-  <br>
-  <br>
-  <br>
-  <?php if(isset($_GET["cek"])& $_GET["cek"]=1){  ?>
-    <?php
-    $start=$_GET['start'];
-
-    $start = explode('/',$start);
-    $start1=$start[0]."-".$start[1]."-".$start[2];
-    $end=$_GET['end'];
-
-    $end= explode('/',$end);
-    $end1=$end[0]."-".$end[1]."-".$end[2];
-    $id=$_GET['id'];
-    $i=0;
-    $cek="select * from pesan where (month(tanggal_mulai)='$start[1]' or month(tanggal_mulai)='$end[1]' or year(tanggal_mulai)='$end[0]' or year(tanggal_selesai)='$end[0]') and  no_pol='$id'";
-    $query1 = mysqli_query($con,$cek);
-    $query2 = mysqli_query($con,$cek);
-    $rows = mysqli_num_rows($query1);
-    $semua;
-    while($data1 = mysqli_fetch_array($query1)){
-
-    for($data1['tanggal_mulai'];$data1['tanggal_mulai']<=$data1['tanggal_selesai'];){
-      $i++;
-    $semua[$i]=$data1['tanggal_mulai']; //print tanggal
-    $data1['tanggal_mulai'] = date('Y-m-d', strtotime('+1 days', strtotime($data1['tanggal_mulai']))); //operasi penjumlahan tanggal sebanyak 6 hari
+      </div>
 
 
-  }
-
-    }
-    //print_r($semua);
-    $a=0;
-    $start2=$start1;
-    for($start2;$start2<=$end1;){
-      echo $hasil=array_search($start2, $semua);
-      $start2= date('Y-m-d', strtotime('+1 days', strtotime($start2)));
-      if($hasil!=0){
-      $a++;
-      }
-    }
-   $a;
-    if($a==0){
-
-      $date1=date_create($start1);
-       $date2=date_create($end1);
-      if($date2<$date1){
-        echo "<script>alert('Maaf Tanggal Salah')</script>";
-       echo '<script type="text/javascript">window.location = "ketersediaan.php?id='.$id.'"</script>';
 
 
-      }
-      $perbedaan=date_diff($date1,$date2);
-      $perbedaan=$perbedaan->format("%R%a");
-      $perbedaan++;
-    ?>
-  <div class="form-inline">
-          <div class="col-lg-5">
-            <div class="col-lg-6">
-                <label for="startDate"><h4>Jumlah Hari</h4></label>
-            </div>
-            <div class="col-lg-6">
-                <input  class="form-control" readonly value="<?php echo $perbedaan;?> Hari" name="startDate" type="text" class="form-control" />
-            </div>
-          </div>
-          <div class="col-lg-5">
-            <div class="col-lg-4">
-                <label for="endDate"><h4>Harga </h4></label>
-            </div>
-            <div class="col-lg-6">
-                <input class="form-control" readonly value="Rp.<?php echo $harga_sewa;?>" name="endDate" type="text" class="form-control" />
-            </div>
-          </div>
-          <div class="col-lg-5">
-            <div class="col-lg-6">
-                <label for="endDate"><h4> Total Harga </h4></label>
-            </div>
-            <div class="col-lg-6">
-                <input class="form-control" readonly name="endDate" value="Rp.<?php echo $harga_sewa*$perbedaan;?>" type="text" class="form-control" />
-            </div>
-          </div>
 
-  </div>
-  <br>
-  <br>
-  <center>
-    <a href="proses/pesan.php?id=<?php echo $id;?>&start=<?php echo $start1;?>&end=<?php echo $end1;?>&harga=<?php echo $harga_sewa;?>"><button type="submit" class="btn btn-success btn-lg">Pesan</button></a>
 
-  </center>
-<?php
-  }else{
-  echo "<script>alert('Mobil Sudah Dipesan Pada Tanggal Tersebut')</script>";
-  echo '<script type="text/javascript">window.location = "../ketersediaan.php?id=$id</script>';
-}?>
-<?php }?>
-  <br>
-  <br>
-  <br>
-</div>
-</div>
-</div>
-</div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 <?php include"share/footer.php";?>
 
 

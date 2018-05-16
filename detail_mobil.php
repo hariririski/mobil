@@ -117,10 +117,10 @@ while($data = mysqli_fetch_array($query)){
             </div>
             <div class="col-lg-5">
                 <div class="job-overview__company">
-                    <img src="rental/<?php echo $data['foto_rental'];?>" alt="" class="job-overview__company-logo">
+                      <a href="detail_rental.php?id=<?php echo $data['id_rental'];?>"><img src="rental/<?php echo $data['foto_rental'];?>" alt="" class="job-overview__company-logo"></a>
                     <div class="job-overview__company-info">
-                        <a href="#" class="job-overview__company-name"><?php echo $data['nama_rental'];?></a>
-                        <a href="#" class="btn btn-primary btn-lg btn-block">Pesan Sekarang</a>
+                        <a href="detail_rental.php?id=<?php echo $data['id_rental'];?>" class="job-overview__company-name"><?php echo $data['nama_rental'];?></a>
+                        <a href="ketersediaan.php?id=<?php echo $data['no_pol'];?>" class="btn btn-primary btn-lg btn-block">Pesan Sekarang</a>
                     </div>
                 </div>
 

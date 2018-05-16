@@ -194,6 +194,7 @@
   <?php
   }else{
   ?>
+  <br>
   <div class="card card-outline-primary mb-3">
   <div class="card-block">
     <div class="container">
