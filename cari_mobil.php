@@ -34,21 +34,20 @@
 
 <?php include"share/menu.php";?>
 <div class="hero-travel-trips">
+  <header class="categories-all__header">
+  <form action="#">
+      <font color="black"><center><h4 >Cari Mobil</h4></center></font>
     <div class="container">
-        <font color="black"><h2 class="hero-travel-trips__heading">Cari Mobil</h2></font>
-        <form action="#" class="hero-travel-trips__form">
+
             <div class="row col-lg-12" >
               <div class="col-lg-10">
-                <div class="alert alert-info" role="alert">
+                <div class="alert  role="alert">
                 <?php
                 $cari=$_GET['cari'];
                 if($cari=='semua'){
                 ?>
 
                   <input type="text" name="cari" class="form-control" placeholder="Cari Berdasarkan Merek, Tipe, Jenis Mobil, Tahun, Bahan Bakar">
-
-
-
                 <?php
                 }else if($cari!='semua'){
                 ?>
@@ -60,32 +59,19 @@
             </div>
                 <div class="col-lg-2">
                   <br>
-                    <button type="sumbit" class="btn btn-primary hero-travel-trips__search-btn">Temukan</button>
+                    <button type="sumbit" class=" btn btn-primary  ">Temukan</button>
+
                 </div>
 
-
-
-
-
-
-
-
               </div>
-        </form>
+
 
     </div>
+    </form>
+    </header>
+
 </div>
 
-
-
-
-
-
-<form class="filter-properties">
-    <div class="container">
-    
-    </div>
-</form>
 <div class="listing-travel-trips">
     <div class="container">
         <div class="row">
@@ -217,7 +203,7 @@
                                 <span class="value">1 Hari</span>
                             </div>
 
-                            <a href="detail_mobil.php?id=<?php echo $data['no_pol'];?>" class="btn btn-outline-default listing-travel-trips__item-details-view-link">Details</a>
+                            <a href="detail_mobil.php?id=<?php echo $data['no_pol'];?>" ><button type="button" class="btn btn-success btn-sm">Detail</button></a>
                         </div>
                     </div>
                 </div>

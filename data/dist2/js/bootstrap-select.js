@@ -379,7 +379,7 @@
     tickIcon: 'glyphicon-ok',
     showTick: false,
     template: {
-      caret: '<span class="caret"></span>'
+      caret: ''
     },
     maxOptions: false,
     mobile: false,
@@ -524,7 +524,7 @@
           '<div class="btn-group bootstrap-select' + showTick + inputGroup + '">' +
           '<button type="button" class="' + this.options.styleBase + ' dropdown-toggle" data-toggle="dropdown"' + autofocus + ' role="button">' +
           '<span class="filter-option pull-left"></span>&nbsp;' +
-          '<span class="bs-caret">' +
+          '' +
           this.options.template.caret +
           '</span>' +
           '</button>' +

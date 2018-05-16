@@ -36,152 +36,147 @@
 <?php include"share/menu.php";?>
 
 
-<div>
+    <header class="categories-all__header">
+      <form action="banding_mobil.php" method="GET">
+        <font color="black"><center><h3 >Bandingkan Mobil</h3></center></font>
+        <div class="container">
 
-<div class="hero-travel-trips">
-  <form action="banding_mobil.php" method="GET">
-    <div class="container">
-        <font color="black"><<h2  class="hero-travel-trips__heading">Bandingkan Mobil</h2></font>
-
-          <div class="col-lg-3">
-            <select id="basic" name="mobil1" class="selectpicker show-tick form-control" data-live-search="true">
-              <?php
-              include 'share/db.php';
-              if(empty($_GET['mobil1'])){
-              ?>
-              <option value="">Pilih Mobil</option>
-              <?php
-              }else{
-                $no_polisi1=$_GET['mobil1'];
-                $cari1 = mysqli_query($con,"select * from mobil where no_pol='$no_polisi1' ");
-                while($data_cari = mysqli_fetch_array($cari1)){
-              ?>
-              <option value="<?php echo $data_cari['no_pol']?>"><?php echo $data_cari['tipe']?></option>
-              <?php
-                }
-              }
-              ?>
-              <?php
-
-              $query = mysqli_query($con,"select * from rental where status='1' ");
-              while($data = mysqli_fetch_array($query)){
-              ?>
-              <optgroup label="<?php echo $data['nama_rental'];?>" data-subtext="Rental">
-                <?php
-                include 'share/db.php';
-                $id_rental=$data['id_rental'];
-                $query2 = mysqli_query($con,"select * from mobil where id_rental='$id_rental' ");
-                while($data2 = mysqli_fetch_array($query2)){
-                ?>
-                <option value="<?php echo $data2['no_pol']?>"><?php echo $data2['tipe'];?></option>
-                <?php
+              <div class="col-lg-3">
+                <select id="basic" name="mobil1" class="selectpicker show-tick form-control" data-live-search="true">
+                  <?php
+                  include 'share/db.php';
+                  if(empty($_GET['mobil1'])){
+                  ?>
+                  <option value="">Pilih Mobil</option>
+                  <?php
+                  }else{
+                    $no_polisi1=$_GET['mobil1'];
+                    $cari1 = mysqli_query($con,"select * from mobil where no_pol='$no_polisi1' ");
+                    while($data_cari = mysqli_fetch_array($cari1)){
+                  ?>
+                  <option value="<?php echo $data_cari['no_pol']?>"><?php echo $data_cari['tipe']?></option>
+                  <?php
+                    }
                   }
-                ?>
-              </optgroup>
-              <?php
-                }
-              ?>
+                  ?>
+                  <?php
+
+                  $query = mysqli_query($con,"select * from rental where status='1' ");
+                  while($data = mysqli_fetch_array($query)){
+                  ?>
+                  <optgroup label="<?php echo $data['nama_rental'];?>" data-subtext="Rental">
+                    <?php
+                    include 'share/db.php';
+                    $id_rental=$data['id_rental'];
+                    $query2 = mysqli_query($con,"select * from mobil where id_rental='$id_rental' ");
+                    while($data2 = mysqli_fetch_array($query2)){
+                    ?>
+                    <option value="<?php echo $data2['no_pol']?>"><?php echo $data2['tipe'];?></option>
+                    <?php
+                      }
+                    ?>
+                  </optgroup>
+                  <?php
+                    }
+                  ?>
 
 
-            </select>
-          </div>
+                </select>
+              </div>
 
-          <div class="col-lg-3">
-            <select id="basic" name="mobil2" class="selectpicker show-tick form-control" data-live-search="true">
-              <?php
+              <div class="col-lg-3">
+                <select id="basic" name="mobil2" class="selectpicker show-tick form-control" data-live-search="true">
+                  <?php
 
-              if(empty($_GET['mobil2'])){
-              ?>
-              <option value="">Pilih Mobil</option>
-              <?php
-              }else{
-                $no_polisi2=$_GET['mobil2'];
-                $cari2 = mysqli_query($con,"select * from mobil where no_pol='$no_polisi2' ");
-                while($data_cari2 = mysqli_fetch_array($cari2)){
-              ?>
-              <option value="<?php echo $data_cari2['no_pol']?>"><?php echo $data_cari2['tipe']?></option>
-              <?php
-                }
-              }
-              ?>
-              <?php
-
-              $query = mysqli_query($con,"select * from rental where status='1' ");
-              while($data = mysqli_fetch_array($query)){
-              ?>
-              <optgroup label="<?php echo $data['nama_rental'];?>" data-subtext="Rental">
-                <?php
-                include 'share/db.php';
-                $id_rental=$data['id_rental'];
-                $query2 = mysqli_query($con,"select * from mobil where id_rental='$id_rental' ");
-                while($data2 = mysqli_fetch_array($query2)){
-                ?>
-                <option value="<?php echo $data2['no_pol']?>"><?php echo $data2['tipe'];?></option>
-                <?php
+                  if(empty($_GET['mobil2'])){
+                  ?>
+                  <option value="">Pilih Mobil</option>
+                  <?php
+                  }else{
+                    $no_polisi2=$_GET['mobil2'];
+                    $cari2 = mysqli_query($con,"select * from mobil where no_pol='$no_polisi2' ");
+                    while($data_cari2 = mysqli_fetch_array($cari2)){
+                  ?>
+                  <option value="<?php echo $data_cari2['no_pol']?>"><?php echo $data_cari2['tipe']?></option>
+                  <?php
+                    }
                   }
-                ?>
-              </optgroup>
-              <?php
-                }
-              ?>
+                  ?>
+                  <?php
+
+                  $query = mysqli_query($con,"select * from rental where status='1' ");
+                  while($data = mysqli_fetch_array($query)){
+                  ?>
+                  <optgroup label="<?php echo $data['nama_rental'];?>" data-subtext="Rental">
+                    <?php
+                    include 'share/db.php';
+                    $id_rental=$data['id_rental'];
+                    $query2 = mysqli_query($con,"select * from mobil where id_rental='$id_rental' ");
+                    while($data2 = mysqli_fetch_array($query2)){
+                    ?>
+                    <option value="<?php echo $data2['no_pol']?>"><?php echo $data2['tipe'];?></option>
+                    <?php
+                      }
+                    ?>
+                  </optgroup>
+                  <?php
+                    }
+                  ?>
 
 
-            </select>
-          </div>
+                </select>
+              </div>
 
-          <div class="col-lg-3">
-            <select id="basic" name="mobil3" class="selectpicker show-tick form-control" data-live-search="true">
-              <?php
-              if(empty($_GET['mobil3'])){
-              ?>
-              <option value="">Pilih Mobil</option>
-              <?php
-              }else{
-                $no_polisi3=$_GET['mobil3'];
-                $cari3 = mysqli_query($con,"select * from mobil where no_pol='$no_polisi3' ");
-                while($data_cari3 = mysqli_fetch_array($cari3)){
-              ?>
-              <option value="<?php echo $data_cari3['no_pol']?>"><?php echo $data_cari3['tipe']?></option>
-              <?php
-                }
-              }
-              ?>
-              <?php
-              include 'share/db.php';
-              $query = mysqli_query($con,"select * from rental where status='1' ");
-              while($data = mysqli_fetch_array($query)){
-              ?>
-              <optgroup label="<?php echo $data['nama_rental'];?>" data-subtext="Rental">
-                <?php
-                include 'share/db.php';
-                $id_rental=$data['id_rental'];
-                $query2 = mysqli_query($con,"select * from mobil where id_rental='$id_rental' ");
-                while($data2 = mysqli_fetch_array($query2)){
-                ?>
-                <option value="<?php echo $data2['no_pol']?>"><?php echo $data2['tipe'];?></option>
-                <?php
+              <div class="col-lg-3">
+                <select id="basic" name="mobil3" class="selectpicker show-tick form-control" data-live-search="true">
+                  <?php
+                  if(empty($_GET['mobil3'])){
+                  ?>
+                  <option value="">Pilih Mobil</option>
+                  <?php
+                  }else{
+                    $no_polisi3=$_GET['mobil3'];
+                    $cari3 = mysqli_query($con,"select * from mobil where no_pol='$no_polisi3' ");
+                    while($data_cari3 = mysqli_fetch_array($cari3)){
+                  ?>
+                  <option value="<?php echo $data_cari3['no_pol']?>"><?php echo $data_cari3['tipe']?></option>
+                  <?php
+                    }
                   }
-                ?>
-              </optgroup>
-              <?php
-                }
-              ?>
+                  ?>
+                  <?php
+                  include 'share/db.php';
+                  $query = mysqli_query($con,"select * from rental where status='1' ");
+                  while($data = mysqli_fetch_array($query)){
+                  ?>
+                  <optgroup label="<?php echo $data['nama_rental'];?>" data-subtext="Rental">
+                    <?php
+                    include 'share/db.php';
+                    $id_rental=$data['id_rental'];
+                    $query2 = mysqli_query($con,"select * from mobil where id_rental='$id_rental' ");
+                    while($data2 = mysqli_fetch_array($query2)){
+                    ?>
+                    <option value="<?php echo $data2['no_pol']?>"><?php echo $data2['tipe'];?></option>
+                    <?php
+                      }
+                    ?>
+                  </optgroup>
+                  <?php
+                    }
+                  ?>
 
 
-            </select>
-          </div>
+                </select>
+              </div>
 
-          <div class="col-lg-3">
-            <button type="submit" class="btn btn-primary col-lg-12 ">Bandingkan</button>
-          </div>
-    </div>
-  </form>
-</div>
-<form class="filter-properties">
-    <div class="container">
+              <div class="col-lg-3">
+                <button type="submit" class="btn btn-primary col-lg-12 ">Bandingkan</button>
+              </div>
+        </div>
+      </form>
+        </header>
 
-    </div>
-</form>
+
 
 <div class="container">
 <br>
