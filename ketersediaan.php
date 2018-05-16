@@ -136,13 +136,13 @@
   error_reporting(E_ALL ^ (E_NOTICE | E_WARNING|E_ALL));
   include"share/menu.php";
   ?>
-
+<hr>
   <div class="container">
           <div class="row">
               <div class="col-lg-8">
                   <div class="job-overview__body">
                       <div class="job-overview__body-figure">
-                        <iframe class="animated fadeInDown wow" src="kalender.php?id=<?php echo $_GET['id']?>" width="100%" height="615px" scrolling="no" frameborder="0"></iframe>
+                        <iframe  src="kalender.php?id=<?php echo $_GET['id']?>" width="100%" height="615px" scrolling="no" frameborder="0"></iframe>
 
                       </div>
 
