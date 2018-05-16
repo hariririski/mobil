@@ -26,7 +26,13 @@
     <script src="data/bootstrap.js" defer></script>
     <script src="data/dist2/js/bootstrap-select.js" defer></script>
 
+<style>
+.categories-all__header {
 
+    padding: 75px 0;
+
+}
+</style>
 </head>
 <!-- BEGIN HEAD -->
 <body >
@@ -179,7 +185,7 @@
 
 
 <div class="container">
-<br>
+
 
   <?php
   if((empty($_GET['mobil1']))&&(empty($_GET['mobil2']))&&(empty($_GET['mobil3']))){

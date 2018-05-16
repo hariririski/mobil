@@ -33,114 +33,137 @@
 
 
 <?php include"share/menu.php";?>
-<div class="apartment">
-    <div class="apartment__wrap">
-      <?php $id=$_GET['id'];
-        include 'share/db.php';
-      $query = mysqli_query($con,"select * from mobil left join rental on rental.id_rental=mobil.id_rental where no_pol='$id' ");
-      while($data = mysqli_fetch_array($query)){
-      ?>
-        <h1 class="apartment__name"><?php echo $data['merek']?></h1>
-        <div class="apartment__location">Tahun: <?php echo $data['tahun_pembuatan']?></div>
+<hr>
+<?php $id=$_GET['id'];
+  include 'share/db.php';
+$query = mysqli_query($con,"select * from mobil left join rental on rental.id_rental=mobil.id_rental where no_pol='$id' ");
+while($data = mysqli_fetch_array($query)){
+?>
+<div class="container">
+        <div class="row">
+            <div class="col-lg-6">
+                <div class="job-overview__body">
+                    <div class="job-overview__body-figure">
+                      <div>
+                          <div id="carouselExampleCaptions" class="carousel slide" data-ride="carousel">
+                              <ol class="carousel-indicators">
+                                  <li data-target="#carouselExampleCaptions" data-slide-to="0" class="active"></li>
+                                  <li data-target="#carouselExampleCaptions" data-slide-to="1" class=""></li>
+                                  <li data-target="#carouselExampleCaptions" data-slide-to="2" class=""></li>
+                                  <li data-target="#carouselExampleCaptions" data-slide-to="3" class=""></li>
+                                  <li data-target="#carouselExampleCaptions" data-slide-to="4" class=""></li>
+                              </ol>
+                              <div class="carousel-inner" role="listbox">
+                                  <div class="carousel-item active">
+                                      <img class="d-flex" src="mobil/<?php echo $data['foto_depan']?>" alt="First slide" width="600" height="400">
+                                      <div class="carousel-caption">
+                                          <h5>Foto Tampak Depan</h5>
 
-        <div class="apartment__price">
-            Rp.<?php echo $data['harga_sewa']?>/Hari <a href="" class="apartment__price-offer"></a>
+                                      </div>
+                                  </div>
+                                  <div class="carousel-item">
+                                      <img class="d-flex" src="mobil/<?php echo $data['foto_samping']?>" alt="Second slide" width="600" height="400" >
+                                      <div class="carousel-caption d-none d-md-block">
+                                          <h5>Foto Tampak Samping</h5>
+
+                                      </div>
+                                  </div>
+                                  <div class="carousel-item">
+                                      <img class="d-flex" src="mobil/<?php echo $data['foto_belakang']?>" alt="Third slide" width="600" height="400">
+                                      <div class="carousel-caption d-none d-md-block">
+                                          <h5>Foto Tampak Belakang</h5>
+
+                                      </div>
+                                  </div>
+                                  <div class="carousel-item">
+                                      <img class="d-flex" src="mobil/<?php echo $data['foto_dalam1']?>" alt="Third slide" width="600" height="400">
+                                      <div class="carousel-caption d-none d-md-block">
+                                            <h5>Foto Tampak Dalam Mobil</h5>
+                                      </div>
+                                  </div>
+                                  <div class="carousel-item">
+                                      <img class="d-flex" src="mobil/<?php echo $data['foto_dalam2']?>" alt="Third slide" width="600" height="400">
+                                      <div class="carousel-caption d-none d-md-block">
+                                            <h5>Foto Tampak Dalam Mobil</h5>
+                                      </div>
+                                  </div>
+                              </div>
+                              <a class="carousel-control-prev" href="#carouselExampleCaptions" role="button" data-slide="prev">
+                                  <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                                  <span class="sr-only">Previous</span>
+                              </a>
+                              <a class="carousel-control-next" href="#carouselExampleCaptions" role="button" data-slide="next">
+                                  <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                                  <span class="sr-only">Next</span>
+                              </a>
+                          </div>
+                        </div>
+                    </div>
+
+                    <div class="job-overview__body-description">
+                        <?php echo $data['alamat'];?><br>
+                          No Hp</a> &ndash; <?php echo $data['no_hp_rental'];?>
+                    </div>
+
+                    <div class="description-list-block">
+                        <h5 class="description-list-block__heading">Fasilitas</h5>
+                        <?php echo $data['fasilitas']?>
+                    </div>
+
+
+                </div>
+            </div>
+            <div class="col-lg-1">
+            </div>
+            <div class="col-lg-5">
+                <div class="job-overview__company">
+                    <img src="rental/<?php echo $data['foto_rental'];?>" alt="" class="job-overview__company-logo">
+                    <div class="job-overview__company-info">
+                        <a href="#" class="job-overview__company-name"><?php echo $data['nama_rental'];?></a>
+                        <a href="#" class="btn btn-primary btn-lg btn-block">Pesan Sekarang</a>
+                    </div>
+                </div>
+
+                <div class="job-overview__details">
+                    <h5 class="job-overview__details-heading">Spesifikasi Mobil</h5>
+                    <ul class="job-overview__details-body list-unstyled">
+                        <li class="job-overview__details-body-item">
+                            <span class="icon iconfont-calendar-solid job-overview__details-body-item-icon"></span>
+                            <span class="job-overview__details-body-item-type">Merek:</span>
+                            <span class="job-overview__details-body-item-info"><?php echo $data['merek']?></span>
+                        </li>
+                        <li class="job-overview__details-body-item">
+                            <span class="icon iconfont-map-point job-overview__details-body-item-icon"></span>
+                            <span class="job-overview__details-body-item-type">Jenis:</span>
+                            <span class="job-overview__details-body-item-info"><?php echo $data['jenis']?></span>
+                        </li>
+                        <li class="job-overview__details-body-item">
+                            <span class="icon iconfont-map-point job-overview__details-body-item-icon"></span>
+                            <span class="job-overview__details-body-item-type">Tipe:</span>
+                            <span class="job-overview__details-body-item-info"><?php echo $data['tipe']?></span>
+                        </li>
+                        <li class="job-overview__details-body-item">
+                            <span class="icon iconfont-user job-overview__details-body-item-icon"></span>
+                            <span class="job-overview__details-body-item-type">Kapasitas Penumpang:</span>
+                            <span class="job-overview__details-body-item-info"><?php echo $data['kapasitas_penumpang']?></span>
+                        </li>
+                        <li class="job-overview__details-body-item">
+                            <span class="icon iconfont-clock-solid job-overview__details-body-item-icon"></span>
+                            <span class="job-overview__details-body-item-type">Bahan Bakar:</span>
+                            <span class="job-overview__details-body-item-info"><?php echo $data['bahan_bakar']?></span>
+                        </li>
+                        <li class="job-overview__details-body-item">
+                            <span class="icon iconfont-databaseconstruction job-overview__details-body-item-icon"></span>
+                            <span class="job-overview__details-body-item-type">Harga Sewa:</span>
+                            <span class="job-overview__details-body-item-info">Rp.<?php echo $data['harga_sewa']?>/Hari</span>
+                        </li>
+                    </ul>
+                </div>
+            </div>
         </div>
-
     </div>
-    <div class="apartment__image-slider">
-        <ul id="apartment-image-slider">
-            <li data-thumb="mobil/<?php echo $data['foto_depan']?>">
-                <img height="30px" width="100%"src="mobil/<?php echo $data['foto_depan']?>" alt="">
-            </li>
-            <li data-thumb="mobil/<?php echo $data['foto_samping']?>">
-                <img  height="30px" width="100%" src="mobil/<?php echo $data['foto_samping']?>" alt="">
-            </li>
-            <li data-thumb="mobil/<?php echo $data['foto_belakang']?>">
-                <img  height="30px" width="100%" src="mobil/<?php echo $data['foto_belakang']?>" alt="">
-            </li>
-            <li data-thumb="mobil/<?php echo $data['foto_dalam1']?>">
-                <img  height="30px" width="100%" src="mobil/<?php echo $data['foto_dalam1']?>" alt="">
-            </li>
-            <li data-thumb="mobil/<?php echo $data['foto_dalam2']?>">
-                <img  height="30px" width="100%" src="mobil/<?php echo $data['foto_dalam2']?>" alt="">
-            </li>
-
-        </ul>
-    </div>
-</div>
-<div class="apartment__about">
-    <div class="container">
-        <div class="apartment__about-wrap">
-
-            <ul class="apartment__about-amenity">
-                <li class="apartment__about-amenity-item">
-                    <span class="icon iconfont-info-solid apartment__about-amenity-icon"></span>
-                    <div class="apartment__about-amenity-info">
-                        <span>Merek: <?php echo $data['merek']?></span>
-                        <span>Jenis: <?php echo $data['jenis']?></span>
-                        <span>Tipe: <?php echo $data['tipe']?></span>
-                    </div>
-                </li>
-                <li class="apartment__about-amenity-item">
-                    <span class="icon iconfont-bed apartment__about-amenity-icon"></span>
-                    <div class="apartment__about-amenity-info">
-                        <span>Kapasitas Penumpang: <?php echo $data['kapasitas_penumpang']?></span>
-                    </div>
-                </li>
-                <li class="apartment__about-amenity-item">
-                    <span class="icon iconfont-map-point-v2 apartment__about-amenity-icon"></span>
-                    <div class="apartment__about-amenity-info">
-                        <span>Bahan Bakar : <?php echo $data['bahan_bakar']?></span>
-                    </div>
-                </li>
-                <li class="apartment__about-amenity-item">
-                    <span class="icon iconfont-wallet apartment__about-amenity-icon"></span>
-                    <div class="apartment__about-amenity-info">
-                        <span>Harga Sewa: Rp.<?php echo $data['harga_sewa']?>/Hari</span>
-
-                    </div>
-                </li>
-            </ul>
-        </div>
-    </div>
-</div>
-<div class="apartment__full-description">
-    <div class="container">
-        <p>
-          <?php echo $data['fasilitas']?>
-        </p>
-
-    </div>
-</div>
 
 
-<div class="container apartment__owner">
-    <div class="apartment__owner-avatar-wrap">
-        <img src="rental/<?php echo $data['foto_rental'];?>" alt="" class="apartment__owner-avatar" width="250px" height="170px">
-    </div>
-    <div class="apartment__owner-info">
-        <div class="apartment__owner-info-name"><?php echo $data['nama_rental'];?></div>
-        <div class="apartment__owner-info-location"><?php echo $data['alamat'];?></div>
-
-        <div class="apartment__owner-info-actions-wrap">
-            <ul class="apartment__owner-info-actions list-unstyled">
-
-                <li>
-                    Lakukan Pemesanan Sekarang Dengan Menghubungi
-                </li>
-                <li>
-                    No Hp</a> &ndash; <?php echo $data['no_hp_rental'];?>
-                </li>
-            </ul>
-
-        </div>
-    </div>
-    <div class="apartment__owner-actions">
-        <a href="ketersediaan.php?id=<?php echo $data['no_pol'];?>" class="btn btn-primary btn-lg">Pesan Sekarang</a>
-
-    </div>
-</div>
         <?php
         if(isset($_SESSION['rental'])){
           if($_SESSION['rental']==$data['username']){
