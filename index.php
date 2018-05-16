@@ -35,7 +35,9 @@
 
 
 <?php include"share/menu.php";?>
-<div class="hero-carousel">
+<center><iframe class="animated fadeInDown wow" src="slider/index.php" width="90%" height="515px" scrolling="no" frameborder="0"></iframe></center>
+
+<!-- <div class="hero-carousel">
     <div class="owl-carousel owl-theme hero-carousel__items">
         <div class="item hero-carousel__item">
             <img src="data/home1.png" height="460" alt="">
@@ -60,7 +62,7 @@
             </div>
         </div>
     </div>
-</div>
+</div> -->
 
 
 <form class="filter-properties">
