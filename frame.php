@@ -36,6 +36,7 @@ while($data = mysqli_fetch_array($query)){
           <address>
           <strong>Penagihan To:</strong><br>
             <?php echo $data['nama']?><br>
+            <?php echo $data['no_hp']?><br>
             <?php echo $data['alamat_c']?><br>
           </address>
         </div>
