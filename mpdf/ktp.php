@@ -151,4 +151,4 @@ $mpdf->WriteHTML(file_get_contents('../invoice_admin.php?id=1'));
 //$mpdf->SetDisplayMode('fullpage');
 $mpdf->WriteHTML($stylesheet,1);
 $mpdf->WriteHTML($strhtml);
-$mpdf->Output('files/' . $fileName. '.pdf','I');
+$mpdf->Output();
