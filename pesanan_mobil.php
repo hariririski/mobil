@@ -121,7 +121,7 @@ if((empty($_SESSION['rental']))){
                                       <td class="center"><a href="invoice_admin.php?id=<?php echo $data['invoice'];?>"><button type="button" class="btn btn-info btn-xs">Detail</button></a></td>
                                       <?php if ($data['verifikasi_pembayaran']==2) {
                                       ?>
-                                      <td class="center"><a href="invoice_admin.php?id=<?php echo $data['invoice'];?>"><button type="button" class="btn btn-success btn-xs">Cetak</button></a></td>
+                                      <td class="center"><a href="mpdf/ktp.php?id=<?php echo $data['invoice'];?>&&id2=<?php echo $data['id_costumer'];?>"><button type="button" class="btn btn-success btn-xs">Cetak</button></a></td>
                                       <?php }else{ ?>
                                         <td class="center"><button type="button" disabled class="btn btn-warning btn-xs">Cetak</button></td>
                                       <?php } ?>
