@@ -78,7 +78,6 @@
     </form>
 </div>
 <?php include"share/footer.php";?>
-
 <script src="vendors/jquery/jquery.min.js"></script>
 <script src="vendors/tether/js/tether.min.js"></script>
 <script src="vendors/bootstrap/js/bootstrap.min.js"></script>
@@ -90,20 +89,16 @@
     (function () {
         $(document).ready(function () {
             var dropDownToggle = $('.dropdown-toggle');
-
             $(".navbar-toggler").on("click", function () {
                 $(this).toggleClass("is-active");
             });
-
             dropDownToggle.click(function() {
                 var dropdownList = $(this).parent().find('.dropdown-menu');
                 var dropdownOffset = $(this).offset();
                 var offsetLeft = dropdownOffset.left;
                 var dropdownWidth = dropdownList.width() / 2;
                 var docWidth = $(window).width();
-
                 var isDropdownVisible = (offsetLeft + dropdownWidth <= docWidth);
-
                 if (!isDropdownVisible) {
                     dropdownList.addClass('dropdown-menu-right');
                 } else {
@@ -119,7 +114,5 @@
 <script src="http://maps.google.com/maps/api/js?v=3.3&sensor=false"></script>
 <script src="http://matchingnotes.com/javascripts/leaflet-google.js"></script>
 <script src="js/contact.js"></script>
-
-
 </body>
 </html>

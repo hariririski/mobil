@@ -3,7 +3,7 @@
 <!-- BEGIN HEAD -->
 <head>
     <meta charset="UTF-8">
-    <title>Login</title>
+    <title>Login admin/rental</title>
 
     <meta http-equiv="X-UA-Compatible" content="IE=edge"/>
     <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -49,7 +49,7 @@
                         <div class="tab-content">
                             <div class="tab-pane active" id="page-auth__candiate-tab" role="tabpanel">
                                 <form action="proses/proses_login.php" method="post" class="page-auth__form form-controls-flat">
-                                        <center><h3 >Login</h3></center>
+                                        <center><h3 >Login Rental / Admin</h3></center>
 
                                     <div class="form-group">
                                         <label for="employee-username" class="form-label-icon form-label-icon--right">
@@ -70,8 +70,7 @@
                                             </div>
                                         </div>
 
-                                          Belum Mempunyai Akun? <a href="daftar_rental.php">Daftar Sebagai Rental</a>
-                                        Atau <a href="daftar_penyewa.php"> Penyewa</a>
+                                        
                                     </div>
 
                                 </form>

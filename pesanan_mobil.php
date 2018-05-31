@@ -86,11 +86,12 @@ if((empty($_SESSION['rental']))){
                                       <th>NO</th>
                                       <th>No Pol</th>
                                       <th>Merek</th>
-                                      <th>Jenis</th>
                                       <th>Tipe</th>
                                       <th>Tanggal Mulai</th>
                                       <th>Tanggal Selesai</th>
+                                      <th>Status</th>
                                       <th>Detail</th>
+                                      <th>Cetak</th>
                                   </tr>
                               </thead>
                               <tbody>
@@ -106,11 +107,24 @@ if((empty($_SESSION['rental']))){
                                       <td class="center"><?php echo $i;?></td>
                                       <td><?php echo $data['no_pol'];?></td>
                                       <td><?php echo $data['merek'];?></td>
-                                      <td><?php echo $data['jenis'];?></td>
                                       <td><?php echo $data['tipe'];?></td>
                                       <td><?php echo $data['tanggal_mulai'];?></td>
                                       <td><?php echo $data['tanggal_selesai'];?></td>
-                                      <td class="center"><a href="invoice_admin.php?id=<?php echo $data['invoice'];?>"><button type="button" class="btn btn-info btn-xs">Detail</button></td>
+                                      <?php if ($data['verifikasi_pembayaran']==1) {
+                                      ?>
+                                      <td><span class="badge badge-pill badge-warning badge-sm">Proses</span></td>
+                                      <?php }else if ($data['verifikasi_pembayaran']==2){ ?>
+                                      <td><span class="badge badge-pill badge-success badge-sm">Selesai</span></td>
+                                      <?php }else{ ?>
+                                      <td><span class="badge badge-pill badge-warning badge-sm">Batal</span></td>
+                                      <?php }?>
+                                      <td class="center"><a href="invoice_admin.php?id=<?php echo $data['invoice'];?>"><button type="button" class="btn btn-info btn-xs">Detail</button></a></td>
+                                      <?php if ($data['verifikasi_pembayaran']==2) {
+                                      ?>
+                                      <td class="center"><a href="invoice_admin.php?id=<?php echo $data['invoice'];?>"><button type="button" class="btn btn-success btn-xs">Cetak</button></a></td>
+                                      <?php }else{ ?>
+                                        <td class="center"><button type="button" disabled class="btn btn-warning btn-xs">Cetak</button></td>
+                                      <?php } ?>
                                   </tr>
                                   <?php  }?>
 

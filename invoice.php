@@ -15,9 +15,15 @@
     <link rel="stylesheet" type="text/css" href="fonts/circular/styles.css">
     <link rel="stylesheet" type="text/css" href="fonts/open-sans/styles.css">
     <link rel="stylesheet" type="text/css" href="fonts/iconfont/styles.css">
+    <!-- END GLOBAL MANDATORY STYLES -->
 
+
+
+  <link rel="stylesheet" type="text/css" href="vendors/leaflet/leaflet.css">
+
+
+    <!-- BEGIN THEME STYLES -->
     <link rel="stylesheet" type="text/css" href="css/style.min.css">
-
 
 
 </head>
@@ -110,7 +116,7 @@
 <?php include"share/footer.php";?>
 
 
-<!-- <script src="vendors/jquery/jquery.min.js"></script> -->
+<script src="vendors/jquery/jquery.min.js"></script>
 <script src="vendors/tether/js/tether.min.js"></script>
 <script src="vendors/bootstrap/js/bootstrap.min.js"></script>
 <script src="js/dropdown.animate.js"></script>
@@ -146,8 +152,8 @@
 </script>
 
 <script src="vendors/select2/js/select2.min.js"></script>
-<script src="js/post-job.js"></script>
-
-
+<script src="vendors/nouislider/nouislider.min.js"></script>
+<script src="vendors/owl-carousel/owl.carousel.min.js"></script>
+<script src="js/properties.js"></script>
 </body>
 </html>
