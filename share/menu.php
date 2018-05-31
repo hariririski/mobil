@@ -1,5 +1,8 @@
 <?php
-echo session_start(); // Memulai Session
+if(!isset($_SESSION))
+    {
+        session_start();
+    }
 ?>
 <?php
 if(isset($_SESSION['rental'])){
