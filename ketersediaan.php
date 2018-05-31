@@ -1,4 +1,9 @@
 <!DOCTYPE html>
+<?php
+
+        session_start();
+
+?>
 <html lang="en">
 <!-- BEGIN HEAD -->
 <head>
