@@ -116,7 +116,7 @@ if((empty($_SESSION['rental']))){
                                       <?php }else if ($data['verifikasi_pembayaran']==2){ ?>
                                       <td><span class="badge badge-pill badge-success badge-sm">Selesai</span></td>
                                       <?php }else{ ?>
-                                      <td><span class="badge badge-pill badge-warning badge-sm">Batal</span></td>
+                                      <td><span class="badge badge-pill badge-danger badge-sm">Batal</span></td>
                                       <?php }?>
                                       <td class="center"><a href="invoice_admin.php?id=<?php echo $data['invoice'];?>"><button type="button" class="btn btn-info btn-xs">Detail</button></a></td>
                                       <?php if ($data['verifikasi_pembayaran']==2) {
