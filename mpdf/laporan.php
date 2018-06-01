@@ -73,9 +73,7 @@ require ("mpdf/mpdf.php");
 
 $stylesheet = file_get_contents('css/style.css');
 $fileName = 'reportPdf--' . date('d-m-Y') . '-' . date('h.i.s');
-
 $mpdf = new mPDF('utf-8', 'legal-L', 0, '', 10, 10, 5, 1, 1, 1, '');
-
 $mpdf->SetDisplayMode('fullpage');
 $mpdf->WriteHTML($stylesheet,1);
 $mpdf->WriteHTML($strhtml,2);

@@ -145,10 +145,7 @@ require ("mpdf/mpdf.php");
 
 $stylesheet = file_get_contents('bootstrap.min.css');
 $fileName = 'reportPdf--' . date('d-m-Y') . '-' . date('h.i.s');
-
 $mpdf = new mPDF('utf-8', 'legal-P', 0, '', 10, 10, 5, 1, 1, 1, '');
-$mpdf->WriteHTML(file_get_contents('../invoice_admin.php?id=1'));
-//$mpdf->SetDisplayMode('fullpage');
 $mpdf->WriteHTML($stylesheet,1);
 $mpdf->WriteHTML($strhtml);
 $mpdf->Output();
