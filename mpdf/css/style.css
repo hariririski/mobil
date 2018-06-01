@@ -1,4 +1,3 @@
-/* http://phpbego.wordpress.com */
 .container {
 	width: 970px;
 	margin: auto;
@@ -21,4 +20,38 @@ table th {
 	background-color: #000;
 	color: #fff;
 	padding: 10px
+}
+
+a {
+    color: #000066;
+    text-decoration: none;
+}
+
+thead {
+    vertical-align: bottom;
+    text-align: center;
+    font-weight: bold;
+}
+tfoot {
+    text-align: center;
+    font-weight: bold;
+}
+th {
+    text-align: left;
+    padding-left: 0.35em;
+    padding-right: 0.35em;
+    padding-top: 0.35em;
+    padding-bottom: 0.35em;
+    vertical-align: top;
+}
+td {
+    padding-left: 0.35em;
+    padding-right: 0.35em;
+    padding-top: 0.35em;
+    padding-bottom: 0.35em;
+    vertical-align: top;
+}
+img {
+    margin: 0.2em;
+    vertical-align: middle;
 }
