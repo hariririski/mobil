@@ -46,7 +46,7 @@
 
   ?>
 
-<form action="proses/edit_profil.php?id=<?php echo $data['id_costumer']?>" method="post" enctype="multipart/form-data" class="post-job">
+<form action="proses/edit_profil_costumer.php?id_costumer=<?php echo $data['id_costumer']?>&&g1=<?php echo $data['foto_ktp']?>&&g2=<?php echo $data['foto_ktp_orang']?>" method="post" enctype="multipart/form-data" class="post-job">
     <div class="container">
       <?php if( $data['verifikasi']==0){?>
       <div class="alert alert-warning alert-solid-warning" role="alert">
@@ -73,7 +73,7 @@
                             <div class="col-lg-12">
                                 <div class="form-group">
                                     <label for="post-job__email">Nama</label>
-                                    <input type="text" name="nama_rental" value="<?php echo $data['nama']?>" class="form-control" >
+                                    <input type="text" name="nama" value="<?php echo $data['nama']?>" class="form-control" >
                                 </div>
                             </div>
                         </div>
@@ -89,7 +89,15 @@
                             <div class="col-lg-12">
                                 <div class="form-group">
                                     <label for="post-job__email">Nomor Hp</label>
-                                    <input type="number" name="no_hp" value="<?php echo $data['no_hp']?>" class="form-control" placeholder="Nama Rental Anda">
+                                    <input type="number" name="no_hp" value="<?php echo $data['no_hp']?>" class="form-control" >
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-lg-12">
+                                <div class="form-group">
+                                    <label for="post-job__email">email</label>
+                                    <input type="email" name="email" value="<?php echo $data['email']?>" class="form-control" >
                                 </div>
                             </div>
                         </div>
@@ -102,7 +110,7 @@
                                 <div class="form-group">
 
                                     <label for="post-job__email">Foto KTP</label>
-                                    <input type="file" name="foto_rental"  class="form-control" placeholder="">
+                                    <input type="file" name="foto_ktp"  class="form-control" placeholder="">
                                     <img src="penyewa/<?php echo $data['foto_ktp']?>" width="30%">
                                 </div>
                             </div>
@@ -112,7 +120,7 @@
                                 <div class="form-group">
 
                                     <label for="post-job__email">Foto Diri Anda + KTP</label>
-                                    <input type="file" name="foto_rental"  class="form-control" placeholder="">
+                                    <input type="file" name="foto_ktp_orang"  class="form-control" placeholder="">
                                     <img src="penyewa/<?php echo $data['foto_ktp_orang']?>" width="30%">
                                 </div>
                             </div>
