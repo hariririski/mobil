@@ -11,18 +11,18 @@
 <style>
 .slide:nth-child(1) .slide__bg {
   left: 0;
-  background-image: url("1.jpg");
+  background-image: url("2.jpg");
 }
 .slide:nth-child(2) .slide__bg {
   left: -50%;
-  background-image: url("2.jpg");
+  background-image: url("1.jpg");
 }
 .slide__text {
   position: absolute;
   width: 25%;
   bottom: 15%;
   left: 4%;
-  color: #fff;
+  color:#000;
   transition: opacity 0.5s 0.8s, -webkit-transform 0.5s 0.8s;
   transition: transform 0.5s 0.8s, opacity 0.5s 0.8s;
   transition: transform 0.5s 0.8s, opacity 0.5s 0.8s, -webkit-transform 0.5s 0.8s;
@@ -52,7 +52,7 @@
         <div class="slide__text">
           <h2 class="slide__text-desc">Selamat Datang di SIRENBIL</h2>
           <p class="slide__text-desc">SIRENBIL adalah perusahaan yang bergerak dibidang jasa Rental atau Penyewaan mobil. Disini kami menyediakan kendaraan  personal dengan kualitas terbaik.</p>
-        
+
         </div>
       </div>
     </div>

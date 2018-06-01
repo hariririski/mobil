@@ -145,7 +145,7 @@ svg {
 }
 
 .slide:nth-child(1) .slide__overlay-path {
-  fill: #e99c7e;
+  fill: #0fd8f3;
 }
 @media (max-width: 991px) {
   .slide:nth-child(1) .slide__text {
