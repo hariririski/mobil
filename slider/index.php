@@ -27,9 +27,9 @@
           <path class="slide__overlay-path" d="M0,0 150,0 500,405 0,405" />
         </svg>
         <div class="slide__text">
-          <h2 class="slide__text-desc">Selamat Datang</h2>
-          <p class="slide__text-desc">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Distinctio veniam minus illo debitis nihil animi facere, doloremque voluptate tempore quia. Lorem ipsum dolor sit amet, consectetur adipisicing elit. Distinctio veniam minus illo debitis nihil animi facere, doloremque voluptate tempore quia.</p>
-          <a class="slide__text-link">Project link</a>
+          <h2 class="slide__text-desc">Selamat Datang di SIRENBIL</h2>
+          <p class="slide__text-desc">SIRENBIL adalah perusahaan yang bergerak dibidang jasa Rental atau Penyewaan mobil. Disini kami menyediakan kendaraan  personal dengan kualitas terbaik.</p>
+          <a class="slide__text-link"></a>
         </div>
       </div>
     </div>
@@ -40,40 +40,13 @@
           <path class="slide__overlay-path" d="M0,0 150,0 500,405 0,405" />
         </svg>
         <div class="slide__text">
-          <h2 class="slide__text-heading">Project name 2</h2>
-          <p class="slide__text-desc">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Distinctio veniam minus illo debitis nihil animi facere, doloremque voluptate tempore quia. Lorem ipsum dolor sit amet, consectetur adipisicing elit. Distinctio veniam minus illo debitis nihil animi facere, doloremque voluptate tempore quia.</p>
-          <a class="slide__text-link">Project link</a>
+          <h2 class="slide__text-heading"></h2>
+          <p class="slide__text-desc">Melayani Rental Harian, Mingguan dan Bulanan</p>
+          <a class="slide__text-link"></a>
         </div>
       </div>
     </div>
-    <div class="slide slide-2">
-      <div class="slide__bg"></div>
-      <div class="slide__content">
-        <svg class="slide__overlay" viewBox="0 0 720 405" preserveAspectRatio="xMaxYMax slice">
-          <path class="slide__overlay-path" d="M0,0 150,0 500,405 0,405" />
-        </svg>
-        <div class="slide__text">
-          <h2 class="slide__text-heading">Project name 3</h2>
-          <p class="slide__text-desc">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Distinctio veniam minus illo debitis nihil animi facere, doloremque voluptate tempore quia. Lorem ipsum dolor sit amet, consectetur adipisicing elit. Distinctio veniam minus illo debitis nihil animi facere, doloremque voluptate tempore quia.</p>
-          <a class="slide__text-link">Project link</a>
-        </div>
-      </div>
-    </div>
-    <div class="slide slide-3">
-      <div class="slide__bg"></div>
-      <div class="slide__content">
-        <svg class="slide__overlay" viewBox="0 0 720 405" preserveAspectRatio="xMaxYMax slice">
-          <path class="slide__overlay-path" d="M0,0 150,0 500,405 0,405" />
-        </svg>
-        <div class="slide__text">
-          <h2 class="slide__text-heading">Project name 4</h2>
-          <p class="slide__text-desc">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Distinctio veniam minus illo debitis nihil animi facere, doloremque voluptate tempore quia. Lorem ipsum dolor sit amet, consectetur adipisicing elit. Distinctio veniam minus illo debitis nihil animi facere, doloremque voluptate tempore quia.</p>
-          <a class="slide__text-link">Project link</a>
-        </div>
-      </div>
-    </div>
-  </div>
-</div>
+    
   <script src='http://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.3/jquery.min.js'></script>
 
   
