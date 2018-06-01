@@ -91,7 +91,7 @@ if(isset($_SESSION['rental'])){
 
                                         <a class="dropdown-item" href="profil_costumer.php">Profile</a>
                                         <a class="dropdown-item" href="data_pesanan.php">Data Pesanan</a>
-                                        <a class="dropdown-item" href="ubah_password.php">Ubah Password</a>
+                                        <a class="dropdown-item" href="ubah_password_costumer.php">Ubah Password</a>
 
 
                                     </div>
