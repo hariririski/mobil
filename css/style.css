@@ -4481,7 +4481,7 @@ $header-default-sticky-box-shadow: 0 4px 10px -2px rgba(#000, .09);
         background: #34aadc;
         color: #fff;
         text-decoration: none;
-        
+
         span {
           color: #fff;
         }
@@ -6956,12 +6956,7 @@ $header-default-sticky-box-shadow: 0 4px 10px -2px rgba(#000, .09);
   .categories-places__list-item + .categories-places__list-item {
     margin-left: 0; } }
 
-.categories-all__header {
-  background: url("../images/categories/all.png") top center no-repeat;
-  background-size: cover;
-  padding: 50px 0;
-  color: #fff;
-  min-height: 152px; }
+
   .categories-all__header .container {
     display: -ms-flexbox;
     display: flex;

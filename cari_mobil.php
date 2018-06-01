@@ -25,6 +25,7 @@
 
     <!-- BEGIN THEME STYLES -->
     <link rel="stylesheet" type="text/css" href="css/style.min.css">
+
     <!-- END THEME STYLES -->
 </head>
 <!-- BEGIN HEAD -->
