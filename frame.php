@@ -97,7 +97,9 @@ while($data = mysqli_fetch_array($query)){
                   <td class="text-center"><?php $date1=date_create($data['tanggal_selesai']);
                                                 $date2=date_create($data['tanggal_mulai']);
                                                 $perbedaan=date_diff($date2,$date1);
-                                                echo $perbedaan=$perbedaan->format("%R%a");
+                                                $perbedaan=$perbedaan->format("%R%a");
+                                                $perbedaan++;
+                                                echo $perbedaan;
                                           ?></td>
                   <td class="text-right">Rp.<?php echo ($data['harga']*$perbedaan); ?></td>
 

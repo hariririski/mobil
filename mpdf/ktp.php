@@ -9,7 +9,8 @@
   $date1=date_create($data['tanggal_selesai']);
   $date2=date_create($data['tanggal_mulai']);
   $perbedaan=date_diff($date2,$date1);
-
+  $perbedaan=$perbedaan->format("%R%a");
+  $perbedaan++;
  $strhtml .='
  <html>
  <body>
@@ -85,7 +86,7 @@
                    <td class="text-center"> '. $data['harga'].'</td>
                    <td class="text-center">'. $data['tanggal_mulai'].'</td>
                    <td class="text-center">'. $data['tanggal_selesai'].'</td>
-                   <td class="text-center ">'.$perbedaan=$perbedaan->format("%R%a")
+                   <td class="text-center ">'.$perbedaan
                                            .'</td>
                    <td class="text-right">Rp.'.($data['harga']*$perbedaan) .'</td>
 
