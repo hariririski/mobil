@@ -62,6 +62,28 @@ if((empty($_SESSION['rental']))){
           <!-- /.row -->
           <div class="col-lg-12">
               <div class="col-lg-12">
+                <form action="mpdf/laporan.php" method="GET">
+                <div class="row">
+                    <div class="col-lg-4">
+                        <div class="form-group">
+                            <label for="post-job__email">Dari Tanggal</label>
+                            <input type="date" name="dari" class="form-control" required >
+                        </div>
+                    </div>
+                    <div class="col-lg-4">
+                        <div class="form-group">
+                            <label for="post-job__email">Sampai Tanggal</label>
+                            <input type="date" name="sampai" class="form-control" required >
+                        </div>
+                    </div>
+                    <div class="col-lg-4">
+                        <div class="form-group">
+                            <label for="post-job__email">&nbsp</label><br>
+                          <button type="submit"  class="btn btn-info btn-md ">Cetak Report Pdf</button>
+                        </div>
+                    </div>
+                </div>
+              </form>
                   <div class="card card-outline-primary mb-3">
                       <div class="card-header bg-primary">
                           Data Pesanan Mobil
