@@ -2,6 +2,7 @@
 $name='DejaVuSansCondensed-Bold';
 $type='TTF';
 $desc=array (
+<<<<<<< HEAD
   'CapHeight' => 729.0,
   'XHeight' => 547.0,
   'FontBBox' => '[-962 -415 1778 1174]',
@@ -12,6 +13,18 @@ $desc=array (
   'ItalicAngle' => 0.0,
   'StemV' => 165.0,
   'MissingWidth' => 540.0,
+=======
+  'CapHeight' => 729,
+  'XHeight' => 547,
+  'FontBBox' => '[-962 -415 1778 1174]',
+  'Flags' => 262148,
+  'Ascent' => 928,
+  'Descent' => -236,
+  'Leading' => 0,
+  'ItalicAngle' => 0,
+  'StemV' => 165,
+  'MissingWidth' => 540,
+>>>>>>> a2c465c3fb9cb753e94783846fa9a978f09151eb
 );
 $unitsPerEm=2048;
 $up=-63;
