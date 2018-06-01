@@ -3,14 +3,13 @@
 
 <head>
   <meta charset="UTF-8">
-  <title>Fullscreen drag-slider with parallax</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=yes">
-  
+
   <link rel='stylesheet prefetch' href='https://fonts.googleapis.com/css?family=Open+Sans'>
 
       <link rel="stylesheet" href="css/style.css">
 
-  
+
 </head>
 
 <body>
@@ -46,10 +45,10 @@
         </div>
       </div>
     </div>
-    
+
   <script src='http://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.3/jquery.min.js'></script>
 
-  
+
 
     <script  src="js/index.js"></script>
 

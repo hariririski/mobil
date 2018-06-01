@@ -70,7 +70,7 @@
         <div class="form-group row">
             <label for="example-text-input" class="col-5 col-form-label">NO Rekening Pengirim</label>
             <div class="col-7">
-                <input class="form-control" required  type="text"  name="rek_pengirim" id="example-text-input" >
+                <input class="form-control" required  type="number"  name="rek_pengirim" id="example-text-input" >
 
             </div>
         </div>
@@ -78,7 +78,7 @@
         <div class="form-group row">
             <label for="example-text-input" class="col-5 col-form-label">Nominal</label>
             <div class="col-7">
-                <input class="form-control" required  type="text" name="nominal" id="example-text-input" >
+                <input class="form-control" required  type="number" name="nominal" id="example-text-input" >
 
             </div>
         </div>
@@ -97,7 +97,7 @@
         <label for="example-text-input-with-left-button" class="col-5 col-form-label"></label>
         <div class="col-2">
             <div class="dropdown">
-                <button class="btn btn-success btn-block " type="sumbit" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                <button class="btn btn-success btn-block " type="sumbit">
                     Simpan
                 </button>
 

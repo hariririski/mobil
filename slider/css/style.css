@@ -175,7 +175,7 @@ svg {
 }
 .slide:nth-child(3) .slide__bg {
   left: -100%;
-  background-image: url("https://s3-us-west-2.amazonaws.com/s.cdpn.io/142996/3d-slider-1.jpg");
+  background-image: url("../1.jpg");
 }
 .slide:nth-child(3) .slide__overlay-path {
   fill: #adc5cd;
