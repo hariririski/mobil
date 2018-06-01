@@ -11,6 +11,7 @@
   $perbedaan=date_diff($date2,$date1);
   $perbedaan=$perbedaan->format("%R%a");
   $perbedaan++;
+  $bukti_pembayaran=$data['bukti_pembayaran'];
  $strhtml .='
  <html>
  <body>
@@ -135,6 +136,7 @@
 
         $strhtml .="<img src='../penyewa/".$data2['foto_ktp']."' width='70%'><br><br>";
         $strhtml .="<img src='../penyewa/".$data2['foto_ktp_orang']."' width='70%'>";
+        $strhtml .="<img src='../bukti_pembayaran/".$bukti_pembayaran."' width='70%'>";
         }
         		$now = date("F j, Y, g:i a");
         		$strhtml .= "<br><br><p>Dicetak Pada : $now <p>";

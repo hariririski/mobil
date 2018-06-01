@@ -8,7 +8,7 @@ session_start(); // Memulai Session
 			$nominal=$_POST['nominal'];
 			list($status, $name_file)=upload();
 
-			echo $perintah="UPDATE `pesan` SET `bank_pengirim`='$bank_pengirim',`rek_pengirim`='$rek_pengirim',`bukti_pembayaran`='$name_file',
+			$perintah="UPDATE `pesan` SET `bank_pengirim`='$bank_pengirim',`rek_pengirim`='$rek_pengirim',`bukti_pembayaran`='$name_file',
 																		 `nominal`='$nominal',`verifikasi_pembayaran`='1' WHERE invoice='$invoice'";
 
 			$query = mysqli_query($con,$perintah);

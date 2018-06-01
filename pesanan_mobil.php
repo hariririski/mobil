@@ -132,14 +132,16 @@ if((empty($_SESSION['rental']))){
                                       <td><?php echo $data['tipe'];?></td>
                                       <td><?php echo $data['tanggal_mulai'];?></td>
                                       <td><?php echo $data['tanggal_selesai'];?></td>
-                                      <?php if ($data['verifikasi_pembayaran']==1) {
+                                      <?php if ($data['verifikasi_pembayaran']==1 ) {
                                       ?>
                                       <td><span class="badge badge-pill badge-warning badge-sm">Proses</span></td>
                                       <?php }else if ($data['verifikasi_pembayaran']==2){ ?>
                                       <td><span class="badge badge-pill badge-success badge-sm">Selesai</span></td>
-                                      <?php }else{ ?>
+                                    <?php }else if ($data['verifikasi_pembayaran']==3 ){ ?>
                                       <td><span class="badge badge-pill badge-danger badge-sm">Batal</span></td>
-                                      <?php }?>
+                                    <?php }else{?>
+                                      <td><span class="badge badge-pill badge-info badge-sm">Belum</span></td>
+                                    <?php }?>
                                       <td class="center"><a href="invoice_admin.php?id=<?php echo $data['invoice'];?>"><button type="button" class="btn btn-info btn-xs">Detail</button></a></td>
                                       <?php if ($data['verifikasi_pembayaran']==2) {
                                       ?>
